@@ -5,23 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ammar</title>
 
+  <!-- خطوط عربية واضحة -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Fira+Code:wght@700&display=swap" rel="stylesheet">
+  
+  <!-- أيقونات الخط -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-  <script>
-    window.MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$', '$$'], ['\\[', '\\]']]
-      },
-      startup: {
-        typeset: true
-      }
-    };
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <!-- مكتبة KaTeX لمعالجة الرموز الرياضية بدون أي أخطاء في الدولار -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+  <!-- مكتبة تحويل الاختبار إلى PDF -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
   <style>
@@ -31,12 +28,11 @@
       --accent: #d97706;
       --secondary: #2563eb;
       --text-main: #1f2937;
-      --text-muted: #4b5563;
-      --bg-page: #f1f5f9;
+      --bg-page: #f8fafc;
       --card-bg: #ffffff;
       --border-color: #cbd5e1;
-      --solution-bg: #f8fafc;
-      --solution-border: #93c5fd;
+      --solution-bg: #f1f5f9;
+      --solution-border: #3b82f6;
     }
 
     * {
@@ -49,7 +45,7 @@
       font-family: 'Cairo', sans-serif;
       background-color: var(--bg-page);
       color: var(--text-main);
-      line-height: 1.7;
+      line-height: 1.8;
       padding-bottom: 50px;
     }
 
@@ -64,7 +60,7 @@
     }
 
     .nav-content {
-      max-width: 1200px;
+      max-width: 1100px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
@@ -73,25 +69,18 @@
       gap: 15px;
     }
 
-    .brand-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      color: white;
-    }
-
     .brand-name-only {
       color: #fbbf24;
       font-family: 'Fira Code', monospace;
-      font-size: 1.8rem;
+      font-size: 2rem;
       font-weight: 800;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
+      text-transform: lowercase;
     }
 
     .nav-actions {
       display: flex;
-      gap: 10px;
+      gap: 12px;
       align-items: center;
       flex-wrap: wrap;
     }
@@ -111,29 +100,27 @@
     }
 
     .btn-pdf {
-      background: linear-gradient(135deg, #e11d48, #be123c);
+      background: #e11d48;
       color: #ffffff;
-      box-shadow: 0 4px 10px rgba(225, 29, 72, 0.3);
     }
 
     .btn-pdf:hover {
-      background: linear-gradient(135deg, #be123c, #9f1239);
-      transform: translateY(-2px);
+      background: #be123c;
     }
 
     .btn-toggle {
-      background: rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.15);
       color: #fff;
-      border: 1px solid rgba(255,255,255,0.25);
+      border: 1px solid rgba(255,255,255,0.3);
     }
 
     .btn-toggle:hover {
-      background: rgba(255,255,255,0.22);
+      background: rgba(255,255,255,0.25);
     }
 
     .exam-wrapper {
       max-width: 950px;
-      margin: 20px auto;
+      margin: 25px auto;
       padding: 0 15px;
     }
 
@@ -141,9 +128,8 @@
       background: var(--card-bg);
       border-radius: 12px;
       border: 1px solid var(--border-color);
-      box-shadow: 0 6px 24px rgba(0,0,0,0.06);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
       padding: 40px;
-      position: relative;
     }
 
     .exam-official-header {
@@ -152,7 +138,7 @@
       align-items: center;
       border-bottom: 2px solid #0f172a;
       padding-bottom: 18px;
-      margin-bottom: 22px;
+      margin-bottom: 25px;
       text-align: center;
       gap: 10px;
     }
@@ -160,7 +146,7 @@
     .header-col.right {
       text-align: right;
       font-size: 0.85rem;
-      line-height: 1.45;
+      line-height: 1.5;
     }
 
     .header-col.center {
@@ -171,45 +157,39 @@
 
     .exam-ammar-stamp {
       font-family: 'Fira Code', monospace;
-      font-size: 1.9rem;
+      font-size: 2.3rem;
       font-weight: 900;
       color: #d97706;
       margin-bottom: 4px;
-      letter-spacing: 1.5px;
+      letter-spacing: 2px;
+      line-height: 1;
     }
 
     .exam-official-header h2 {
       font-size: 1.35rem;
       font-weight: 800;
       color: #0f172a;
-      margin: 3px 0;
+      margin: 4px 0;
     }
 
     .exam-subtag {
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       color: #475569;
       font-weight: 600;
-      background: #f1f5f9;
-      padding: 2px 10px;
-      border-radius: 6px;
     }
 
     .header-col.left {
       text-align: left;
       font-size: 0.85rem;
-      line-height: 1.45;
+      line-height: 1.5;
     }
 
     .section-separator {
-      background: linear-gradient(to left, #f1f5f9, #e2e8f0);
+      background: #f1f5f9;
       border-right: 5px solid var(--secondary);
       padding: 10px 16px;
       margin: 30px 0 20px;
       border-radius: 0 8px 8px 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      page-break-after: avoid;
     }
 
     .section-separator h3 {
@@ -221,44 +201,40 @@
     .question-box {
       border: 1px solid #e2e8f0;
       border-radius: 10px;
-      padding: 22px;
-      margin-bottom: 24px;
+      padding: 20px;
+      margin-bottom: 22px;
       background: #ffffff;
       page-break-inside: avoid;
     }
 
     .question-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
       margin-bottom: 12px;
-      padding-bottom: 8px;
+      padding-bottom: 6px;
       border-bottom: 1px solid #f1f5f9;
     }
 
     .q-number {
       font-weight: 800;
       color: #1e3a8a;
-      font-size: 1.05rem;
+      font-size: 1.1rem;
     }
 
     .q-content {
-      font-size: 1.02rem;
-      line-height: 1.9;
+      font-size: 1.05rem;
+      line-height: 2;
       color: #1e293b;
     }
 
     .q-subitems {
       list-style-type: none;
-      margin: 12px 10px 0 0;
+      margin: 10px 10px 0 0;
       padding: 0;
     }
 
     .q-subitems li {
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       position: relative;
-      padding-right: 22px;
-      font-size: 0.98rem;
+      padding-right: 20px;
     }
 
     .q-subitems li::before {
@@ -267,26 +243,15 @@
       right: 0;
       color: var(--accent);
       font-size: 1.2rem;
-      line-height: 1;
-    }
-
-    .answer-draft-area {
-      margin-top: 15px;
-      border: 1px dashed #cbd5e1;
-      border-radius: 8px;
-      padding: 12px 16px;
-      background: #fafafa;
-      font-size: 0.85rem;
-      color: #94a3b8;
+      line-height: 1.6;
     }
 
     .solution-panel {
-      margin-top: 18px;
+      margin-top: 15px;
       background-color: var(--solution-bg);
-      border: 1px solid var(--solution-border);
-      border-right: 5px solid #2563eb;
-      border-radius: 8px;
-      padding: 16px 20px;
+      border-right: 4px solid var(--solution-border);
+      border-radius: 6px;
+      padding: 15px 18px;
       display: none;
     }
 
@@ -295,22 +260,22 @@
     }
 
     .solution-panel h4 {
-      color: #1e40af;
+      color: #1d4ed8;
       font-size: 0.95rem;
       font-weight: 800;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .solution-steps {
-      font-size: 0.98rem;
-      line-height: 1.9;
-      color: #1f2937;
+      font-size: 1rem;
+      line-height: 2;
+      color: #334155;
     }
 
     .step-item {
-      margin-bottom: 10px;
-      padding-bottom: 8px;
-      border-bottom: 1px dashed #e2e8f0;
+      margin-bottom: 8px;
+      padding-bottom: 6px;
+      border-bottom: 1px dashed #cbd5e1;
     }
 
     .step-item:last-child {
@@ -325,12 +290,16 @@
       border-top: 2px solid #0f172a;
       font-weight: 800;
       color: #475569;
-      font-size: 0.95rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 10px;
+    }
+
+    /* ضمان اتجاه وصحة الخط للرموز الرياضية */
+    .katex {
+      direction: ltr !important;
+      unicode-bidi: isolate;
+      font-size: 1.1em;
     }
 
     @media print {
@@ -352,9 +321,8 @@
         padding: 15px;
       }
       .question-box {
-        border: 1px solid #cbd5e1;
         page-break-inside: avoid;
-        margin-bottom: 18px;
+        margin-bottom: 15px;
       }
     }
   </style>
@@ -363,18 +331,16 @@
 
   <header class="top-navbar no-print">
     <div class="nav-content">
-      <a href="#" class="brand-logo">
-        <span class="brand-name-only">ammar</span>
-      </a>
+      <div class="brand-name-only">ammar</div>
 
       <div class="nav-actions">
         <button id="btn-toggle-solutions" class="btn btn-toggle">
           <i class="fa-solid fa-eye"></i>
-          إظهار سلم الحلول التحريرية
+          إظهار سلم الحلول
         </button>
         <button id="btn-export-pdf" class="btn btn-pdf">
           <i class="fa-solid fa-file-pdf"></i>
-          تصدير الاختبار إلى PDF
+          تصدير إلى PDF
         </button>
       </div>
     </div>
@@ -387,7 +353,7 @@
         <div class="header-col right">
           <p><strong>الجمهورية العربية السورية</strong></p>
           <p>وزارة التربية والتعليم</p>
-          <p>امتحانات الشهادة الثانوية العامة (العلمي)</p>
+          <p>امتحانات الشهادة الثانوية العامة</p>
         </div>
 
         <div class="header-col center">
@@ -403,14 +369,14 @@
         </div>
       </div>
 
-      <!-- القسم الأول -->
+      <!-- أولاً -->
       <div class="section-separator">
         <h3>أولاً: المعادلات والمتطابقات الأسية</h3>
       </div>
 
       <article class="question-box">
         <div class="question-head">
-          <span class="q-number">المسألة 1:</span>
+          <div class="q-number">المسألة 1</div>
         </div>
         <div class="q-content">
           أثبت صحة المطابقة الآتية أياً كان $x \in \mathbb{R}$:[span_0](start_span)[span_0](end_span)
@@ -421,14 +387,14 @@
           <div class="solution-steps">
             بضرب حدي الكسر في الطرف الأيسر بالمقدار $e^x$:[span_2](start_span)[span_2](end_span)
             $$\frac{e^x(e^x - e^{-x})}{e^x(e^x + e^{-x})} = \frac{e^{2x} - e^0}{e^{2x} + e^0} = \frac{e^{2x} - 1}{e^{2x} + 1}$$[span_3](start_span)[span_3](end_span)
-            وهو المطلوب.[span_4](start_span)[span_4](end_span)
+            وهو الطرف الأيمن المطلوب إثباته.[span_4](start_span)[span_4](end_span)
           </div>
         </div>
       </article>
 
       <article class="question-box">
         <div class="question-head">
-          <span class="q-number">المسألة 2:</span>
+          <div class="q-number">المسألة 2</div>
         </div>
         <div class="q-content">
           حل في المجموعة $\mathbb{R}$ المعادلة الآتية:[span_5](start_span)[span_5](end_span)
@@ -446,13 +412,13 @@
 
       <article class="question-box">
         <div class="question-head">
-          <span class="q-number">المسألة 3:</span>
+          <div class="q-number">المسألة 3</div>
         </div>
         <div class="q-content">
           حل في $\mathbb{R}$ كلاً من:[span_7](start_span)[span_7](end_span)
           <ul class="q-subitems">
-            <li><strong>1)</strong> المعادلة: $2e^{2x} - 7e^x + 3 = 0$[span_8](start_span)[span_8](end_span)</li>
-            <li><strong>2)</strong> المتراجحة: $2e^{2x} - 7e^x + 3 \le 0$[span_9](start_span)[span_9](end_span)</li>
+            <li>1) المعادلة: $2e^{2x} - 7e^x + 3 = 0$[span_8](start_span)[span_8](end_span)</li>
+            <li>2) المتراجحة: $2e^{2x} - 7e^x + 3 \le 0$[span_9](start_span)[span_9](end_span)</li>
           </ul>
         </div>
         <div class="solution-panel">
@@ -466,7 +432,7 @@
               حلول المعادلة: $S = \{-\ln 2, \ln 3\}$.
             </div>
             <div class="step-item">
-              المتراجحة محققة بين الجذرين:<br>
+              المتراجحة تكون سالبة أو مساوية للصفر بين الجذرين:<br>
               $$\frac{1}{2} \le e^x \le 3 \implies -\ln 2 \le x \le \ln 3$$
               مجموعة الحلول: $S = [-\ln 2, \ln 3]$.
             </div>
@@ -476,15 +442,15 @@
 
       <article class="question-box">
         <div class="question-head">
-          <span class="q-number">المسألة 4:</span>
+          <div class="q-number">المسألة 4</div>
         </div>
         <div class="q-content">
           حل في $\mathbb{R}$ كلاً من المعادلات والمتراجحات الآتية:[span_10](start_span)[span_10](end_span)
           <ul class="q-subitems">
-            <li><strong>1)</strong> $49^x - 6 \times 7^x + 5 = 0$[span_11](start_span)[span_11](end_span)</li>
-            <li><strong>2)</strong> $\left(\frac{1}{3}\right)^x > 2$[span_12](start_span)[span_12](end_span)</li>
-            <li><strong>3)</strong> $5^{x+1} = 2$[span_13](start_span)[span_13](end_span)</li>
-            <li><strong>4)</strong> $2^{3x+1} = 32$[span_14](start_span)[span_14](end_span)</li>
+            <li>1) $49^x - 6 \times 7^x + 5 = 0$[span_11](start_span)[span_11](end_span)</li>
+            <li>2) $\left(\frac{1}{3}\right)^x > 2$[span_12](start_span)[span_12](end_span)</li>
+            <li>3) $5^{x+1} = 2$[span_13](start_span)[span_13](end_span)</li>
+            <li>4) $2^{3x+1} = 32$[span_14](start_span)[span_14](end_span)</li>
           </ul>
         </div>
         <div class="solution-panel">
@@ -508,37 +474,34 @@
         </div>
       </article>
 
-      <!-- القسم الثاني -->
+      <!-- ثانياً -->
       <div class="section-separator">
         <h3>ثانياً: المعادلات التفاضلية التحريرية</h3>
       </div>
 
       <article class="question-box">
         <div class="question-head">
-          <span class="q-number">المسألة 5 (دورة 2024 الأولى):</span>
+          <div class="q-number">المسألة 5 (دورة 2024 الأولى)</div>
         </div>
         <div class="q-content">
-          لتكن لدينا المعادلة التفاضلية الآتية:
+          لتكن لدينا المعادلة التفاضلية الخطية الآتية:
           $$(E): \quad y' - 2y = 0$$
           <ul class="q-subitems">
-            <li><strong>1)</strong> أوجد الحل العام للمعادلة التفاضلية $(E)$ على المجموعة $\mathbb{R}$.</li>
-            <li><strong>2)</strong> عيّن الحل الخاص $f$ للمعادلة $(E)$ الذي يحقق الشرط الابتدائي: $f(0) = 1$.</li>
+            <li>1) أوجد الحل العام للمعادلة التفاضلية $(E)$ على المجموعة $\mathbb{R}$.</li>
+            <li>2) عيّن الحل الخاص $f$ للمعادلة $(E)$ الذي يحقق الشرط الابتدائي: $f(0) = 1$.</li>
           </ul>
-        </div>
-        <div class="answer-draft-area no-print">
-          خطوات الحل التحريري مخصصة لورقة الإجابة
         </div>
         <div class="solution-panel">
           <h4>سلم الحل:</h4>
           <div class="solution-steps">
             <div class="step-item">
-              <strong>1) الحل العام:</strong> المعادلة من الشكل $y' = 2y$، حلها العام:
+              <strong>1) الحل العام:</strong> المعادلة من الشكل $y' = 2y$ وحلها العام:
               $$y = C e^{2x} \quad (C \in \mathbb{R})$$
             </div>
             <div class="step-item">
-              <strong>2) الحل الخاص:</strong> نعوض $f(0) = 1$:
+              <strong>2) الحل الخاص:</strong> بالتعويض عن $f(0) = 1$:
               $$1 = C e^0 \implies C = 1$$
-              وبالتالي الحل الخاص المطلوب:
+              وبالتالي يكون الحل الخاص:
               $$f(x) = e^{2x}$$
             </div>
           </div>
@@ -547,18 +510,18 @@
 
       <article class="question-box">
         <div class="question-head">
-          <span class="q-number">المسألة 6:</span>
+          <div class="q-number">المسألة 6</div>
         </div>
         <div class="q-content">
           حل المعادلة التفاضلية الآتية:[span_15](start_span)[span_15](end_span)
           $$y' - 2y = -6$$[span_16](start_span)[span_16](end_span)
-          علماً أن الخط البياني للحل يمر بالنقطة $A(\ln 2, -5)$[span_17](start_span)[span_17](end_span).
+          علماً أن الخط البياني للحل يمر بالنقطة $A(\ln 2, -5)$.[span_17](start_span)[span_17](end_span)
         </div>
         <div class="solution-panel">
           <h4>سلم الحل:</h4>
           <div class="solution-steps">
-            الحل العام من الشكل $y = C e^{2x} - \frac{-6}{2} = C e^{2x} + 3$.<br>
-            بالتعويض عن النقطة $A(\ln 2, -5)$[span_18](start_span)[span_18](end_span):
+            الحل العام يُعطى بالقاعدة $y = C e^{2x} - \frac{-6}{2} = C e^{2x} + 3$.<br>
+            نعوض إحداثيات النقطة $A(\ln 2, -5)$:[span_18](start_span)[span_18](end_span)
             $$-5 = C e^{2\ln 2} + 3 \implies -5 = 4C + 3 \implies 4C = -8 \implies C = -2$$
             الحل هو:
             $$y = -2e^{2x} + 3$$
@@ -568,36 +531,36 @@
 
       <article class="question-box">
         <div class="question-head">
-          <span class="q-number">المسألة 7:</span>
+          <div class="q-number">المسألة 7</div>
         </div>
         <div class="q-content">
           لتكن لدينا المعادلة التفاضلية:[span_19](start_span)[span_19](end_span)
           $$(E): \quad y' + 3y = \frac{9}{2} e^{-2x}$$[span_20](start_span)[span_20](end_span)
           والمعادلة التفاضلية المتجانسة المرافقة:[span_21](start_span)[span_21](end_span)
           $$(E'): \quad y' + 3y = 0$$[span_22](start_span)[span_22](end_span)
-          ونفرض التابع $g$ المعرف على $\mathbb{R}$ وفق: $g(x) = \lambda e^{-2x}$ حيث $\lambda \in \mathbb{R}$[span_23](start_span)[span_23](end_span).
+          ونفرض التابع $g$ المعرف على $\mathbb{R}$ وفق: $g(x) = \lambda e^{-2x}$ حيث $\lambda \in \mathbb{R}$.[span_23](start_span)[span_23](end_span)
           <ul class="q-subitems">
-            <li><strong>1)</strong> عيّن قيمة الثابت الحقيقي $\lambda$ حتى يكون التابع $g$ حلاً للمعادلة التفاضلية $(E)$[span_24](start_span)[span_24](end_span).</li>
-            <li><strong>2)</strong> حل المعادلة التفاضلية $(E')$[span_25](start_span)[span_25](end_span).</li>
-            <li><strong>3)</strong> أثبت أن التابع $f$ هو حل للمعادلة $(E)$ إذا وفقط إذا كان التابع $(f - g)$ حلاً للمعادلة $(E')$[span_26](start_span)[span_26](end_span).</li>
-            <li><strong>4)</strong> استنتج جميع حلول المعادلة التفاضلية $(E)$[span_27](start_span)[span_27](end_span).</li>
+            <li>1) عيّن قيمة الثابت الحقيقي $\lambda$ حتى يكون التابع $g$ حلاً للمعادلة التفاضلية $(E)$.[span_24](start_span)[span_24](end_span)</li>
+            <li>2) حل المعادلة التفاضلية $(E')$.[span_25](start_span)[span_25](end_span)</li>
+            <li>3) أثبت أن التابع $f$ هو حل للمعادلة $(E)$ إذا وفقط إذا كان التابع $(f - g)$ حلاً للمعادلة $(E')$.[span_26](start_span)[span_26](end_span)</li>
+            <li>4) استنتج جميع حلول المعادلة التفاضلية $(E)$.[span_27](start_span)[span_27](end_span)</li>
           </ul>
         </div>
         <div class="solution-panel">
           <h4>سلم الحل:</h4>
           <div class="solution-steps">
             <div class="step-item">
-              <strong>1)</strong> $g'(x) = -2\lambda e^{-2x}$. بالتعويض في $(E)$[span_28](start_span)[span_28](end_span):
+              <strong>1)</strong> $g'(x) = -2\lambda e^{-2x}$. نعوض في $(E)$:[span_28](start_span)[span_28](end_span)
               $$-2\lambda e^{-2x} + 3\lambda e^{-2x} = \frac{9}{2}e^{-2x} \implies \lambda = \frac{9}{2}$$
               إذن: $g(x) = \frac{9}{2} e^{-2x}$.
             </div>
             <div class="step-item">
-              <strong>2)</strong> حل $(E')$[span_29](start_span)[span_29](end_span): $y' = -3y \implies y = C e^{-3x} \quad (C \in \mathbb{R})$.
+              <strong>2)</strong> حل $(E')$: $y' = -3y \implies y = C e^{-3x} \quad (C \in \mathbb{R})$.[span_29](start_span)[span_29](end_span)
             </div>
             <div class="step-item">
               <strong>3)</strong> بما أن $g' + 3g = \frac{9}{2}e^{-2x}$، فإن:
               $$f' + 3f = \frac{9}{2}e^{-2x} \iff (f' - g') + 3(f - g) = 0 \iff (f - g)' + 3(f - g) = 0$$
-              أي أن $(f - g)$ حل للمعادلة $(E')$[span_30](start_span)[span_30](end_span).
+              أي أن $(f - g)$ حل للمعادلة $(E')$.[span_30](start_span)[span_30](end_span)
             </div>
             <div class="step-item">
               <strong>4)</strong> $f(x) - g(x) = C e^{-3x} \implies f(x) = C e^{-3x} + \frac{9}{2} e^{-2x} \quad (C \in \mathbb{R})$.
@@ -608,7 +571,7 @@
 
       <article class="question-box">
         <div class="question-head">
-          <span class="q-number">المسألة 8:</span>
+          <div class="q-number">المسألة 8</div>
         </div>
         <div class="q-content">
           عيّن تابعاً كثير حدود من الدرجة الثانية $f(x) = ax^2 + bx + c$ بحيث يكون حلاً للمعادلة التفاضلية الآتية:[span_31](start_span)[span_31](end_span)
@@ -617,10 +580,10 @@
         <div class="solution-panel">
           <h4>سلم الحل:</h4>
           <div class="solution-steps">
-            مشتق كثير الحدود: $y' = 2ax + b$. بالتعويض في المعادلة[span_33](start_span)[span_33](end_span):
+            مشتق كثير الحدود: $y' = 2ax + b$. نعوض في المعادلة:[span_33](start_span)[span_33](end_span)
             $$-(ax^2 + bx + c) + 2(2ax + b) = x^2 + 3$$
             $$-ax^2 + (4a - b)x + (2b - c) = x^2 + 3$$
-            بمطابقة الأمثال:
+            بمطابقة المعاملات:
             $$-a = 1 \implies a = -1$$
             $$4(-1) - b = 0 \implies b = -4$$
             $$2(-4) - c = 3 \implies -8 - c = 3 \implies c = -11$$
@@ -629,18 +592,18 @@
         </div>
       </article>
 
-      <!-- القسم الثالث -->
+      <!-- ثالثاً -->
       <div class="section-separator">
         <h3>ثالثاً: دراسة التغيرات والمماسات والمقاربات</h3>
       </div>
 
       <article class="question-box">
         <div class="question-head">
-          <span class="q-number">المسألة 9:</span>
+          <div class="q-number">المسألة 9</div>
         </div>
         <div class="q-content">
-          ليكن $f$ تابعاً معرفاً على $\mathbb{R}$ وفق $f(x) = (ax + b)e^x + 1$[span_34](start_span)[span_34](end_span).<br>
-          عيّن العددين الحقيقيين $a$ و $b$ إذا علمت أن الخط البياني $C_f$ يقبل في النقطة التي فاصلتها $x = 1$ مماساً أفقياً، وأن $f(0) = -e + 1$[span_35](start_span)[span_35](end_span).
+          ليكن $f$ تابعاً معرفاً على $\mathbb{R}$ وفق $f(x) = (ax + b)e^x + 1$.[span_34](start_span)[span_34](end_span)<br>
+          عيّن العددين الحقيقيين $a$ و $b$ إذا علمت أن الخط البياني $C_f$ يقبل في النقطة التي فاصلتها $x = 1$ مماساً أفقياً، وأن $f(0) = -e + 1$.[span_35](start_span)[span_35](end_span)
         </div>
         <div class="solution-panel">
           <h4>سلم الحل:</h4>
@@ -655,14 +618,14 @@
 
       <article class="question-box">
         <div class="question-head">
-          <span class="q-number">المسألة 10:</span>
+          <div class="q-number">المسألة 10</div>
         </div>
         <div class="q-content">
           ليكن $f$ التابع المعرف على $\mathbb{R}$ وفق:[span_36](start_span)[span_36](end_span)
           $$f(x) = \frac{e^x}{e^x + 1}$$[span_37](start_span)[span_37](end_span)
           <ul class="q-subitems">
-            <li><strong>1)</strong> أوجد معادلة المماس $T$ للخط $C_f$ في نقطة تقاطعه مع محور التراتيب[span_38](start_span)[span_38](end_span).</li>
-            <li><strong>2)</strong> ادرس الوضع النسبي للخط $C_f$ والمماس $T$[span_39](start_span)[span_39](end_span).</li>
+            <li>1) أوجد معادلة المماس $T$ للخط $C_f$ في نقطة تقاطعه مع محور التراتيب.[span_38](start_span)[span_38](end_span)</li>
+            <li>2) ادرس الوضع النسبي للخط $C_f$ والمماس $T$.[span_39](start_span)[span_39](end_span)</li>
           </ul>
         </div>
         <div class="solution-panel">
@@ -685,12 +648,12 @@
 
       <article class="question-box">
         <div class="question-head">
-          <span class="q-number">المسألة 11:</span>
+          <div class="q-number">المسألة 11</div>
         </div>
         <div class="q-content">
           ليكن $f$ تابعاً معرفاً على $\mathbb{R}$ وفق:[span_40](start_span)[span_40](end_span)[span_41](start_span)[span_41](end_span)
           $$f(x) = x + 3 + \frac{x-1}{4e^x}$$[span_42](start_span)[span_42](end_span)[span_43](start_span)[span_43](end_span)
-          أثبت أن المستقيم $\Delta: y = x + 3$ مقارب مائل للخط البياني $C_f$ في جوار $+\infty$، ثم ادرس الوضع النسبي لـ $C_f$ والمقارب $\Delta$[span_44](start_span)[span_44](end_span)[span_45](start_span)[span_45](end_span).
+          أثبت أن المستقيم $\Delta: y = x + 3$ مقارب مائل للخط البياني $C_f$ في جوار $+\infty$، ثم ادرس الوضع النسبي لـ $C_f$ والمقارب $\Delta$.[span_44](start_span)[span_44](end_span)[span_45](start_span)[span_45](end_span)
         </div>
         <div class="solution-panel">
           <h4>سلم الحل:</h4>
@@ -707,15 +670,15 @@
 
       <article class="question-box">
         <div class="question-head">
-          <span class="q-number">المسألة 12:</span>
+          <div class="q-number">المسألة 12</div>
         </div>
         <div class="q-content">
-          ليكن $f$ التابع المعرف على $\mathbb{R}$ وفق: $f(x) = \ln(e^x + 1)$[span_50](start_span)[span_50](end_span)[span_51](start_span)[span_51](end_span).
+          ليكن $f$ التابع المعرف على $\mathbb{R}$ وفق: $f(x) = \ln(e^x + 1)$.[span_50](start_span)[span_50](end_span)[span_51](start_span)[span_51](end_span)
           <ul class="q-subitems">
-            <li><strong>1)</strong> احسب $\lim_{x \to -\infty} f(x)$ وفسّر النتيجة هندسياً[span_52](start_span)[span_52](end_span)[span_53](start_span)[span_53](end_span).</li>
-            <li><strong>2)</strong> أثبت أنه أياً كان $x \in \mathbb{R}$ فإن $f(x) = x + \ln(1 + e^{-x})$[span_54](start_span)[span_54](end_span)[span_55](start_span)[span_55](end_span).</li>
-            <li><strong>3)</strong> استنتج معادلة مقارب مائل $\Delta$ لـ $C_f$ في جوار $+\infty$ وادرس الوضع النسبي بينهما[span_56](start_span)[span_56](end_span)[span_57](start_span)[span_57](end_span).</li>
-            <li><strong>4)</strong> ادرس تغيرات التابع $f$ ونظم جدولاً بها[span_58](start_span)[span_58](end_span)[span_59](start_span)[span_59](end_span).</li>
+            <li>1) احسب $\lim_{x \to -\infty} f(x)$ وفسّر النتيجة هندسياً.[span_52](start_span)[span_52](end_span)[span_53](start_span)[span_53](end_span)</li>
+            <li>2) أثبت أنه أياً كان $x \in \mathbb{R}$ فإن $f(x) = x + \ln(1 + e^{-x})$.[span_54](start_span)[span_54](end_span)[span_55](start_span)[span_55](end_span)</li>
+            <li>3) استنتج معادلة مقارب مائل $\Delta$ لـ $C_f$ في جوار $+\infty$ وادرس الوضع النسبي بينهما.[span_56](start_span)[span_56](end_span)[span_57](start_span)[span_57](end_span)</li>
+            <li>4) ادرس تغيرات التابع $f$ ونظم جدولاً بها.[span_58](start_span)[span_58](end_span)[span_59](start_span)[span_59](end_span)</li>
           </ul>
         </div>
         <div class="solution-panel">
@@ -729,7 +692,7 @@
             </div>
             <div class="step-item">
               <strong>3)</strong> $\lim_{x \to +\infty} [f(x) - x] = \lim_{x \to +\infty} \ln(1 + e^{-x}) = 0 \implies \Delta: y = x$ مقارب مائل بجوار $+\infty$.<br>
-              بما أن $1 + e^{-x} > 1$ فإن الفرق موجباً دوماً والخط $C_f$ يقع تماماً فوق $\Delta$.
+              بما أن $1 + e^{-x} > 1$ فإن المقدار موجب والخط $C_f$ يقع تماماً فوق $\Delta$.
             </div>
             <div class="step-item">
               <strong>4)</strong> $f'(x) = \frac{e^x}{e^x + 1} > 0$، التابع متزايد تماماً على $\mathbb{R}$.
@@ -740,18 +703,18 @@
 
       <article class="question-box">
         <div class="question-head">
-          <span class="q-number">المسألة 13:</span>
+          <div class="q-number">المسألة 13</div>
         </div>
         <div class="q-content">
           ليكن التابع $f$ معرفاً على $\mathbb{R}$ وفق:[span_60](start_span)[span_60](end_span)
           $$f(x) = \frac{1}{2}(e^x - e^{-x})$$[span_61](start_span)[span_61](end_span)
           <ul class="q-subitems">
-            <li><strong>1)</strong> أثبت أن التابع $f$ فردي[span_62](start_span)[span_62](end_span).</li>
-            <li><strong>2)</strong> ادرس تغيرات التابع $f$ ونظم جدولاً بها[span_63](start_span)[span_63](end_span).</li>
-            <li><strong>3)</strong> أثبت أنه أياً كان $m \in \mathbb{R}$، فإن للمعادلة $f(x) = m$ حلاً وحيداً يُعطى بالصيغة:[span_64](start_span)[span_64](end_span)
+            <li>1) أثبت أن التابع $f$ فردي.[span_62](start_span)[span_62](end_span)</li>
+            <li>2) ادرس تغيرات التابع $f$ ونظم جدولاً بها.[span_63](start_span)[span_63](end_span)</li>
+            <li>3) أثبت أنه أياً كان $m \in \mathbb{R}$، فإن للمعادلة $f(x) = m$ حلاً وحيداً يُعطى بالصيغة:[span_64](start_span)[span_64](end_span)
               $$x = \ln(m + \sqrt{m^2 + 1})$$[span_65](start_span)[span_65](end_span)
             </li>
-            <li><strong>4)</strong> اكتب معادلة المماس $T$ في المبدأ $O(0,0)$[span_66](start_span)[span_66](end_span).</li>
+            <li>4) اكتب معادلة المماس $T$ في المبدأ $O(0,0)$.[span_66](start_span)[span_66](end_span)</li>
           </ul>
         </div>
         <div class="solution-panel">
@@ -761,7 +724,7 @@
               <strong>1)</strong> $f(-x) = \frac{1}{2}(e^{-x} - e^x) = -f(x)$ فالتابع فردي.
             </div>
             <div class="step-item">
-              <strong>2)</strong> $f'(x) = \frac{1}{2}(e^x + e^{-x}) > 0$، متزايد تماماً على $\mathbb{R}$ من $-\infty$ إلى $+\infty$.
+              <strong>2)</strong> $f'(x) = \frac{1}{2}(e^x + e^{-x}) > 0$، التابع متزايد تماماً على $\mathbb{R}$ من $-\infty$ إلى $+\infty$.
             </div>
             <div class="step-item">
               <strong>3)</strong> $\frac{1}{2}(e^x - e^{-x}) = m \implies (e^x)^2 - 2m(e^x) - 1 = 0$.<br>
@@ -777,17 +740,17 @@
 
       <article class="question-box">
         <div class="question-head">
-          <span class="q-number">المسألة 14:</span>
+          <div class="q-number">المسألة 14</div>
         </div>
         <div class="q-content">
           ليكن $f$ التابع المعرف على $\mathbb{R}$ وفق:[span_68](start_span)[span_68](end_span)
           $$f(x) = \frac{(x+1)^2}{e^x}$$[span_69](start_span)[span_69](end_span)
           <ul class="q-subitems">
-            <li><strong>1)</strong> احسب نهايات التابع عند أطراف مجموعة التعريف، وفسر النتيجة عند $+\infty$ هندسياً[span_70](start_span)[span_70](end_span).</li>
-            <li><strong>2)</strong> أثبت أنه أياً كانت $x \in \mathbb{R}$ فإن مشتق التابع يُعطى بالعلاقة:[span_71](start_span)[span_71](end_span)
+            <li>1) احسب نهايات التابع عند أطراف مجموعة التعريف، وفسر النتيجة عند $+\infty$ هندسياً.[span_70](start_span)[span_70](end_span)</li>
+            <li>2) أثبت أنه أياً كانت $x \in \mathbb{R}$ فإن مشتق التابع يُعطى بالعلاقة:[span_71](start_span)[span_71](end_span)
               $$f'(x) = \frac{1 - x^2}{e^x}$$[span_72](start_span)[span_72](end_span)
             </li>
-            <li><strong>3)</strong> ادرس تغيرات التابع $f$ ونظم جدولاً بها، ودلّ على القيم الحدية ونوعها[span_73](start_span)[span_73](end_span).</li>
+            <li>3) ادرس تغيرات التابع $f$ ونظم جدولاً بها، ودلّ على القيم الحدية ونوعها.[span_73](start_span)[span_73](end_span)</li>
           </ul>
         </div>
         <div class="solution-panel">
@@ -797,10 +760,11 @@
               <strong>1)</strong> $\lim_{x \to -\infty} f(x) = +\infty$، و $\lim_{x \to +\infty} f(x) = 0$. المستقيم $y = 0$ مقارب أفقي بجوار $+\infty$.
             </div>
             <div class="step-item">
-              <strong>2)</strong> $f'(x) = \frac{2(x+1)e^x - (x+1)^2 e^x}{e^{2x}} = \frac{(x+1)(2 - x - 1)}{e^x} = \frac{1 - x^2}{e^x}$.[span_74](start_span)[span_74](end_span)
+              <strong>2)</strong> المشتق:
+              $$f'(x) = \frac{2(x+1)e^x - (x+1)^2 e^x}{e^{2x}} = \frac{(x+1)(2 - x - 1)}{e^x} = \frac{1 - x^2}{e^x}$$[span_74](start_span)[span_74](end_span)
             </div>
             <div class="step-item">
-              <strong>3)</strong> إشارة المشتق توافق إشارة $1 - x^2$:<br>
+              <strong>3)</strong> إشارة المشتق من إشارة $1 - x^2$:<br>
               - عند $x = -1$: $f(-1) = 0$ قيمة صغرى محلية.<br>
               - عند $x = 1$: $f(1) = \frac{4}{e}$ قيمة كبرى محلية.
             </div>
@@ -810,13 +774,25 @@
 
       <footer class="exam-end-footer">
         <div>انتهت الأسئلة التحريرية</div>
-        <div style="font-family: 'Fira Code', monospace; color: #2563eb; font-size: 1.2rem;">ammar</div>
+        <div style="font-family: 'Fira Code', monospace; color: #2563eb; font-size: 1.3rem;">ammar</div>
       </footer>
 
     </div>
   </main>
 
   <script>
+    // تفعيل KaTeX التلقائي وتحويل جميع الرموز فورا
+    document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: '$$', right: '$$', display: true},
+          {left: '$', right: '$', display: false}
+        ],
+        throwOnError : false
+      });
+    });
+
+    // إظهار وإخفاء الحلول
     const toggleBtn = document.getElementById('btn-toggle-solutions');
     let solutionsVisible = false;
 
@@ -827,24 +803,17 @@
         p.classList.toggle('visible', solutionsVisible);
       });
 
-      if (solutionsVisible) {
-        toggleBtn.innerHTML = '<i class="fa-solid fa-eye-slash"></i> إخفاء سلم الحلول التحريرية';
-        toggleBtn.style.background = '#d97706';
-      } else {
-        toggleBtn.innerHTML = '<i class="fa-solid fa-eye"></i> إظهار سلم الحلول التحريرية';
-        toggleBtn.style.background = 'rgba(255,255,255,0.12)';
-      }
-
-      if (window.MathJax) {
-        MathJax.typesetPromise();
-      }
+      toggleBtn.innerHTML = solutionsVisible 
+        ? '<i class="fa-solid fa-eye-slash"></i> إخفاء سلم الحلول'
+        : '<i class="fa-solid fa-eye"></i> إظهار سلم الحلول';
     });
 
+    // تصدير PDF
     document.getElementById('btn-export-pdf').addEventListener('click', () => {
       const element = document.getElementById('printable-exam-sheet');
       const exportBtn = document.getElementById('btn-export-pdf');
 
-      exportBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> جاري إنشاء الـ PDF...';
+      exportBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> جاري الإنشاء...';
       exportBtn.disabled = true;
 
       const opt = {
@@ -857,11 +826,11 @@
       };
 
       html2pdf().set(opt).from(element).save().then(() => {
-        exportBtn.innerHTML = '<i class="fa-solid fa-file-pdf"></i> تصدير الاختبار إلى PDF';
+        exportBtn.innerHTML = '<i class="fa-solid fa-file-pdf"></i> تصدير إلى PDF';
         exportBtn.disabled = false;
       }).catch(err => {
         console.error(err);
-        exportBtn.innerHTML = '<i class="fa-solid fa-file-pdf"></i> تصدير الاختبار إلى PDF';
+        exportBtn.innerHTML = '<i class="fa-solid fa-file-pdf"></i> تصدير إلى PDF';
         exportBtn.disabled = false;
       });
     });
