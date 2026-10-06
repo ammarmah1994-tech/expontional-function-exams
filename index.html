@@ -3,73 +3,80 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>اختبار التابع الأسي - ammar</title>
+<title>اختبار في التابع الأسي - ammar</title>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap');
+
   :root {
-    --primary: #1e3a8a;
-    --primary-dark: #0f172a;
+    --primary: #0f2744;
+    --primary-light: #1e3a8a;
     --accent: #2563eb;
-    --bg-light: #f8fafc;
-    --card-bg: #ffffff;
-    --text-main: #1e293b;
-    --text-muted: #64748b;
+    --accent-hover: #1d4ed8;
+    --surface: #ffffff;
+    --bg: #f1f5f9;
     --border: #e2e8f0;
+    --text-main: #0f172a;
+    --text-sub: #475569;
+    --badge-bg: #e0e7ff;
+    --badge-text: #1e40af;
   }
 
   * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
 
   body {
-    background-color: var(--bg-light);
+    background-color: var(--bg);
     color: var(--text-main);
-    line-height: 1.8;
-    padding: 20px;
+    font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+    line-height: 1.85;
+    padding: 28px 16px;
   }
 
   .container {
-    max-width: 920px;
+    max-width: 900px;
     margin: 0 auto;
   }
 
-  /* Header & Logo */
+  /* Header Section */
   .header {
-    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-    color: white;
-    padding: 24px 28px;
-    border-radius: 14px;
-    box-shadow: 0 10px 25px -5px rgba(30, 58, 138, 0.2);
-    margin-bottom: 22px;
+    background: linear-gradient(135deg, #0b192c 0%, #1e3e62 100%);
+    color: #ffffff;
+    padding: 24px 30px;
+    border-radius: 18px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
+    box-shadow: 0 10px 25px -5px rgba(11, 25, 44, 0.25);
+    margin-bottom: 22px;
   }
 
-  .brand-title h1 {
-    font-size: 1.55rem;
-    font-weight: 700;
+  .header-info h1 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
     margin-bottom: 4px;
   }
 
-  .brand-title p {
+  .header-info p {
     font-size: 0.95rem;
-    color: #cbd5e1;
+    color: #94a3b8;
+    font-weight: 600;
   }
 
-  .logo-badge {
-    background: rgba(255, 255, 255, 0.18);
-    backdrop-filter: blur(8px);
+  .brand-badge {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
     padding: 8px 24px;
-    border-radius: 30px;
-    border: 1.5px solid rgba(255, 255, 255, 0.35);
-    font-size: 1.25rem;
+    border-radius: 40px;
+    font-size: 1.35rem;
     font-weight: 800;
-    letter-spacing: 1px;
+    color: #ffffff;
+    letter-spacing: 1.5px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   }
 
   /* Toolbar */
@@ -77,213 +84,292 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: white;
-    padding: 14px 20px;
-    border-radius: 12px;
+    background: var(--surface);
+    padding: 14px 22px;
+    border-radius: 14px;
     border: 1px solid var(--border);
     margin-bottom: 22px;
-    gap: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.02);
   }
 
-  .btn {
+  .toolbar-note {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-sub);
+  }
+
+  .print-btn {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: #ffffff;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: var(--accent);
-    color: white;
-    border: none;
-    padding: 10px 22px;
-    border-radius: 8px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    cursor: pointer;
     transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
   }
 
-  .btn:hover {
-    background: #1d4ed8;
-    transform: translateY(-1px);
+  .print-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
   }
 
   /* Student Info */
-  .student-bar {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 15px;
-    background: white;
-    padding: 16px 20px;
-    border-radius: 12px;
+  .student-card {
+    background: var(--surface);
     border: 1px solid var(--border);
-    margin-bottom: 25px;
+    border-radius: 14px;
+    padding: 16px 24px;
+    margin-bottom: 24px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.02);
   }
 
-  .info-field {
+  .student-item {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-weight: 600;
-    color: var(--text-muted);
+    font-weight: 700;
+    color: var(--text-sub);
+    font-size: 0.95rem;
   }
 
-  .info-field input {
-    border: none;
-    border-bottom: 1.5px dashed #94a3b8;
-    padding: 4px 8px;
+  .student-item .line {
     flex: 1;
-    font-size: 1rem;
-    outline: none;
-    color: var(--text-main);
+    border-bottom: 1.5px dashed #94a3b8;
+    height: 18px;
   }
 
-  /* Question Card */
+  /* Question Cards */
   .question-card {
-    background: var(--card-bg);
+    background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 20px 24px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    border-radius: 16px;
+    padding: 22px 26px;
+    margin-bottom: 18px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+    position: relative;
     page-break-inside: avoid;
   }
 
-  .q-header {
+  .q-top {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: 12px;
-    padding-bottom: 8px;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
     border-bottom: 1px solid #f1f5f9;
   }
 
-  .q-num {
-    font-weight: 700;
-    color: var(--primary);
+  .q-badge {
+    background: var(--badge-bg);
+    color: var(--badge-text);
+    padding: 5px 16px;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    font-weight: 800;
+    display: inline-block;
+  }
+
+  .q-text {
     font-size: 1.05rem;
+    color: var(--text-main);
+    line-height: 2;
   }
 
-  .q-body {
-    font-size: 1.02rem;
-    color: #334155;
-    line-height: 1.85;
-  }
-
-  .q-body ol, .q-body ul {
-    margin-right: 25px;
+  .q-text ol {
+    margin-right: 28px;
     margin-top: 8px;
   }
 
-  .q-body li {
+  .q-text li {
     margin-bottom: 6px;
   }
 
-  /* Math Typography */
+  /* Mathematical Formatting */
   .math {
-    font-family: 'Times New Roman', Times, serif;
-    font-style: italic;
-    font-weight: 600;
+    font-family: 'Amiri', 'Times New Roman', serif;
     direction: ltr;
     display: inline-block;
-    color: #0f172a;
-    padding: 0 3px;
+    font-weight: bold;
+    font-size: 1.15rem;
+    color: #0b192c;
+    padding: 0 2px;
   }
 
-  .math-block {
+  .math-center {
+    display: block;
     text-align: center;
     margin: 12px 0;
-    font-size: 1.15rem;
     direction: ltr;
+    font-size: 1.25rem;
   }
 
-  /* Answer Area (Hidden on Print) */
-  .answer-box {
-    margin-top: 15px;
+  /* Natural Fraction Display (بسط ومقام وخط كسر أفقي) */
+  .frac {
+    display: inline-flex;
+    flex-direction: column;
+    vertical-align: middle;
+    text-align: center;
+    padding: 0 5px;
+    line-height: 1.1;
+    font-family: 'Amiri', 'Times New Roman', serif;
+    font-size: 1.05em;
+  }
+
+  .num {
+    border-bottom: 1.8px solid #0f172a;
+    padding-bottom: 2px;
+    display: block;
+  }
+
+  .den {
+    padding-top: 2px;
+    display: block;
+  }
+
+  .sqrt {
+    display: inline-flex;
+    align-items: center;
+    font-family: 'Amiri', serif;
+  }
+
+  .sqrt-symbol {
+    font-size: 1.3em;
+    line-height: 1;
+    margin-right: 1px;
+  }
+
+  .sqrt-body {
+    border-top: 1.5px solid currentColor;
+    padding-top: 1px;
+  }
+
+  /* Sub-lists for equations */
+  .sub-eq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+    direction: rtl;
+  }
+
+  .sub-eq-item {
     background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    border-radius: 8px;
-    padding: 12px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    font-size: 0.98rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
 
-  .answer-box textarea {
-    width: 100%;
-    min-height: 90px;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px;
-    font-size: 0.95rem;
-    resize: vertical;
-    outline: none;
+  .sub-eq-num {
+    width: 24px;
+    height: 24px;
+    background: #e2e8f0;
+    color: #334155;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 700;
   }
 
-  .answer-box textarea:focus {
-    border-color: var(--accent);
-  }
-
-  /* Print Stylesheet: Questions Only */
+  /* Print Stylesheet (PDF only questions) */
   @media print {
     @page {
       size: A4;
-      margin: 14mm 12mm;
+      margin: 12mm 14mm;
     }
 
     body {
-      background: white;
-      color: black;
-      padding: 0;
+      background: white !important;
+      color: black !important;
+      padding: 0 !important;
     }
 
-    .toolbar, .answer-box, .no-print {
+    .toolbar, .no-print {
       display: none !important;
     }
 
     .container {
-      max-width: 100%;
-      margin: 0;
+      max-width: 100% !important;
+      margin: 0 !important;
     }
 
     .header {
       background: none !important;
       color: black !important;
       border-bottom: 2px solid #000;
-      border-radius: 0;
-      padding: 5px 0 12px 0;
-      margin-bottom: 15px;
-      box-shadow: none;
+      border-radius: 0 !important;
+      padding: 6px 0 14px 0 !important;
+      margin-bottom: 14px !important;
+      box-shadow: none !important;
     }
 
-    .logo-badge {
-      border: 1.5px solid #000;
-      color: #000;
-      background: transparent;
-      padding: 4px 16px;
-      font-size: 1.15rem;
+    .brand-badge {
+      background: none !important;
+      color: black !important;
+      border: 2px solid #000 !important;
+      padding: 4px 18px !important;
+      font-size: 1.25rem !important;
+      box-shadow: none !important;
     }
 
-    .brand-title h1 {
-      font-size: 1.35rem;
-      color: #000;
+    .header-info h1 {
+      color: black !important;
+      font-size: 1.45rem !important;
     }
 
-    .brand-title p {
-      color: #333;
+    .header-info p {
+      color: #333 !important;
     }
 
-    .student-bar {
-      border: 1px solid #000;
-      border-radius: 4px;
-      padding: 10px;
-      margin-bottom: 16px;
+    .student-card {
+      border: 1.5px solid #000 !important;
+      border-radius: 6px !important;
+      padding: 10px 14px !important;
+      margin-bottom: 14px !important;
+      box-shadow: none !important;
     }
 
     .question-card {
-      border: 1px solid #ccc;
-      box-shadow: none;
-      padding: 14px 16px;
-      margin-bottom: 14px;
+      border: 1px solid #94a3b8 !important;
+      box-shadow: none !important;
+      padding: 12px 16px !important;
+      margin-bottom: 12px !important;
       page-break-inside: avoid;
     }
 
-    .q-num {
-      color: #000;
+    .q-top {
+      margin-bottom: 8px !important;
+      padding-bottom: 6px !important;
+    }
+
+    .q-badge {
+      background: transparent !important;
+      color: #000 !important;
+      border: 1.5px solid #000 !important;
+      padding: 2px 12px !important;
+      font-size: 0.95rem !important;
+    }
+
+    .sub-eq-item {
+      background: transparent !important;
+      border: 1px solid #cbd5e1 !important;
+    }
+
+    .num {
+      border-bottom-color: #000 !important;
     }
   }
 </style>
@@ -294,263 +380,175 @@
 
   <!-- Header -->
   <header class="header">
-    <div class="brand-title">
-      <h1>اختبار تحريري في التابع الأسي</h1>
-      <p>مسائل وتمارين شاملة مستندة إلى أوراق العمل والامتحانات الرسمية</p>
+    <div class="header-info">
+      <h1>اختبار في التابع الأسي والمعادلات التفاضلية</h1>
+      <p>أوراق عمل واختبارات امتحانية</p>
     </div>
-    <div class="logo-badge">ammar</div>
+    <div class="brand-badge">ammar</div>
   </header>
 
-  <!-- Toolbar with Print PDF feature -->
+  <!-- Toolbar with Direct Print -->
   <div class="toolbar">
-    <span style="font-weight:600; color:var(--text-muted);">الاختبار مخصص للحل التحريري والطباعة المباشرة</span>
-    <button class="btn" onclick="window.print()">
-      🖨️ طباعة الأسئلة فقط (PDF)
+    <div class="toolbar-note">الاختبار مهيأ للطباعة المباشرة بصيغة PDF</div>
+    <button class="print-btn" onclick="window.print()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"></path><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+      طباعة الأسئلة فقط (PDF)
     </button>
   </div>
 
   <!-- Student Info Sheet -->
-  <div class="student-bar">
-    <div class="info-field">
+  <div class="student-card">
+    <div class="student-item">
       <span>اسم الطالب:</span>
-      <input type="text" placeholder="اكتب الاسم هنا...">
+      <div class="line"></div>
     </div>
-    <div class="info-field">
+    <div class="student-item">
       <span>الشعبة / القاعة:</span>
-      <input type="text" placeholder="................">
+      <div class="line"></div>
     </div>
-    <div class="info-field">
-      <span>الدرجة المستحقة:</span>
-      <input type="text" placeholder=".... / 100">
+    <div class="student-item">
+      <span>الدرجة:</span>
+      <div class="line"></div>
     </div>
   </div>
 
-  <!-- Q1 -->
+  <!-- Question 1 -->
   <div class="question-card">
-    <div class="q-header">
-      <span class="q-num">السؤال الأول: إثبات صحة المساواة</span>
+    <div class="q-top">
+      <span class="q-badge">السؤال الأول</span>
     </div>
-    <div class="q-body">
+    <div class="q-text">
       أثبت صحة المساواة الآتية:
-      <div class="math-block">
-        (e<sup>-x</sup> - e<sup>-2x</sup>) / (e<sup>x</sup> + e<sup>-x</sup>) = (e<sup>x</sup> - 1) / (e<sup>2x</sup> + 1)
+      <div class="math-center">
+        <span class="frac"><span class="num">e<sup>-x</sup> - e<sup>-2x</sup></span><span class="den">e<sup>x</sup> + e<sup>-x</sup></span></span>
+        =
+        <span class="frac"><span class="num">e<sup>x</sup> - 1</span><span class="den">e<sup>2x</sup> + 1</span></span>
       </div>
     </div>
-    <div class="answer-box">
-      <textarea placeholder="مكان كتابة مسودة الحل التحريري..."></textarea>
-    </div>
   </div>
 
-  <!-- Q2 -->
+  <!-- Question 2 -->
   <div class="question-card">
-    <div class="q-header">
-      <span class="q-num">السؤال الثاني: تعيين الثوابت والشروط الهندسية</span>
+    <div class="q-top">
+      <span class="q-badge">السؤال الثاني</span>
     </div>
-    <div class="q-body">
+    <div class="q-text">
       ليكن <span class="math">f</span> تابعاً معرفاً على <span class="math">R</span> وفق <span class="math">f(x) = (ax + b) e<sup>x</sup> + 1</span>.
-      عيّن الثابتين <span class="math">a , b</span> إذا علمت أن الخط البياني <span class="math">C<sub>f</sub></span> يقبل في النقطة التي فاصلتها <span class="math">-1</span> مماساً أفقياً <span class="math">T</span> موازياً لمحور الفواصل ومعادلته <span class="math">y = -e</span>.
-    </div>
-    <div class="answer-box">
-      <textarea placeholder="مكان كتابة مسودة الحل التحريري..."></textarea>
+      عيّن الثابتين <span class="math">a , b</span> إذا علمت أن الخط البياني <span class="math">C<sub>f</sub></span> يقبل في النقطة التي فاصلتها <span class="math">-1</span> مماساً أفقياً <span class="math">T</span> موازياً لمحور الفواصل معادلته <span class="math">y = -e</span>.
     </div>
   </div>
 
-  <!-- Q3 -->
+  <!-- Question 3 -->
   <div class="question-card">
-    <div class="q-header">
-      <span class="q-num">السؤال الثالث: دراسة تقاطع ومماس</span>
+    <div class="q-top">
+      <span class="q-badge">السؤال الثالث</span>
     </div>
-    <div class="q-body">
-      ليكن <span class="math">f</span> تابعاً معرفاً على <span class="math">R</span> وفق <span class="math">f(x) = e<sup>x</sup> / (e<sup>x</sup> + 1)</span>.
-      <br>المطلوب:
+    <div class="q-text">
+      ليكن <span class="math">f</span> تابعاً معرفاً على <span class="math">R</span> وفق:
+      <span class="math">f(x) = </span><span class="frac"><span class="num">e<sup>x</sup></span><span class="den">e<sup>x</sup> + 1</span></span>
       <ol>
         <li>أوجد معادلة المماس <span class="math">T</span> للخط البياني <span class="math">C<sub>f</sub></span> في نقطة تقاطعه مع محور التراتيب.</li>
         <li>ادرس الوضع النسبي بين الخط البياني <span class="math">C<sub>f</sub></span> والمماس <span class="math">T</span>.</li>
       </ol>
     </div>
-    <div class="answer-box">
-      <textarea placeholder="مكان كتابة مسودة الحل التحريري..."></textarea>
-    </div>
   </div>
 
-  <!-- Q4 -->
+  <!-- Question 4 -->
   <div class="question-card">
-    <div class="q-header">
-      <span class="q-num">السؤال الرابع: معادلات ومتراجحات أسية في R</span>
+    <div class="q-top">
+      <span class="q-badge">السؤال الرابع</span>
     </div>
-    <div class="q-body">
-      <strong>أولاً:</strong> حل في <span class="math">R</span> كلاً من:
-      <ol>
-        <li>المعادلة: <span class="math">2 e<sup>2x</sup> - 7 e<sup>x</sup> + 3 = 0</span></li>
-        <li>المتراجحة: <span class="math">2 e<sup>2x</sup> - 7 e<sup>x</sup> + 3 ≤ 0</span></li>
-        <li>المعادلة: <span class="math">(e<sup>x</sup> - 1) / (e<sup>x</sup> - 4) = -2</span></li>
-      </ol>
+    <div class="q-text">
+      <strong>1)</strong> حل في <span class="math">R</span> كلاً من:
+      <div class="sub-eq-grid">
+        <div class="sub-eq-item">
+          <span class="sub-eq-num">أ</span>
+          <span>المعادلة: <span class="math">2 e<sup>2x</sup> - 7 e<sup>x</sup> + 3 = 0</span></span>
+        </div>
+        <div class="sub-eq-item">
+          <span class="sub-eq-num">ب</span>
+          <span>المتراجحة: <span class="math">2 e<sup>2x</sup> - 7 e<sup>x</sup> + 3 ≤ 0</span></span>
+        </div>
+        <div class="sub-eq-item">
+          <span class="sub-eq-num">ج</span>
+          <span>المعادلة: <span class="frac"><span class="num">e<sup>x</sup> - 1</span><span class="den">e<sup>x</sup> - 4</span></span> = -2</span>
+        </div>
+      </div>
       <br>
-      <strong>ثانياً:</strong> حل في <span class="math">R</span> كلاً من المعادلات والمتراجحات الآتية:
-      <ol>
-        <li><span class="math">2<sup>3x+1</sup> = 32</span></li>
-        <li><span class="math">49<sup>x</sup> - 6 × 7<sup>x</sup> + 5 = 0</span></li>
-        <li><span class="math">(1/3)<sup>x</sup> > 2</span></li>
-        <li><span class="math">5<sup>x+1</sup> = 2<sup>x</sup></span></li>
-      </ol>
-    </div>
-    <div class="answer-box">
-      <textarea placeholder="مكان كتابة مسودة الحل التحريري..."></textarea>
+      <strong>2)</strong> حل في <span class="math">R</span> المعادلات والمتراجحات الآتية:
+      <div class="sub-eq-grid">
+        <div class="sub-eq-item">
+          <span class="sub-eq-num">1</span>
+          <span class="math">2<sup>3x+1</sup> = 32</span>
+        </div>
+        <div class="sub-eq-item">
+          <span class="sub-eq-num">2</span>
+          <span class="math">49<sup>x</sup> - 6 × 7<sup>x</sup> + 5 = 0</span>
+        </div>
+        <div class="sub-eq-item">
+          <span class="sub-eq-num">3</span>
+          <span class="frac"><span class="num">1</span><span class="den">3</span></span><sup>x</sup> > 2
+        </div>
+        <div class="sub-eq-item">
+          <span class="sub-eq-num">4</span>
+          <span class="math">5<sup>x+1</sup> = 2<sup>x</sup></span>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- Q5 -->
+  <!-- Question 5 -->
   <div class="question-card">
-    <div class="q-header">
-      <span class="q-num">السؤال الخامس: مقاربات والوضع النسبي</span>
+    <div class="q-top">
+      <span class="q-badge">السؤال الخامس</span>
     </div>
-    <div class="q-body">
-      ليكن <span class="math">f</span> التابع المعرف على <span class="math">R</span> وفق <span class="math">f(x) = x + 3 + (x - 1) / (4 e<sup>x</sup>)</span>، وليكن <span class="math">C<sub>f</sub></span> خطه البياني.
+    <div class="q-text">
+      ليكن <span class="math">f</span> التابع المعرف على <span class="math">R</span> وفق:
+      <span class="math">f(x) = x + 3 + </span><span class="frac"><span class="num">x - 1</span><span class="den">4 e<sup>x</sup></span></span>
       <ol>
         <li>أثبت أن المستقيم <span class="math">Δ : y = x + 3</span> مقارب مائل للخط <span class="math">C<sub>f</sub></span> في جوار <span class="math">+∞</span>.</li>
         <li>ادرس الوضع النسبي بين الخط البياني <span class="math">C<sub>f</sub></span> والمستقيم المقارب <span class="math">Δ</span>.</li>
       </ol>
     </div>
-    <div class="answer-box">
-      <textarea placeholder="مكان كتابة مسودة الحل التحريري..."></textarea>
-    </div>
   </div>
 
-  <!-- Q6 -->
+  <!-- Question 6 -->
   <div class="question-card">
-    <div class="q-header">
-      <span class="q-num">السؤال السادس: التابع الأسي والمماس</span>
+    <div class="q-top">
+      <span class="q-badge">السؤال السادس</span>
     </div>
-    <div class="q-body">
-      ليكن <span class="math">f</span> تابعاً معرفاً على <span class="math">R</span> وفق <span class="math">f(x) = 1 + e<sup>-x</sup></span>، وليكن <span class="math">C<sub>f</sub></span> خطه البياني.
+    <div class="q-text">
+      ليكن <span class="math">f</span> تابعاً معرفاً على <span class="math">R</span> وفق <span class="math">f(x) = 1 + e<sup>-x</sup></span> ، وليكن <span class="math">C<sub>f</sub></span> خطه البياني.
       <ol>
-        <li>ادرس الوضع النسبي بين <span class="math">C<sub>f</sub></span> والمقارب الأفقي.</li>
+        <li>ادرس الوضع النسبي بين الخط <span class="math">C<sub>f</sub></span> والمقارب الأفقي له.</li>
         <li>أوجد معادلة المماس <span class="math">T</span> للخط <span class="math">C<sub>f</sub></span> في النقطة التي فاصلتها <span class="math">0</span>، ثم ادرس الوضع النسبي بين الخط <span class="math">C<sub>f</sub></span> والمماس <span class="math">T</span>.</li>
       </ol>
     </div>
-    <div class="answer-box">
-      <textarea placeholder="مكان كتابة مسودة الحل التحريري..."></textarea>
-    </div>
   </div>
 
-  <!-- Q7 -->
+  <!-- Question 7 -->
   <div class="question-card">
-    <div class="q-header">
-      <span class="q-num">السؤال السابع: دراسة تغيرات ومقارب</span>
+    <div class="q-top">
+      <span class="q-badge">السؤال السابع</span>
     </div>
-    <div class="q-body">
+    <div class="q-text">
       ليكن <span class="math">f</span> التابع المعرف على <span class="math">R</span> وفق:
-      <div class="math-block">f(x) = x + ln(4 + e<sup>-x</sup>)</div>
-      والمطلوب:
+      <span class="math">f(x) = x + ln(4 + e<sup>-x</sup>)</span>
       <ol>
-        <li>احسب <span class="math">lim<sub>x → -∞</sub> f(x)</span> وفسر النتيجة هندسياً.</li>
-        <li>أثبت أن <span class="math">f(x) = ln(e<sup>x</sup> + 1)</span> وفسر هندسياً (أو استنتج صياغة المقارب).</li>
-        <li>عيّن معادلة المقارب المائل <span class="math">Δ</span> وادرس الوضع النسبي بين <span class="math">C<sub>f</sub></span> والمقارب <span class="math">Δ</span>.</li>
+        <li>احسب <span class="math">lim<sub>x → -∞</sub> f(x)</span> وفسّر النتيجة هندسياً.</li>
+        <li>أثبت أن <span class="math">f(x) = ln(e<sup>x</sup> + 4)</span> وفسر النتيجة هندسياً.</li>
+        <li>عيّن معادلة المقارب المائل <span class="math">Δ</span> وادرس الوضع النسبي بين <span class="math">C<sub>f</sub></span> و <span class="math">Δ</span>.</li>
         <li>ادرس تغيرات التابع <span class="math">f</span> ونظم جدولاً بها.</li>
-        <li>ارسم كلاً من <span class="math">C<sub>f</sub></span> و <span class="math">Δ</span> في معلم متجانس.</li>
+        <li>ارسم كلاً من الخط <span class="math">C<sub>f</sub></span> والمقارب <span class="math">Δ</span> في معلم متجانس.</li>
       </ol>
-    </div>
-    <div class="answer-box">
-      <textarea placeholder="مكان كتابة مسودة الحل التحريري..."></textarea>
     </div>
   </div>
 
-  <!-- Q8 -->
+  <!-- Question 8 -->
   <div class="question-card">
-    <div class="q-header">
-      <span class="q-num">السؤال الثامن: دراسة التابع الفردي sh(x) وحلول المعادلات</span>
+    <div class="q-top">
+      <span class="q-badge">السؤال الثامن</span>
     </div>
-    <div class="q-body">
+    <div class="q-text">
       ليكن <span class="math">f</span> التابع المعرف على <span class="math">R</span> وفق:
-      <div class="math-block">f(x) = (1/2) (e<sup>x</sup> - e<sup>-x</sup>)</div>
-      والمطلوب:
-      <ol>
-        <li>أثبت أن <span class="math">f</span> تابع فردي.</li>
-        <li>ادرس تغيرات التابع <span class="math">f</span> ونظم جدولاً بها.</li>
-        <li>أثبت أنه أياً كان <span class="math">m ∈ R</span> فإن للمعادلة <span class="math">f(x) = m</span> حلاً وحيداً في <span class="math">R</span>، ثم أثبت أن هذا الحل يعطى بالعلاقة:
-          <div class="math-block">x = ln[m + √(m<sup>2</sup> + 1)]</div>
-        </li>
-        <li>اكتب معادلة المماس <span class="math">T</span> للخط البياني عند المبدأ، ثم ارسم كلاً من المماس <span class="math">T</span> والخط البياني <span class="math">C<sub>f</sub></span>.</li>
-      </ol>
-    </div>
-    <div class="answer-box">
-      <textarea placeholder="مكان كتابة مسودة الحل التحريري..."></textarea>
-    </div>
-  </div>
-
-  <!-- Q9 -->
-  <div class="question-card">
-    <div class="q-header">
-      <span class="q-num">السؤال التاسع: معادلة تفاضلية من الدرجة الثانية كحل خاص</span>
-    </div>
-    <div class="q-body">
-      عيّن تابعاً <span class="math">g</span> حدودياً من الدرجة الثانية بحيث يكون حلاً للمعادلة التفاضلية:
-      <div class="math-block">-y + 2y' = x<sup>2</sup> + 3</div>
-    </div>
-    <div class="answer-box">
-      <textarea placeholder="مكان كتابة مسودة الحل التحريري..."></textarea>
-    </div>
-  </div>
-
-  <!-- Q10 -->
-  <div class="question-card">
-    <div class="q-header">
-      <span class="q-num">السؤال العاشر: حل معادلة تفاضلية بشرط نقطة معطاة</span>
-    </div>
-    <div class="q-body">
-      حل المعادلة التفاضلية الآتية:
-      <div class="math-block">y' - 2y = -6</div>
-      علماً بأن المخطط البياني للحل يمر بالنقطة <span class="math">A(ln 2 , -5)</span>.
-    </div>
-    <div class="answer-box">
-      <textarea placeholder="مكان كتابة مسودة الحل التحريري..."></textarea>
-    </div>
-  </div>
-
-  <!-- Q11 -->
-  <div class="question-card">
-    <div class="q-header">
-      <span class="q-num">السؤال الحادي عشر: مسألة الربط التفاضلي (دورة 2024 - بدون طلب التكامل)</span>
-    </div>
-    <div class="q-body">
-      لتكن المعادلة التفاضلية <span class="math">(E) : y' + 3y = (9/2) e<sup>-2x</sup></span> ، والمعادلة التفاضلية <span class="math">(E') : y' + 3y = 0</span>.
-      <br>نفرض لدينا تابع <span class="math">g</span> معرفاً على <span class="math">R</span> وفق: <span class="math">g(x) = λ e<sup>-2x</sup></span>.
-      <ol>
-        <li>عيّن قيمة الثابت الحقيقي <span class="math">λ</span> حتى يكون <span class="math">g</span> حلاً للمعادلة <span class="math">(E)</span>.</li>
-        <li>حل المعادلة التفاضلية <span class="math">(E')</span>.</li>
-        <li>أثبت أن التابع <span class="math">f</span> حلاً للمعادلة <span class="math">(E)</span> إذا وفقط إذا كان <span class="math">f - g</span> حلاً للمعادلة <span class="math">(E')</span>.</li>
-        <li>استنتج جميع حلول المعادلة <span class="math">(E)</span>.</li>
-      </ol>
-    </div>
-    <div class="answer-box">
-      <textarea placeholder="مكان كتابة مسودة الحل التحريري..."></textarea>
-    </div>
-  </div>
-
-  <!-- Q12 -->
-  <div class="question-card">
-    <div class="q-header">
-      <span class="q-num">السؤال الثاني عشر: دراسة تابع كسر أسي كامل مع القيم الكبرى</span>
-    </div>
-    <div class="q-body">
-      ليكن <span class="math">f</span> التابع المعرف على <span class="math">R</span> وفق:
-      <div class="math-block">f(x) = (x + 1)<sup>2</sup> / e<sup>x</sup></div>
-      والمطلوب:
-      <ol>
-        <li>احسب نهايات التابع <span class="math">f</span> عند <span class="math">+∞</span> و <span class="math">-∞</span>.</li>
-        <li>أثبت أنه أياً كانت <span class="math">x ∈ R</span> فإن المشتق يعطى بالعلاقة:
-          <div class="math-block">f'(x) = (1 - x<sup>2</sup>) / e<sup>x</sup></div>
-        </li>
-        <li>ادرس تغيرات التابع <span class="math">f</span> ونظم جدولاً بها ودلّ على القيم الكبرى.</li>
-        <li>ارسم كلاً من الخط البياني والمقاربات في معلم متجانس.</li>
-      </ol>
-    </div>
-    <div class="answer-box">
-      <textarea placeholder="مكان كتابة مسودة الحل التحريري..."></textarea>
-    </div>
-  </div>
-
-</div>
-
-</body>
-</html>
+      <span class="math">f(x) = </span><span class="frac"><span class="num">1</span><span class="den">2</span></span><span class="math">(e<sup>x</sup> - e<sup>-x</sup>)
