@@ -321,29 +321,53 @@
     flex-shrink: 0;
   }
 
-  /* Limits Grid for Essay Final Question */
-  .limits-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 8px;
-    margin-top: 8px;
-    direction: rtl;
+  /* Clean Limits Table for Question 13 */
+  .limits-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 8px;
+    margin-top: 6px;
   }
 
-  .lim-box {
+  .lim-cell {
     background: #fdf2f2;
     border: 1px solid var(--border-card);
     border-radius: 8px;
-    padding: 6px 12px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    padding: 8px 12px;
+    width: 50%;
+    vertical-align: middle;
   }
 
-  .lim-idx {
+  .lim-content {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+  }
+
+  .lim-num {
+    background: var(--primary);
+    color: #ffffff;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.78rem;
     font-weight: 800;
-    color: var(--primary);
-    font-size: 0.88rem;
+    flex-shrink: 0;
+  }
+
+  .lim-expr {
+    direction: ltr !important;
+    unicode-bidi: isolate !important;
+    font-family: 'Amiri', 'Times New Roman', serif;
+    font-weight: bold;
+    font-size: 1.05rem;
+    color: #0f172a;
+    display: inline-flex;
+    align-items: center;
   }
 
   /* Answer Section */
@@ -721,7 +745,7 @@
       </div>
       والمطلوب:
       <ol>
-        <li>احسب نهايات التابع <span class="math-inline">f</span> عند <span class="math-inline">+∞</span> و <span class="math-inline">-∞</span>.</li>
+        <li>احسب نهايات التابع <span class="math-inline">f</span> عند <span class="math">+∞</span> و <span class="math">-∞</span>.</li>
         <li>أثبت أنه أياً كانت <span class="math-inline">x ∈ R</span> فإن المشتق:
           <span class="math-inline">f'(x) = <div class="frac"><span class="num">1 - x<sup>2</sup></span><span class="den">e<sup>x</sup></span></div></span>.
         </li>
@@ -730,63 +754,106 @@
     </div>
   </div>
 
-  <!-- Q13 -->
+  <!-- Q13 (Completely Clean & Redesigned Limits Table) -->
   <div class="q-card">
     <div class="q-header">
-      <span class="q-pill">السؤال الثالث عشر (حساب النهايات والمسائل التحليلية التحريرية)</span>
+      <span class="q-pill">السؤال الثالث عشر</span>
     </div>
     <div class="q-body">
-      <strong>أولاً:</strong> احسب تحريرياً كلاً من النهايات الآتية مبيناً خطوات الحل بالتفصيل:
-      <div class="limits-grid">
-        <div class="lim-box">
-          <span class="lim-idx">1)</span>
-          <span class="math-inline"><span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; -∞</span></span> (x + 2)<sup>2</sup> e<sup>x</sup></span>
-        </div>
-        <div class="lim-box">
-          <span class="lim-idx">2)</span>
-          <span class="math-inline"><span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; +∞</span></span> (e<sup>3x</sup> - 2e<sup>x</sup> + 1)</span>
-        </div>
-        <div class="lim-box">
-          <span class="lim-idx">3)</span>
-          <span class="math-inline"><span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; 0</span></span> <div class="frac"><span class="num">e<sup>7x</sup> - 1</span><span class="den">3x</span></div></span>
-        </div>
-        <div class="lim-box">
-          <span class="lim-idx">4)</span>
-          <span class="math-inline"><span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; +∞</span></span> <div class="frac"><span class="num">e<sup>x</sup></span><span class="den">(x + 1)<sup>2</sup></span></div></span>
-        </div>
-        <div class="lim-box">
-          <span class="lim-idx">5)</span>
-          <span class="math-inline"><span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; -∞</span></span> 3x (e<sup>5/x</sup> - 1)</span>
-        </div>
-        <div class="lim-box">
-          <span class="lim-idx">6)</span>
-          <span class="math-inline"><span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; +∞</span></span> (1 + <div class="frac"><span class="num">5</span><span class="den">x</span></div>)<sup>3x</sup></span>
-        </div>
-        <div class="lim-box">
-          <span class="lim-idx">7)</span>
-          <span class="math-inline"><span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; 4</span></span> (5 - x)<sup>3/(4 - x)</sup></span>
-        </div>
-        <div class="lim-box">
-          <span class="lim-idx">8)</span>
-          <span class="math-inline"><span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; +∞</span></span> (<div class="frac"><span class="num">x + 4</span><span class="den">x + 2</span></div>)<sup>2x</sup></span>
-        </div>
-        <div class="lim-box">
-          <span class="lim-idx">9)</span>
-          <span class="math-inline"><span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; 0</span></span> <div class="frac"><span class="num">e<sup>2x</sup> - 1</span><span class="den">ln(1 + 3x)</span></div></span>
-        </div>
-        <div class="lim-box">
-          <span class="lim-idx">10)</span>
-          <span class="math-inline"><span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; -∞</span></span> (e<sup>-x</sup> + x - 2)</span>
-        </div>
-      </div>
-      <br>
-      <strong>ثانياً:</strong> أجب تحريرياً عن المسائل الآتية:
-      <ol>
-        <li>احسب مشتق التابع: <span class="math-inline">f(x) = (x + 1)<sup>2</sup> e<sup>-x</sup></span> واكتبه بأبسط صيغة ممكنة.</li>
-        <li>أوجد الحل العام للمعادلة التفاضلية: <span class="math-inline">y' + 3y = 0</span>.</li>
-        <li>عيّن حل المعادلة التفاضلية <span class="math-inline">y' - 2y = -6</span> الذي يحقق الشرط الابتدائي <span class="math-inline">y(ln 2) = -5</span>.</li>
-        <li>أثبت أن قيمة الثابت <span class="math-inline">λ</span> لكي يكون <span class="math-inline">g(x) = λ e<sup>-2x</sup></span> حلاً للمعادلة <span class="math-inline">y' + 3y = <div class="frac"><span class="num">9</span><span class="den">2</span></div> e<sup>-2x</sup></span> هي <span class="math-inline">λ = <div class="frac"><span class="num">9</span><span class="den">2</span></div></span>.</li>
-      </ol>
+      احسب كلاً من النهايات الآتية مبيناً خطوات الحل بالتفصيل:
+      
+      <table class="limits-table">
+        <tr>
+          <td class="lim-cell">
+            <div class="lim-content">
+              <span class="lim-num">1</span>
+              <span class="lim-expr">
+                <span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; -∞</span></span> (x + 2)<sup>2</sup> e<sup>x</sup>
+              </span>
+            </div>
+          </td>
+          <td class="lim-cell">
+            <div class="lim-content">
+              <span class="lim-num">2</span>
+              <span class="lim-expr">
+                <span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; +∞</span></span> (e<sup>3x</sup> - 2e<sup>x</sup> + 1)
+              </span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="lim-cell">
+            <div class="lim-content">
+              <span class="lim-num">3</span>
+              <span class="lim-expr">
+                <span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; 0</span></span> <div class="frac"><span class="num">e<sup>7x</sup> - 1</span><span class="den">3x</span></div>
+              </span>
+            </div>
+          </td>
+          <td class="lim-cell">
+            <div class="lim-content">
+              <span class="lim-num">4</span>
+              <span class="lim-expr">
+                <span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; +∞</span></span> <div class="frac"><span class="num">e<sup>x</sup></span><span class="den">(x + 1)<sup>2</sup></span></div>
+              </span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="lim-cell">
+            <div class="lim-content">
+              <span class="lim-num">5</span>
+              <span class="lim-expr">
+                <span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; -∞</span></span> 3x (e<sup>5/x</sup> - 1)
+              </span>
+            </div>
+          </td>
+          <td class="lim-cell">
+            <div class="lim-content">
+              <span class="lim-num">6</span>
+              <span class="lim-expr">
+                <span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; +∞</span></span> (1 + <div class="frac"><span class="num">5</span><span class="den">x</span></div>)<sup>3x</sup>
+              </span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="lim-cell">
+            <div class="lim-content">
+              <span class="lim-num">7</span>
+              <span class="lim-expr">
+                <span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; 4</span></span> (5 - x)<sup>3/(4 - x)</sup>
+              </span>
+            </div>
+          </td>
+          <td class="lim-cell">
+            <div class="lim-content">
+              <span class="lim-num">8</span>
+              <span class="lim-expr">
+                <span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; +∞</span></span> (<div class="frac"><span class="num">x + 4</span><span class="den">x + 2</span></div>)<sup>2x</sup>
+              </span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="lim-cell">
+            <div class="lim-content">
+              <span class="lim-num">9</span>
+              <span class="lim-expr">
+                <span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; 0</span></span> <div class="frac"><span class="num">e<sup>2x</sup> - 1</span><span class="den">ln(1 + 3x)</span></div>
+              </span>
+            </div>
+          </td>
+          <td class="lim-cell">
+            <div class="lim-content">
+              <span class="lim-num">10</span>
+              <span class="lim-expr">
+                <span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; -∞</span></span> (e<sup>-x</sup> + x - 2)
+              </span>
+            </div>
+          </td>
+        </tr>
+      </table>
     </div>
   </div>
 
@@ -798,17 +865,11 @@
 
     <div class="ans-box">
       <strong>حل السؤال الثالث عشر (النهايات التحريرية):</strong><br>
-      1) 0 (مبرهنة التزايد المقارن) &nbsp;|&nbsp; 2) +∞ (سحب العامل المسيطر e<sup>3x</sup>) &nbsp;|&nbsp; 3) 7/3 (نهاية مشتقة شهيرة)<br>
-      4) +∞ (تزايد مقارن عند +∞) &nbsp;|&nbsp; 5) 15 (تغيير متحول t = 5/x) &nbsp;|&nbsp; 6) e<sup>15</sup> (نهاية العدد النيبري الشهيرة)<br>
-      7) e<sup>3</sup> (نهاية نيبرية عند x→4) &nbsp;|&nbsp; 8) e<sup>4</sup> &nbsp;|&nbsp; 9) 2/3 (نهاية مركبة بقسمة البسط والمقام على x) &nbsp;|&nbsp; 10) +∞ (e<sup>-x</sup> أسرع نمواً من x).
-    </div>
-
-    <div class="ans-box">
-      <strong>حلول المسائل التحريرية (ثانياً من السؤال 13):</strong><br>
-      1) f'(x) = 2(x+1)e<sup>-x</sup> - (x+1)² e<sup>-x</sup> = (1 - x²) e<sup>-x</sup>.<br>
-      2) y = C e<sup>-3x</sup> حيث C ∈ R.<br>
-      3) الحل العام y = C e<sup>2x</sup> + 3، وبالتعويض: -5 = C(4) + 3 ⇒ 4C = -8 ⇒ C = -2، إذن الحل الخاص: y = -2e<sup>2x</sup> + 3.<br>
-      4) g'(x) = -2λ e<sup>-2x</sup>. بالتعويض: -2λ e<sup>-2x</sup> + 3λ e<sup>-2x</sup> = λ e<sup>-2x</sup> = (9/2) e<sup>-2x</sup> ⇒ λ = 9/2.
+      1) 0 (مبرهنة التزايد المقارن عند -∞) &nbsp;|&nbsp; 2) +∞ (سحب العامل المسيطر e<sup>3x</sup>)<br>
+      3) 7/3 (نهاية مشتقة شهيرة عند الصفر) &nbsp;|&nbsp; 4) +∞ (تزايد مقارن عند +∞)<br>
+      5) 15 (تغيير متحول t = 5/x) &nbsp;|&nbsp; 6) e<sup>15</sup> (نهاية العدد النيبري الشهيرة)<br>
+      7) e<sup>3</sup> (نهاية نيبرية عند x→4) &nbsp;|&nbsp; 8) e<sup>4</sup> &nbsp;|&nbsp; 9) 2/3 (نهاية مركبة بقسمة البسط والمقام على x)<br>
+      10) +∞ (e<sup>-x</sup> أسرع نمواً من x عند -∞).
     </div>
   </div>
 
