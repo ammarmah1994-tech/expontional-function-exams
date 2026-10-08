@@ -4,9 +4,25 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>اختبار الرياضيات: التابع الأسي والتفاضلية - ammar</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&family=Amiri:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+
+<!-- MathJax -->
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']]
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  }
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
 <style>
   :root {
     --primary: #991b1b;
@@ -41,9 +57,14 @@
     margin: 0 auto;
   }
 
-  /* Compact Header */
+  /* Header */
   .header-card {
-    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 55%, var(--primary-light) 100%);
+    background: linear-gradient(
+      135deg,
+      var(--primary-dark) 0%,
+      var(--primary) 55%,
+      var(--primary-light) 100%
+    );
     color: #ffffff;
     padding: 14px 20px;
     border-radius: 12px;
@@ -79,7 +100,7 @@
     color: #ffffff;
   }
 
-  /* Compact Toolbar */
+  /* Toolbar */
   .toolbar {
     background: var(--card-bg);
     border: 1px solid var(--border-soft);
@@ -119,7 +140,11 @@
   }
 
   .btn-print {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    background: linear-gradient(
+      135deg,
+      var(--primary) 0%,
+      var(--primary-light) 100%
+    );
     color: #ffffff;
   }
 
@@ -132,7 +157,7 @@
     transform: translateY(-1px);
   }
 
-  /* Compact Info Strip */
+  /* Student Info */
   .info-strip {
     background: var(--card-bg);
     border: 1px solid var(--border-soft);
@@ -159,7 +184,7 @@
     height: 14px;
   }
 
-  /* Compact Question Cards */
+  /* Questions */
   .q-card {
     background: var(--card-bg);
     border: 1px solid #f1f5f9;
@@ -204,90 +229,37 @@
     margin-bottom: 4px;
   }
 
-  /* Mathematics Engine */
+  /* MathJax */
   .math-inline {
-    direction: ltr !important;
-    unicode-bidi: isolate !important;
-    display: inline-flex;
-    align-items: center;
+    direction: ltr;
+    unicode-bidi: isolate;
+    display: inline-block;
     vertical-align: middle;
-    font-family: 'Amiri', 'Times New Roman', serif;
-    font-weight: bold;
-    font-size: 1.08rem;
     margin: 0 3px;
-    white-space: nowrap;
     color: #0f172a;
+    white-space: nowrap;
   }
 
   .math-block {
-    direction: ltr !important;
-    unicode-bidi: isolate !important;
+    direction: ltr;
+    unicode-bidi: isolate;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 6px;
-    margin: 6px 0;
-    font-size: 1.12rem;
-    font-family: 'Amiri', 'Times New Roman', serif;
-    font-weight: bold;
-    flex-wrap: wrap;
+    margin: 8px 0;
     color: #0f172a;
+    text-align: center;
   }
 
-  .frac {
+  mjx-container {
     direction: ltr !important;
-    unicode-bidi: isolate !important;
-    display: inline-flex;
-    flex-direction: column;
-    vertical-align: middle;
-    text-align: center;
-    margin: 0 3px;
-    line-height: 1;
-    font-size: 0.95em;
   }
 
-  .num {
-    display: block;
-    border-bottom: 1.8px solid var(--primary);
-    padding: 1px 3px 2px 3px;
-    text-align: center;
-    color: #0f172a;
+  .q-body mjx-container {
+    font-size: 105%;
   }
 
-  .den {
-    display: block;
-    padding: 2px 3px 1px 3px;
-    text-align: center;
-    color: #0f172a;
-  }
-
-  .lim-wrap {
-    direction: ltr !important;
-    unicode-bidi: isolate !important;
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    vertical-align: middle;
-    line-height: 1;
-    margin: 0 3px;
-  }
-
-  .lim-op {
-    font-size: 0.98rem;
-    font-weight: bold;
-    font-family: 'Times New Roman', serif;
-    color: #0f172a;
-  }
-
-  .lim-sub {
-    font-size: 0.68rem;
-    font-weight: bold;
-    margin-top: 1px;
-    color: #475569;
-    white-space: nowrap;
-  }
-
-  /* Grid Layouts for Sub-items */
+  /* Grid */
   .sub-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -321,7 +293,7 @@
     flex-shrink: 0;
   }
 
-  /* Clean Limits Table for Question 13 */
+  /* Limits Table */
   .limits-table {
     width: 100%;
     border-collapse: separate;
@@ -360,17 +332,16 @@
   }
 
   .lim-expr {
-    direction: ltr !important;
-    unicode-bidi: isolate !important;
+    direction: ltr;
+    unicode-bidi: isolate;
     font-family: 'Amiri', 'Times New Roman', serif;
     font-weight: bold;
     font-size: 1.05rem;
     color: #0f172a;
-    display: inline-flex;
-    align-items: center;
+    display: inline-block;
   }
 
-  /* Answer Section */
+  /* Answers */
   #answer-section {
     display: none;
     margin-top: 18px;
@@ -400,7 +371,7 @@
     line-height: 1.7;
   }
 
-  /* Print Settings */
+  /* Print */
   @media print {
     @page {
       size: A4;
@@ -413,7 +384,9 @@
       padding: 0 !important;
     }
 
-    .toolbar, #answer-section, .no-print {
+    .toolbar,
+    #answer-section,
+    .no-print {
       display: none !important;
     }
 
@@ -458,13 +431,10 @@
       margin-bottom: 6px !important;
       page-break-inside: avoid;
     }
-
-    .num {
-      border-bottom: 1.8px solid #000000 !important;
-    }
   }
 </style>
 </head>
+
 <body>
 
 <div class="container">
@@ -480,11 +450,15 @@
 
   <!-- Toolbar -->
   <div class="toolbar">
-    <span class="toolbar-text">اختبار تحريري شامل مضغوط (جاهز للحل والطباعة المباشرة)</span>
+    <span class="toolbar-text">
+      اختبار تحريري شامل مضغوط (جاهز للحل والطباعة المباشرة)
+    </span>
+
     <div class="btn-group">
       <button class="btn btn-ans" onclick="toggleAnswers()">
         👁️ إظهار / إخفاء الأجوبة النموذجية
       </button>
+
       <button class="btn btn-print" onclick="window.print()">
         🖨️ طباعة الأسئلة فقط (PDF)
       </button>
@@ -497,10 +471,12 @@
       <span>اسم الطالب:</span>
       <div class="dot-line"></div>
     </div>
+
     <div class="info-field">
       <span>الشعبة / القاعة:</span>
       <div class="dot-line"></div>
     </div>
+
     <div class="info-field">
       <span>الدرجة:</span>
       <div class="dot-line"></div>
@@ -512,12 +488,18 @@
     <div class="q-header">
       <span class="q-pill">السؤال الأول</span>
     </div>
+
     <div class="q-body">
       أثبت صحة المساواة الآتية:
+
       <div class="math-block">
-        <div class="frac"><span class="num">e<sup>-x</sup> - e<sup>-2x</sup></span><span class="den">e<sup>x</sup> + e<sup>-x</sup></span></div>
-        <span>=</span>
-        <div class="frac"><span class="num">e<sup>x</sup> - 1</span><span class="den">e<sup>2x</sup> + 1</span></div>
+        \[
+        \frac{e^{-x}-e^{-2x}}
+        {e^x+e^{-x}}
+        =
+        \frac{e^x-1}
+        {e^{2x}+1}
+        \]
       </div>
     </div>
   </div>
@@ -527,10 +509,28 @@
     <div class="q-header">
       <span class="q-pill">السؤال الثاني</span>
     </div>
+
     <div class="q-body">
-      ليكن التابع <span class="math-inline">f</span> معرفاً على <span class="math-inline">R</span> وفق: 
-      <span class="math-inline">f(x) = (ax + b) e<sup>x</sup> + 1</span>.
-      عيّن الثابتين <span class="math-inline">a , b</span> إذا علمت أن الخط البياني <span class="math-inline">C<sub>f</sub></span> يقبل في النقطة التي فاصلتها <span class="math-inline">x = -1</span> مماساً أفقياً <span class="math-inline">T</span> موازياً لمحور الفواصل معادلته <span class="math-inline">y = -e</span>.
+      ليكن التابع
+      <span class="math-inline">\(f\)</span>
+      معرفاً على
+      <span class="math-inline">\(\mathbb{R}\)</span>
+      وفق:
+
+      <span class="math-inline">
+        \(f(x)=(ax+b)e^x+1\)
+      </span>.
+
+      عيّن الثابتين
+      <span class="math-inline">\(a,b\)</span>
+      إذا علمت أن الخط البياني
+      <span class="math-inline">\(C_f\)</span>
+      يقبل في النقطة التي فاصلتها
+      <span class="math-inline">\(x=-1\)</span>
+      مماساً أفقياً
+      <span class="math-inline">\(T\)</span>
+      موازياً لمحور الفواصل معادلته
+      <span class="math-inline">\(y=-e\)</span>.
     </div>
   </div>
 
@@ -539,16 +539,37 @@
     <div class="q-header">
       <span class="q-pill">السؤال الثالث</span>
     </div>
+
     <div class="q-body">
-      ليكن التابع <span class="math-inline">f</span> معرفاً على <span class="math-inline">R</span> وفق:
+      ليكن التابع
+      <span class="math-inline">\(f\)</span>
+      معرفاً على
+      <span class="math-inline">\(\mathbb{R}\)</span>
+      وفق:
+
       <div class="math-block">
-        <span>f(x) = </span>
-        <div class="frac"><span class="num">e<sup>x</sup></span><span class="den">e<sup>x</sup> + 1</span></div>
+        \[
+        f(x)=\frac{e^x}{e^x+1}
+        \]
       </div>
+
       والمطلوب:
+
       <ol>
-        <li>أوجد معادلة المماس <span class="math-inline">T</span> للخط البياني <span class="math-inline">C<sub>f</sub></span> في نقطة تقاطعه مع محور التراتيب.</li>
-        <li>ادرس الوضع النسبي بين الخط البياني <span class="math-inline">C<sub>f</sub></span> والمماس <span class="math-inline">T</span>.</li>
+        <li>
+          أوجد معادلة المماس
+          <span class="math-inline">\(T\)</span>
+          للخط البياني
+          <span class="math-inline">\(C_f\)</span>
+          في نقطة تقاطعه مع محور التراتيب.
+        </li>
+
+        <li>
+          ادرس الوضع النسبي بين الخط البياني
+          <span class="math-inline">\(C_f\)</span>
+          والمماس
+          <span class="math-inline">\(T\)</span>.
+        </li>
       </ol>
     </div>
   </div>
@@ -558,47 +579,83 @@
     <div class="q-header">
       <span class="q-pill">السؤال الرابع</span>
     </div>
+
     <div class="q-body">
-      <strong>1)</strong> حل في <span class="math-inline">R</span> كلاً مما يأتي:
+
+      <strong>1)</strong>
+      حل في
+      <span class="math-inline">\(\mathbb{R}\)</span>
+      كلاً مما يأتي:
+
       <div class="sub-grid">
+
         <div class="sub-item">
           <span class="sub-circle">أ</span>
-          <span>المعادلة: <span class="math-inline">2 e<sup>2x</sup> - 7 e<sup>x</sup> + 3 = 0</span></span>
-        </div>
-        <div class="sub-item">
-          <span class="sub-circle">ب</span>
-          <span>المتراجحة: <span class="math-inline">2 e<sup>2x</sup> - 7 e<sup>x</sup> + 3 ≤ 0</span></span>
-        </div>
-        <div class="sub-item">
-          <span class="sub-circle">ج</span>
-          <span>المعادلة: 
+          <span>
+            المعادلة:
             <span class="math-inline">
-              <div class="frac"><span class="num">e<sup>x</sup> - 1</span><span class="den">e<sup>x</sup> - 4</span></div>
-              = -2
+              \(2e^{2x}-7e^x+3=0\)
             </span>
           </span>
         </div>
+
+        <div class="sub-item">
+          <span class="sub-circle">ب</span>
+          <span>
+            المتراجحة:
+            <span class="math-inline">
+              \(2e^{2x}-7e^x+3\le0\)
+            </span>
+          </span>
+        </div>
+
+        <div class="sub-item">
+          <span class="sub-circle">ج</span>
+          <span>
+            المعادلة:
+            <span class="math-inline">
+              \(\frac{e^x-1}{e^x-4}=-2\)
+            </span>
+          </span>
+        </div>
+
       </div>
-      <strong>2)</strong> حل في <span class="math-inline">R</span> المعادلات والمتراجحات الآتية:
+
+      <strong>2)</strong>
+      حل في
+      <span class="math-inline">\(\mathbb{R}\)</span>
+      المعادلات والمتراجحات الآتية:
+
       <div class="sub-grid">
+
         <div class="sub-item">
           <span class="sub-circle">1</span>
-          <span class="math-inline">2<sup>3x+1</sup> = 32</span>
+          <span class="math-inline">
+            \(2^{3x+1}=32\)
+          </span>
         </div>
+
         <div class="sub-item">
           <span class="sub-circle">2</span>
-          <span class="math-inline">49<sup>x</sup> - 6 × 7<sup>x</sup> + 5 = 0</span>
+          <span class="math-inline">
+            \(49^x-6\times7^x+5=0\)
+          </span>
         </div>
+
         <div class="sub-item">
           <span class="sub-circle">3</span>
           <span class="math-inline">
-            (<div class="frac"><span class="num">1</span><span class="den">3</span></div>)<sup>x</sup> &gt; 2
+            \(\left(\frac13\right)^x>2\)
           </span>
         </div>
+
         <div class="sub-item">
           <span class="sub-circle">4</span>
-          <span class="math-inline">5<sup>x+1</sup> = 2<sup>x</sup></span>
+          <span class="math-inline">
+            \(5^{x+1}=2^x\)
+          </span>
         </div>
+
       </div>
     </div>
   </div>
@@ -608,16 +665,40 @@
     <div class="q-header">
       <span class="q-pill">السؤال الخامس</span>
     </div>
+
     <div class="q-body">
-      ليكن التابع <span class="math-inline">f</span> معرفاً على <span class="math-inline">R</span> وفق:
+      ليكن التابع
+      <span class="math-inline">\(f\)</span>
+      معرفاً على
+      <span class="math-inline">\(\mathbb{R}\)</span>
+      وفق:
+
       <div class="math-block">
-        <span>f(x) = x + 3 + </span>
-        <div class="frac"><span class="num">x - 1</span><span class="den">4 e<sup>x</sup></span></div>
+        \[
+        f(x)=x+3+\frac{x-1}{4e^x}
+        \]
       </div>
-      وليكن <span class="math-inline">C<sub>f</sub></span> خطه البياني، والمطلوب:
+
+      وليكن
+      <span class="math-inline">\(C_f\)</span>
+      خطه البياني، والمطلوب:
+
       <ol>
-        <li>أثبت أن المستقيم <span class="math-inline">Δ : y = x + 3</span> مقارب مائل للخط <span class="math-inline">C<sub>f</sub></span> في جوار <span class="math-inline">+∞</span>.</li>
-        <li>ادرس الوضع النسبي بين الخط البياني <span class="math-inline">C<sub>f</sub></span> والمستقيم المقارب <span class="math-inline">Δ</span>.</li>
+        <li>
+          أثبت أن المستقيم
+          <span class="math-inline">\(\Delta:y=x+3\)</span>
+          مقارب مائل للخط
+          <span class="math-inline">\(C_f\)</span>
+          في جوار
+          <span class="math-inline">\( +\infty \)</span>.
+        </li>
+
+        <li>
+          ادرس الوضع النسبي بين الخط البياني
+          <span class="math-inline">\(C_f\)</span>
+          والمستقيم المقارب
+          <span class="math-inline">\(\Delta\)</span>.
+        </li>
       </ol>
     </div>
   </div>
@@ -627,12 +708,42 @@
     <div class="q-header">
       <span class="q-pill">السؤال السادس</span>
     </div>
+
     <div class="q-body">
-      ليكن التابع <span class="math-inline">f</span> معرفاً على <span class="math-inline">R</span> وفق: 
-      <span class="math-inline">f(x) = 1 + e<sup>-x</sup></span> ، وليكن <span class="math-inline">C<sub>f</sub></span> خطه البياني.
+
+      ليكن التابع
+      <span class="math-inline">\(f\)</span>
+      معرفاً على
+      <span class="math-inline">\(\mathbb{R}\)</span>
+      وفق:
+
+      <span class="math-inline">
+        \(f(x)=1+e^{-x}\)
+      </span>،
+
+      وليكن
+      <span class="math-inline">\(C_f\)</span>
+      خطه البياني.
+
       <ol>
-        <li>ادرس الوضع النسبي بين الخط <span class="math-inline">C<sub>f</sub></span> والمقارب الأفقي له.</li>
-        <li>أوجد معادلة المماس <span class="math-inline">T</span> للخط <span class="math-inline">C<sub>f</sub></span> في النقطة التي فاصلتها <span class="math-inline">x = 0</span>، ثم ادرس الوضع النسبي بين الخط <span class="math-inline">C<sub>f</sub></span> والمماس <span class="math-inline">T</span>.</li>
+        <li>
+          ادرس الوضع النسبي بين الخط
+          <span class="math-inline">\(C_f\)</span>
+          والمقارب الأفقي له.
+        </li>
+
+        <li>
+          أوجد معادلة المماس
+          <span class="math-inline">\(T\)</span>
+          للخط
+          <span class="math-inline">\(C_f\)</span>
+          في النقطة التي فاصلتها
+          <span class="math-inline">\(x=0\)</span>،
+          ثم ادرس الوضع النسبي بين الخط
+          <span class="math-inline">\(C_f\)</span>
+          والمماس
+          <span class="math-inline">\(T\)</span>.
+        </li>
       </ol>
     </div>
   </div>
@@ -642,22 +753,63 @@
     <div class="q-header">
       <span class="q-pill">السؤال السابع</span>
     </div>
+
     <div class="q-body">
-      ليكن التابع <span class="math-inline">f</span> معرفاً على <span class="math-inline">R</span> وفق:
+
+      ليكن التابع
+      <span class="math-inline">\(f\)</span>
+      معرفاً على
+      <span class="math-inline">\(\mathbb{R}\)</span>
+      وفق:
+
       <div class="math-block">
-        <span>f(x) = x + ln(4 + e<sup>-x</sup>)</span>
+        \[
+        f(x)=x+\ln(4+e^{-x})
+        \]
       </div>
+
       والمطلوب:
+
       <ol>
-        <li>احسب 
+
+        <li>
+          احسب:
           <span class="math-inline">
-            <span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; -∞</span></span> f(x)
-          </span> 
+            \(\displaystyle\lim_{x\to-\infty}f(x)\)
+          </span>
           وفسّر النتيجة هندسياً.
         </li>
-        <li>أثبت أنه أياً كان <span class="math-inline">x ∈ R</span> فإن <span class="math-inline">f(x) = ln(4 e<sup>x</sup> + 1)</span> وفسر النتيجة هندسياً.</li>
-        <li>عيّن معادلة المقارب المائل <span class="math-inline">Δ</span> وادرس الوضع النسبي بين الخط <span class="math-inline">C<sub>f</sub></span> والمقارب <span class="math-inline">Δ</span>.</li>
-        <li>ادرس تغيرات التابع <span class="math-inline">f</span> ونظم جدولاً بها وارسم كلاً من الخط <span class="math-inline">C<sub>f</sub></span> والمقارب <span class="math-inline">Δ</span>.</li>
+
+        <li>
+          أثبت أنه أياً كان
+          <span class="math-inline">\(x\in\mathbb{R}\)</span>
+          فإن:
+
+          <span class="math-inline">
+            \(f(x)=\ln(4e^x+1)\)
+          </span>
+
+          وفسر النتيجة هندسياً.
+        </li>
+
+        <li>
+          عيّن معادلة المقارب المائل
+          <span class="math-inline">\(\Delta\)</span>
+          وادرس الوضع النسبي بين الخط البياني
+          <span class="math-inline">\(C_f\)</span>
+          والمقارب
+          <span class="math-inline">\(\Delta\)</span>.
+        </li>
+
+        <li>
+          ادرس تغيرات التابع
+          <span class="math-inline">\(f\)</span>
+          ونظم جدولاً بها وارسم كلاً من الخط
+          <span class="math-inline">\(C_f\)</span>
+          والمقارب
+          <span class="math-inline">\(\Delta\)</span>.
+        </li>
+
       </ol>
     </div>
   </div>
@@ -667,20 +819,57 @@
     <div class="q-header">
       <span class="q-pill">السؤال الثامن</span>
     </div>
+
     <div class="q-body">
-      ليكن التابع <span class="math-inline">f</span> معرفاً على <span class="math-inline">R</span> وفق:
+
+      ليكن التابع
+      <span class="math-inline">\(f\)</span>
+      معرفاً على
+      <span class="math-inline">\(\mathbb{R}\)</span>
+      وفق:
+
       <div class="math-block">
-        <span>f(x) = </span>
-        <div class="frac"><span class="num">1</span><span class="den">2</span></div>
-        <span>(e<sup>x</sup> - e<sup>-x</sup>)</span>
+        \[
+        f(x)=\frac12(e^x-e^{-x})
+        \]
       </div>
+
       والمطلوب:
+
       <ol>
-        <li>أثبت أن التابع <span class="math-inline">f</span> فردي، وادرس تغيرات التابع <span class="math-inline">f</span> ونظم جدولاً بها.</li>
-        <li>أثبت أن للمعادلة <span class="math-inline">f(x) = m</span> حلاً وحيداً مهما تكن <span class="math-inline">m ∈ R</span> يعطى بالعلاقة:
-          <span class="math-inline">x = ln [ m + &radic;(m<sup>2</sup> + 1) ]</span>.
+
+        <li>
+          أثبت أن التابع
+          <span class="math-inline">\(f\)</span>
+          فردي، وادرس تغيرات التابع
+          <span class="math-inline">\(f\)</span>
+          ونظم جدولاً بها.
         </li>
-        <li>اكتب معادلة المماس <span class="math-inline">T</span> للخط البياني عند المبدأ <span class="math-inline">O</span>، ثم ارسم كلاً من المماس <span class="math-inline">T</span> والخط البياني.</li>
+
+        <li>
+          أثبت أن للمعادلة
+          <span class="math-inline">\(f(x)=m\)</span>
+          حلاً وحيداً مهما تكن
+          <span class="math-inline">\(m\in\mathbb{R}\)</span>
+          يعطى بالعلاقة:
+
+          <span class="math-inline">
+            \[
+            x=\ln\left(m+\sqrt{m^2+1}\right)
+            \]
+          </span>
+        </li>
+
+        <li>
+          اكتب معادلة المماس
+          <span class="math-inline">\(T\)</span>
+          للخط البياني عند المبدأ
+          <span class="math-inline">\(O\)</span>،
+          ثم ارسم كلاً من المماس
+          <span class="math-inline">\(T\)</span>
+          والخط البياني.
+        </li>
+
       </ol>
     </div>
   </div>
@@ -690,12 +879,21 @@
     <div class="q-header">
       <span class="q-pill">السؤال التاسع</span>
     </div>
+
     <div class="q-body">
-      عيّن تابعاً <span class="math-inline">g</span> حدودياً من الدرجة الثانية بحيث يكون حلاً للمعادلة التفاضلية:
+
+      عيّن تابعاً
+      <span class="math-inline">\(g\)</span>
+      حدودياً من الدرجة الثانية بحيث يكون حلاً للمعادلة التفاضلية:
+
       <div class="math-block">
-        <span>-y + 2y' = x<sup>2</sup> + 3</span>
+        \[
+        -y+2y'=x^2+3
+        \]
       </div>
+
       ثم ادرس الوضع النسبي بين خطه البياني ومحور الفواصل.
+
     </div>
   </div>
 
@@ -704,12 +902,22 @@
     <div class="q-header">
       <span class="q-pill">السؤال العاشر</span>
     </div>
+
     <div class="q-body">
+
       حل المعادلة التفاضلية الآتية:
+
       <div class="math-block">
-        <span>y' - 2y = -6</span>
+        \[
+        y'-2y=-6
+        \]
       </div>
-      علماً بأن المخطط البياني للحل يمر بالنقطة <span class="math-inline">A(ln 2 , -5)</span>.
+
+      علماً بأن المخطط البياني للحل يمر بالنقطة
+      <span class="math-inline">
+        \(A(\ln2,-5)\)
+      </span>.
+
     </div>
   </div>
 
@@ -718,16 +926,66 @@
     <div class="q-header">
       <span class="q-pill">السؤال الحادي عشر (مسألة دورة 2024)</span>
     </div>
+
     <div class="q-body">
+
       لتكن المعادلة التفاضلية:
-      <span class="math-inline">(E) : y' + 3y = <div class="frac"><span class="num">9</span><span class="den">2</span></div> e<sup>-2x</sup></span>
-      ، والمعادلة التفاضلية: 
-      <span class="math-inline">(E') : y' + 3y = 0</span>.
-      <br>نفرض لدينا التابع <span class="math-inline">g</span> معرفاً على <span class="math-inline">R</span> وفق: <span class="math-inline">g(x) = λ e<sup>-2x</sup></span> حيث <span class="math-inline">λ</span> عدد حقيقي.
+
+      <span class="math-inline">
+        \((E):y'+3y=\frac92e^{-2x}\)
+      </span>
+
+      ، والمعادلة التفاضلية:
+
+      <span class="math-inline">
+        \((E'):y'+3y=0\)
+      </span>.
+
+      <br>
+
+      نفرض لدينا التابع
+      <span class="math-inline">\(g\)</span>
+      معرفاً على
+      <span class="math-inline">\(\mathbb{R}\)</span>
+      وفق:
+
+      <span class="math-inline">
+        \(g(x)=\lambda e^{-2x}\)
+      </span>
+
+      حيث
+      <span class="math-inline">\(\lambda\)</span>
+      عدد حقيقي.
+
       <ol>
-        <li>عيّن قيمة الثابت الحقيقي <span class="math-inline">λ</span> حتى يكون التابع <span class="math-inline">g</span> حلاً للمعادلة التفاضلية <span class="math-inline">(E)</span>.</li>
-        <li>حل المعادلة التفاضلية <span class="math-inline">(E')</span>.</li>
-        <li>أثبت أن تابعاً <span class="math-inline">f</span> يكون حلاً للمعادلة <span class="math-inline">(E)</span> إذا وفقط إذا كان <span class="math-inline">f - g</span> حلاً للمعادلة <span class="math-inline">(E')</span>، ثم استنتج مجموعة حلول المعادلة <span class="math-inline">(E)</span>.</li>
+
+        <li>
+          عيّن قيمة الثابت الحقيقي
+          <span class="math-inline">\(\lambda\)</span>
+          حتى يكون التابع
+          <span class="math-inline">\(g\)</span>
+          حلاً للمعادلة التفاضلية
+          <span class="math-inline">\((E)\)</span>.
+        </li>
+
+        <li>
+          حل المعادلة التفاضلية
+          <span class="math-inline">\((E')\)</span>.
+        </li>
+
+        <li>
+          أثبت أن تابعاً
+          <span class="math-inline">\(f\)</span>
+          يكون حلاً للمعادلة
+          <span class="math-inline">\((E)\)</span>
+          إذا وفقط إذا كان
+          <span class="math-inline">\(f-g\)</span>
+          حلاً للمعادلة
+          <span class="math-inline">\((E')\)</span>،
+          ثم استنتج مجموعة حلول المعادلة
+          <span class="math-inline">\((E)\)</span>.
+        </li>
+
       </ol>
     </div>
   </div>
@@ -737,154 +995,336 @@
     <div class="q-header">
       <span class="q-pill">السؤال الثاني عشر</span>
     </div>
+
     <div class="q-body">
-      ليكن التابع <span class="math-inline">f</span> معرفاً على <span class="math-inline">R</span> وفق:
+
+      ليكن التابع
+      <span class="math-inline">\(f\)</span>
+      معرفاً على
+      <span class="math-inline">\(\mathbb{R}\)</span>
+      وفق:
+
       <div class="math-block">
-        <span>f(x) = </span>
-        <div class="frac"><span class="num">(x + 1)<sup>2</sup></span><span class="den">e<sup>x</sup></span></div>
+        \[
+        f(x)=\frac{(x+1)^2}{e^x}
+        \]
       </div>
+
       والمطلوب:
+
       <ol>
-        <li>احسب نهايات التابع <span class="math-inline">f</span> عند <span class="math">+∞</span> و <span class="math">-∞</span>.</li>
-        <li>أثبت أنه أياً كانت <span class="math-inline">x ∈ R</span> فإن المشتق:
-          <span class="math-inline">f'(x) = <div class="frac"><span class="num">1 - x<sup>2</sup></span><span class="den">e<sup>x</sup></span></div></span>.
+
+        <li>
+          احسب نهايات التابع
+          <span class="math-inline">\(f\)</span>
+          عند
+          <span class="math-inline">\( +\infty \)</span>
+          و
+          <span class="math-inline">\( -\infty \)</span>.
         </li>
-        <li>ادرس تغيرات التابع <span class="math-inline">f</span> ونظم جدولاً بها ودلّ على القيم الكبرى والصغرى محلياً، ثم ارسم الخط البياني.</li>
+
+        <li>
+          أثبت أنه أياً كانت
+          <span class="math-inline">\(x\in\mathbb{R}\)</span>
+          فإن المشتق:
+
+          <span class="math-inline">
+            \[
+            f'(x)=\frac{1-x^2}{e^x}
+            \]
+          </span>
+        </li>
+
+        <li>
+          ادرس تغيرات التابع
+          <span class="math-inline">\(f\)</span>
+          ونظم جدولاً بها ودلّ على القيم الكبرى والصغرى محلياً،
+          ثم ارسم الخط البياني.
+        </li>
+
       </ol>
     </div>
   </div>
 
-  <!-- Q13 (Completely Clean & Redesigned Limits Table) -->
+  <!-- Q13 -->
   <div class="q-card">
+
     <div class="q-header">
       <span class="q-pill">السؤال الثالث عشر</span>
     </div>
+
     <div class="q-body">
+
       احسب كلاً من النهايات الآتية مبيناً خطوات الحل بالتفصيل:
-      
+
       <table class="limits-table">
+
         <tr>
+
           <td class="lim-cell">
             <div class="lim-content">
               <span class="lim-num">1</span>
+
               <span class="lim-expr">
-                <span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; -∞</span></span> (x + 2)<sup>2</sup> e<sup>x</sup>
+                \[
+                \displaystyle
+                \lim_{x\to-\infty}
+                (x+2)^2e^x
+                \]
               </span>
             </div>
           </td>
+
           <td class="lim-cell">
             <div class="lim-content">
               <span class="lim-num">2</span>
+
               <span class="lim-expr">
-                <span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; +∞</span></span> (e<sup>3x</sup> - 2e<sup>x</sup> + 1)
+                \[
+                \displaystyle
+                \lim_{x\to+\infty}
+                \left(e^{3x}-2e^x+1\right)
+                \]
               </span>
             </div>
           </td>
+
         </tr>
+
         <tr>
+
           <td class="lim-cell">
             <div class="lim-content">
               <span class="lim-num">3</span>
+
               <span class="lim-expr">
-                <span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; 0</span></span> <div class="frac"><span class="num">e<sup>7x</sup> - 1</span><span class="den">3x</span></div>
+                \[
+                \displaystyle
+                \lim_{x\to0}
+                \frac{e^{7x}-1}{3x}
+                \]
               </span>
             </div>
           </td>
+
           <td class="lim-cell">
             <div class="lim-content">
               <span class="lim-num">4</span>
+
               <span class="lim-expr">
-                <span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; +∞</span></span> <div class="frac"><span class="num">e<sup>x</sup></span><span class="den">(x + 1)<sup>2</sup></span></div>
+                \[
+                \displaystyle
+                \lim_{x\to+\infty}
+                \frac{e^x}{(x+1)^2}
+                \]
               </span>
             </div>
           </td>
+
         </tr>
+
         <tr>
+
           <td class="lim-cell">
             <div class="lim-content">
               <span class="lim-num">5</span>
+
               <span class="lim-expr">
-                <span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; -∞</span></span> 3x (e<sup>5/x</sup> - 1)
+                \[
+                \displaystyle
+                \lim_{x\to-\infty}
+                3x\left(e^{5/x}-1\right)
+                \]
               </span>
             </div>
           </td>
+
           <td class="lim-cell">
             <div class="lim-content">
               <span class="lim-num">6</span>
+
               <span class="lim-expr">
-                <span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; +∞</span></span> (1 + <div class="frac"><span class="num">5</span><span class="den">x</span></div>)<sup>3x</sup>
+                \[
+                \displaystyle
+                \lim_{x\to+\infty}
+                \left(1+\frac5x\right)^{3x}
+                \]
               </span>
             </div>
           </td>
+
         </tr>
+
         <tr>
+
           <td class="lim-cell">
             <div class="lim-content">
               <span class="lim-num">7</span>
+
               <span class="lim-expr">
-                <span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; 4</span></span> (5 - x)<sup>3/(4 - x)</sup>
+                \[
+                \displaystyle
+                \lim_{x\to4}
+                (5-x)^{\frac3{4-x}}
+                \]
               </span>
             </div>
           </td>
+
           <td class="lim-cell">
             <div class="lim-content">
               <span class="lim-num">8</span>
+
               <span class="lim-expr">
-                <span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; +∞</span></span> (<div class="frac"><span class="num">x + 4</span><span class="den">x + 2</span></div>)<sup>2x</sup>
+                \[
+                \displaystyle
+                \lim_{x\to+\infty}
+                \left(\frac{x+4}{x+2}\right)^{2x}
+                \]
               </span>
             </div>
           </td>
+
         </tr>
+
         <tr>
+
           <td class="lim-cell">
             <div class="lim-content">
               <span class="lim-num">9</span>
+
               <span class="lim-expr">
-                <span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; 0</span></span> <div class="frac"><span class="num">e<sup>2x</sup> - 1</span><span class="den">ln(1 + 3x)</span></div>
+                \[
+                \displaystyle
+                \lim_{x\to0}
+                \frac{e^{2x}-1}{\ln(1+3x)}
+                \]
               </span>
             </div>
           </td>
+
           <td class="lim-cell">
             <div class="lim-content">
               <span class="lim-num">10</span>
+
               <span class="lim-expr">
-                <span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; -∞</span></span> (e<sup>-x</sup> + x - 2)
+                \[
+                \displaystyle
+                \lim_{x\to-\infty}
+                \left(e^{-x}+x-2\right)
+                \]
               </span>
             </div>
           </td>
+
         </tr>
+
       </table>
+
     </div>
   </div>
 
-  <!-- SECTION 3: TOGGLEABLE ANSWERS SECTION -->
+  <!-- Answers -->
   <div id="answer-section">
+
     <div class="ans-title">
-      <span>📋 الأجوبة والحلول النموذجية المختصرة</span>
+      📋 الأجوبة والحلول النموذجية المختصرة
     </div>
 
     <div class="ans-box">
-      <strong>حل السؤال الثالث عشر (النهايات التحريرية):</strong><br>
-      1) 0 (مبرهنة التزايد المقارن عند -∞) &nbsp;|&nbsp; 2) +∞ (سحب العامل المسيطر e<sup>3x</sup>)<br>
-      3) 7/3 (نهاية مشتقة شهيرة عند الصفر) &nbsp;|&nbsp; 4) +∞ (تزايد مقارن عند +∞)<br>
-      5) 15 (تغيير متحول t = 5/x) &nbsp;|&nbsp; 6) e<sup>15</sup> (نهاية العدد النيبري الشهيرة)<br>
-      7) e<sup>3</sup> (نهاية نيبرية عند x→4) &nbsp;|&nbsp; 8) e<sup>4</sup> &nbsp;|&nbsp; 9) 2/3 (نهاية مركبة بقسمة البسط والمقام على x)<br>
-      10) +∞ (e<sup>-x</sup> أسرع نمواً من x عند -∞).
+
+      <strong>حل السؤال الثالث عشر (النهايات التحريرية):</strong>
+
+      <br>
+
+      1)
+      \(\;0\;\)
+      (مبرهنة التزايد المقارن عند
+      \(-\infty\))
+
+      &nbsp;|&nbsp;
+
+      2)
+      \(\;+∞\;\)
+      (سحب العامل المسيطر
+      \(e^{3x}\))
+
+      <br>
+
+      3)
+      \(\;\frac73\;\)
+      (نهاية مشتقة شهيرة عند الصفر)
+
+      &nbsp;|&nbsp;
+
+      4)
+      \(\;+∞\;\)
+      (تزايد مقارن عند
+      \(+\infty\))
+
+      <br>
+
+      5)
+      \(15\)
+      (تغيير المتحول
+      \(t=\frac5x\))
+
+      &nbsp;|&nbsp;
+
+      6)
+      \(e^{15}\)
+      (النهاية النيبيرية الشهيرة)
+
+      <br>
+
+      7)
+      \(e^3\)
+      (نهاية نيبيرية عند
+      \(x\to4\))
+
+      &nbsp;|&nbsp;
+
+      8)
+      \(e^4\)
+
+      &nbsp;|&nbsp;
+
+      9)
+      \(\frac23\)
+      (نهاية مركبة)
+
+      <br>
+
+      10)
+      \(+\infty\)
+      (\(e^{-x}\) أسرع نمواً من \(x\) عند
+      \(-\infty\)).
+
     </div>
+
   </div>
 
 </div>
 
 <script>
-  function toggleAnswers() {
-    var ans = document.getElementById('answer-section');
-    if (ans.style.display === 'block') {
-      ans.style.display = 'none';
-    } else {
-      ans.style.display = 'block';
-      ans.scrollIntoView({ behavior: 'smooth' });
+function toggleAnswers() {
+  var ans = document.getElementById('answer-section');
+
+  if (ans.style.display === 'block') {
+    ans.style.display = 'none';
+  } else {
+    ans.style.display = 'block';
+
+    ans.scrollIntoView({
+      behavior: 'smooth'
+    });
+
+    // إعادة تصيير الرياضيات بعد إظهار الأجوبة
+    if (window.MathJax) {
+      MathJax.typesetPromise([ans]);
     }
   }
+}
 </script>
 
 </body>
