@@ -1,498 +1,1781 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>اختبار الرياضيات: التابع الأسي والتفاضلية - ammar</title>
+
+<title>اختبار الرياضيات الشامل - ammar</title>
+
+
+<!-- =========================================================
+     GOOGLE FONTS
+========================================================= -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&family=Amiri:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
 
-<!-- MathJax -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Amiri:wght@400;700&display=swap"
+  rel="stylesheet"
+>
+
+
+<!-- =========================================================
+     MATHJAX
+     محرك الرياضيات:
+     الأسس - الكسور - الجذور - النهايات - اللوغاريتمات
+========================================================= -->
+
 <script>
+
 window.MathJax = {
+
   tex: {
-    inlineMath: [['\\(', '\\)']],
-    displayMath: [['\\[', '\\]']]
+
+    inlineMath: [
+      ['\\(', '\\)']
+    ],
+
+    displayMath: [
+      ['\\[', '\\]']
+    ]
+
   },
+
   options: {
-    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+
+    skipHtmlTags: [
+      'script',
+      'noscript',
+      'style',
+      'textarea',
+      'pre',
+      'code'
+    ]
+
   }
+
 };
+
 </script>
-<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+<script
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+
 
 <style>
-  :root {
-    --primary: #991b1b;
-    --primary-dark: #6b1111;
-    --primary-light: #dc2626;
-    --bg-page: #f8fafc;
-    --card-bg: #ffffff;
-    --border-card: #fecaca;
-    --border-soft: #fee2e2;
-    --text-main: #0f172a;
-    --text-muted: #475569;
-    --badge-bg: #fef2f2;
-  }
 
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
+/* =========================================================
+   ROOT COLORS
+========================================================= */
+
+:root {
+
+  --primary: #7c3aed;
+
+  --primary-dark: #4c1d95;
+
+  --primary-light: #a78bfa;
+
+  --secondary: #06b6d4;
+
+  --secondary-dark: #0e7490;
+
+  --accent: #f59e0b;
+
+  --accent-light: #fbbf24;
+
+  --success: #10b981;
+
+  --danger: #ef4444;
+
+  --dark: #0f172a;
+
+  --dark-2: #1e293b;
+
+  --text: #172033;
+
+  --muted: #64748b;
+
+  --page: #eef2ff;
+
+  --card: #ffffff;
+
+  --soft: #f8fafc;
+
+  --border: #e2e8f0;
+
+  --purple-soft: #f5f3ff;
+
+  --cyan-soft: #ecfeff;
+
+  --amber-soft: #fffbeb;
+
+  --green-soft: #ecfdf5;
+
+  --red-soft: #fef2f2;
+
+  --shadow:
+    0 12px 35px rgba(15, 23, 42, 0.08);
+
+  --shadow-hover:
+    0 18px 45px rgba(76, 29, 149, 0.16);
+
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+
+  box-sizing: border-box;
+
+  margin: 0;
+
+  padding: 0;
+
+}
+
+
+html {
+
+  scroll-behavior: smooth;
+
+}
+
+
+body {
+
+  min-height: 100vh;
+
+  background:
+
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(124, 58, 237, 0.10),
+      transparent 25%
+    ),
+
+    radial-gradient(
+      circle at 90% 20%,
+      rgba(6, 182, 212, 0.10),
+      transparent 25%
+    ),
+
+    linear-gradient(
+      135deg,
+      #eef2ff 0%,
+      #f8fafc 45%,
+      #ecfeff 100%
+    );
+
+  color: var(--text);
+
+  font-family:
+    'Cairo',
+    system-ui,
+    sans-serif;
+
+  line-height: 1.75;
+
+  padding: 18px 12px 40px;
+
+  -webkit-font-smoothing: antialiased;
+
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
+
+.container {
+
+  width: 100%;
+
+  max-width: 1050px;
+
+  margin: 0 auto;
+
+}
+
+
+/* =========================================================
+   TOP DECORATION
+========================================================= */
+
+.top-glow {
+
+  height: 7px;
+
+  width: 100%;
+
+  border-radius: 20px;
+
+  margin-bottom: 14px;
+
+  background:
+
+    linear-gradient(
+      90deg,
+      var(--primary-dark),
+      var(--primary),
+      var(--secondary),
+      var(--accent),
+      var(--primary)
+    );
+
+  box-shadow:
+
+    0 3px 15px
+    rgba(124, 58, 237, 0.30);
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header-card {
+
+  position: relative;
+
+  overflow: hidden;
+
+  background:
+
+    linear-gradient(
+      135deg,
+      #1e1b4b 0%,
+      #4c1d95 35%,
+      #7c3aed 65%,
+      #0891b2 100%
+    );
+
+  color: white;
+
+  padding: 24px 28px;
+
+  border-radius: 22px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  gap: 20px;
+
+  box-shadow:
+
+    0 18px 45px
+    rgba(76, 29, 149, 0.28);
+
+  margin-bottom: 14px;
+
+  border: 1px solid
+    rgba(255,255,255,0.22);
+
+}
+
+
+.header-card::before {
+
+  content: "";
+
+  position: absolute;
+
+  width: 250px;
+
+  height: 250px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255,255,255,0.08);
+
+  top: -150px;
+
+  left: -60px;
+
+}
+
+
+.header-card::after {
+
+  content: "";
+
+  position: absolute;
+
+  width: 180px;
+
+  height: 180px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255,255,255,0.07);
+
+  bottom: -120px;
+
+  right: 120px;
+
+}
+
+
+.header-content {
+
+  position: relative;
+
+  z-index: 2;
+
+}
+
+
+.header-content h1 {
+
+  font-size: clamp(
+    1.25rem,
+    3vw,
+    2rem
+  );
+
+  font-weight: 900;
+
+  line-height: 1.4;
+
+  margin-bottom: 4px;
+
+}
+
+
+.header-content p {
+
+  color: #ddd6fe;
+
+  font-size: 0.92rem;
+
+  font-weight: 600;
+
+}
+
+
+.logo-box {
+
+  position: relative;
+
+  z-index: 2;
+
+  min-width: 110px;
+
+  text-align: center;
+
+  padding: 10px 18px;
+
+  border-radius: 16px;
+
+  background:
+    rgba(255,255,255,0.14);
+
+  border:
+    1px solid
+    rgba(255,255,255,0.30);
+
+  box-shadow:
+    inset 0 1px 0
+    rgba(255,255,255,0.15);
+
+  backdrop-filter: blur(10px);
+
+  font-size: 1.35rem;
+
+  font-weight: 900;
+
+  letter-spacing: 1px;
+
+}
+
+
+/* =========================================================
+   TOOLBAR
+========================================================= */
+
+.toolbar {
+
+  background: rgba(255,255,255,0.90);
+
+  border:
+    1px solid
+    rgba(226,232,240,0.90);
+
+  border-radius: 16px;
+
+  padding: 11px 14px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  gap: 12px;
+
+  flex-wrap: wrap;
+
+  margin-bottom: 14px;
+
+  box-shadow:
+    0 6px 22px
+    rgba(15,23,42,0.05);
+
+  backdrop-filter: blur(10px);
+
+}
+
+
+.toolbar-text {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  color: var(--dark-2);
+
+  font-weight: 800;
+
+  font-size: 0.88rem;
+
+}
+
+
+.toolbar-text::before {
+
+  content: "✦";
+
+  width: 27px;
+
+  height: 27px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 8px;
+
+  color: white;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--primary),
+      var(--secondary)
+    );
+
+}
+
+
+.btn-group {
+
+  display: flex;
+
+  gap: 8px;
+
+  flex-wrap: wrap;
+
+}
+
+
+.btn {
+
+  border: none;
+
+  padding: 8px 15px;
+
+  border-radius: 10px;
+
+  font-family: inherit;
+
+  font-size: 0.82rem;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 6px;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
+
+}
+
+
+.btn:hover {
+
+  transform:
+    translateY(-2px);
+
+  filter:
+    brightness(1.05);
+
+}
+
+
+.btn:active {
+
+  transform:
+    translateY(0);
+
+}
+
+
+.btn-ans {
+
+  color: white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0f172a,
+      #334155
+    );
+
+  box-shadow:
+    0 5px 14px
+    rgba(15,23,42,0.16);
+
+}
+
+
+.btn-print {
+
+  color: white;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--primary),
+      var(--secondary)
+    );
+
+  box-shadow:
+    0 5px 14px
+    rgba(124,58,237,0.20);
+
+}
+
+
+/* =========================================================
+   STUDENT INFORMATION
+========================================================= */
+
+.info-strip {
+
+  background:
+    rgba(255,255,255,0.92);
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius: 16px;
+
+  padding: 14px 16px;
+
+  margin-bottom: 16px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(210px, 1fr)
+    );
+
+  gap: 12px;
+
+  box-shadow:
+    0 6px 22px
+    rgba(15,23,42,0.05);
+
+}
+
+
+.info-field {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  font-weight: 800;
+
+  color: var(--muted);
+
+  font-size: 0.88rem;
+
+}
+
+
+.info-field > span:first-child {
+
+  white-space: nowrap;
+
+}
+
+
+.dot-line {
+
+  flex: 1;
+
+  border-bottom:
+    2px dotted
+    #cbd5e1;
+
+  height: 17px;
+
+}
+
+
+/* =========================================================
+   QUESTION CARD
+========================================================= */
+
+.q-card {
+
+  position: relative;
+
+  background:
+    rgba(255,255,255,0.96);
+
+  border:
+    1px solid
+    rgba(226,232,240,0.90);
+
+  border-radius: 18px;
+
+  padding: 17px 20px;
+
+  margin-bottom: 13px;
+
+  box-shadow:
+    var(--shadow);
+
+  overflow: hidden;
+
+  page-break-inside: avoid;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
+}
+
+
+.q-card:hover {
+
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    var(--shadow-hover);
+
+}
+
+
+.q-card::before {
+
+  content: "";
+
+  position: absolute;
+
+  right: 0;
+
+  top: 0;
+
+  width: 5px;
+
+  height: 100%;
+
+  background:
+
+    linear-gradient(
+      180deg,
+      var(--primary),
+      var(--secondary)
+    );
+
+}
+
+
+.q-header {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-bottom: 9px;
+
+  padding-bottom: 8px;
+
+  border-bottom:
+    1px solid
+    #f1f5f9;
+
+}
+
+
+.q-pill {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f5f3ff,
+      #ecfeff
+    );
+
+  color: var(--primary-dark);
+
+  border:
+    1px solid
+    #ddd6fe;
+
+  padding: 4px 12px;
+
+  border-radius: 10px;
+
+  font-size: 0.86rem;
+
+  font-weight: 900;
+
+  box-shadow:
+    0 2px 7px
+    rgba(124,58,237,0.08);
+
+}
+
+
+.q-body {
+
+  font-size: 0.97rem;
+
+  color: var(--text);
+
+  line-height: 1.9;
+
+}
+
+
+.q-body ol {
+
+  margin-right: 25px;
+
+  margin-top: 7px;
+
+}
+
+
+.q-body li {
+
+  margin-bottom: 7px;
+
+  padding-right: 3px;
+
+}
+
+
+.q-body strong {
+
+  color: var(--primary-dark);
+
+}
+
+
+/* =========================================================
+   MATHJAX
+========================================================= */
+
+.math-inline {
+
+  direction: ltr;
+
+  unicode-bidi: isolate;
+
+  display: inline-block;
+
+  vertical-align: middle;
+
+  margin:
+    0 3px;
+
+  white-space: nowrap;
+
+  color: #111827;
+
+}
+
+
+.math-block {
+
+  direction: ltr;
+
+  unicode-bidi: isolate;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  width: 100%;
+
+  margin: 10px 0;
+
+  color: #111827;
+
+  text-align: center;
+
+  overflow-x: auto;
+
+  overflow-y: hidden;
+
+  padding: 3px 0;
+
+}
+
+
+mjx-container {
+
+  direction: ltr !important;
+
+}
+
+
+.q-body mjx-container {
+
+  font-size: 108%;
+
+}
+
+
+.math-block mjx-container {
+
+  font-size: 115%;
+
+}
+
+
+/* =========================================================
+   SUB GRID
+========================================================= */
+
+.sub-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(230px, 1fr)
+    );
+
+  gap: 10px;
+
+  margin:
+    9px 0 13px;
+
+  direction: rtl;
+
+}
+
+
+.sub-item {
+
+  background:
+    linear-gradient(
+      135deg,
+      #faf5ff,
+      #f0fdfa
+    );
+
+  padding: 9px 11px;
+
+  border-radius: 12px;
+
+  border:
+    1px solid
+    #ddd6fe;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  font-size: 0.91rem;
+
+  box-shadow:
+    0 3px 9px
+    rgba(124,58,237,0.05);
+
+}
+
+
+.sub-circle {
+
+  width: 25px;
+
+  height: 25px;
+
+  min-width: 25px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--primary),
+      var(--secondary)
+    );
+
+  color: #ffffff;
+
+  border-radius: 50%;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 0.74rem;
+
+  font-weight: 900;
+
+  flex-shrink: 0;
+
+  box-shadow:
+    0 3px 8px
+    rgba(124,58,237,0.20);
+
+}
+
+
+/* =========================================================
+   LIMITS TABLE
+========================================================= */
+
+.limits-table {
+
+  width: 100%;
+
+  border-collapse: separate;
+
+  border-spacing: 9px;
+
+  margin-top: 8px;
+
+}
+
+
+.lim-cell {
+
+  background:
+    linear-gradient(
+      135deg,
+      #faf5ff,
+      #ecfeff
+    );
+
+  border:
+    1px solid
+    #ddd6fe;
+
+  border-radius: 13px;
+
+  padding: 10px 13px;
+
+  width: 50%;
+
+  vertical-align: middle;
+
+  box-shadow:
+    0 3px 10px
+    rgba(124,58,237,0.05);
+
+}
+
+
+.lim-content {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-start;
+
+  gap: 12px;
+
+}
+
+
+.lim-num {
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--primary),
+      var(--secondary)
+    );
+
+  color: #ffffff;
+
+  border-radius: 50%;
+
+  width: 26px;
+
+  height: 26px;
+
+  min-width: 26px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 0.77rem;
+
+  font-weight: 900;
+
+  box-shadow:
+    0 3px 9px
+    rgba(124,58,237,0.22);
+
+}
+
+
+.lim-expr {
+
+  direction: ltr;
+
+  unicode-bidi: isolate;
+
+  display: inline-block;
+
+  color: #111827;
+
+  font-size: 1.03rem;
+
+  font-weight: 700;
+
+}
+
+
+/* =========================================================
+   ANSWERS
+========================================================= */
+
+#answer-section {
+
+  display: none;
+
+  margin-top: 20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #f8fafc
+    );
+
+  border:
+    2px solid
+    var(--primary);
+
+  border-radius: 20px;
+
+  padding: 20px;
+
+  box-shadow:
+    0 15px 40px
+    rgba(124,58,237,0.13);
+
+  page-break-inside: avoid;
+
+}
+
+
+.ans-title {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  font-size: 1.2rem;
+
+  font-weight: 900;
+
+  color: var(--primary-dark);
+
+  margin-bottom: 13px;
+
+  border-bottom:
+    2px solid
+    #ede9fe;
+
+  padding-bottom: 9px;
+
+}
+
+
+.ans-box {
+
+  background:
+    linear-gradient(
+      135deg,
+      #faf5ff,
+      #ecfeff
+    );
+
+  border:
+    1px solid
+    #ddd6fe;
+
+  padding: 13px 16px;
+
+  border-radius: 13px;
+
+  margin-bottom: 11px;
+
+  font-size: 0.91rem;
+
+  line-height: 1.9;
+
+}
+
+
+.ans-box strong {
+
+  color: var(--primary-dark);
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+
+  text-align: center;
+
+  margin-top: 20px;
+
+  padding: 13px;
+
+  color: #64748b;
+
+  font-size: 0.78rem;
+
+  font-weight: 700;
+
+}
+
+
+.footer span {
+
+  color: var(--primary);
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
 
   body {
-    background-color: var(--bg-page);
-    color: var(--text-main);
-    font-family: 'Cairo', system-ui, sans-serif;
-    line-height: 1.6;
-    padding: 12px 10px;
-    -webkit-font-smoothing: antialiased;
+
+    padding:
+      10px 7px 25px;
+
   }
 
-  .container {
-    max-width: 920px;
-    margin: 0 auto;
-  }
 
-  /* Header */
   .header-card {
-    background: linear-gradient(
-      135deg,
-      var(--primary-dark) 0%,
-      var(--primary) 55%,
-      var(--primary-light) 100%
-    );
-    color: #ffffff;
-    padding: 14px 20px;
-    border-radius: 12px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 6px 16px -4px rgba(153, 27, 27, 0.35);
-    margin-bottom: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    padding:
+      18px 16px;
+
+    border-radius: 17px;
+
   }
+
 
   .header-content h1 {
-    font-size: 1.35rem;
-    font-weight: 900;
-    margin-bottom: 2px;
+
+    font-size: 1.22rem;
+
   }
+
 
   .header-content p {
-    font-size: 0.85rem;
-    color: #fecaca;
-    font-weight: 600;
+
+    font-size: 0.78rem;
+
   }
+
 
   .logo-box {
-    background: rgba(255, 255, 255, 0.2);
-    border: 1.5px solid rgba(255, 255, 255, 0.45);
-    backdrop-filter: blur(8px);
-    padding: 5px 18px;
-    border-radius: 30px;
-    font-size: 1.2rem;
-    font-weight: 900;
-    letter-spacing: 1px;
-    color: #ffffff;
+
+    min-width: 75px;
+
+    padding:
+      7px 10px;
+
+    font-size: 1rem;
+
   }
 
-  /* Toolbar */
+
   .toolbar {
-    background: var(--card-bg);
-    border: 1px solid var(--border-soft);
-    border-right: 4px solid var(--primary);
-    padding: 8px 14px;
-    border-radius: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-    flex-wrap: wrap;
-    gap: 8px;
+
+    padding: 10px;
+
   }
+
 
   .toolbar-text {
-    font-weight: 800;
-    color: var(--primary);
-    font-size: 0.88rem;
+
+    width: 100%;
+
   }
+
 
   .btn-group {
-    display: flex;
-    gap: 8px;
+
+    width: 100%;
+
   }
+
 
   .btn {
-    border: none;
-    padding: 6px 14px;
-    border-radius: 8px;
-    font-size: 0.84rem;
-    font-weight: 800;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    transition: all 0.2s ease;
-  }
 
-  .btn-print {
-    background: linear-gradient(
-      135deg,
-      var(--primary) 0%,
-      var(--primary-light) 100%
-    );
-    color: #ffffff;
-  }
-
-  .btn-ans {
-    background: #0f172a;
-    color: #ffffff;
-  }
-
-  .btn:hover {
-    transform: translateY(-1px);
-  }
-
-  /* Student Info */
-  .info-strip {
-    background: var(--card-bg);
-    border: 1px solid var(--border-soft);
-    border-radius: 10px;
-    padding: 10px 16px;
-    margin-bottom: 12px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 12px;
-  }
-
-  .info-field {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-weight: 700;
-    color: var(--text-muted);
-    font-size: 0.88rem;
-  }
-
-  .dot-line {
     flex: 1;
-    border-bottom: 2px dotted var(--border-card);
-    height: 14px;
+
+    min-width: 140px;
+
   }
 
-  /* Questions */
+
   .q-card {
-    background: var(--card-bg);
-    border: 1px solid #f1f5f9;
-    border-radius: 10px;
-    padding: 12px 16px;
-    margin-bottom: 9px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
-    border-right: 4px solid var(--primary);
-    page-break-inside: avoid;
+
+    padding:
+      14px 15px;
+
+    border-radius: 15px;
+
   }
 
-  .q-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 6px;
-    padding-bottom: 4px;
-    border-bottom: 1px solid #f8fafc;
-  }
-
-  .q-pill {
-    background: var(--badge-bg);
-    color: var(--primary);
-    border: 1px solid var(--border-card);
-    padding: 2px 10px;
-    border-radius: 14px;
-    font-size: 0.84rem;
-    font-weight: 800;
-  }
 
   .q-body {
-    font-size: 0.96rem;
-    color: var(--text-main);
-    line-height: 1.75;
+
+    font-size: 0.91rem;
+
   }
 
-  .q-body ol {
-    margin-right: 22px;
-    margin-top: 4px;
-  }
 
-  .q-body li {
-    margin-bottom: 4px;
-  }
-
-  /* MathJax */
-  .math-inline {
-    direction: ltr;
-    unicode-bidi: isolate;
-    display: inline-block;
-    vertical-align: middle;
-    margin: 0 3px;
-    color: #0f172a;
-    white-space: nowrap;
-  }
-
-  .math-block {
-    direction: ltr;
-    unicode-bidi: isolate;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 8px 0;
-    color: #0f172a;
-    text-align: center;
-  }
-
-  mjx-container {
-    direction: ltr !important;
-  }
-
-  .q-body mjx-container {
-    font-size: 105%;
-  }
-
-  /* Grid */
   .sub-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 8px;
-    margin-top: 6px;
-    direction: rtl;
+
+    grid-template-columns: 1fr;
+
   }
 
-  .sub-item {
-    background: var(--badge-bg);
-    padding: 6px 10px;
-    border-radius: 8px;
-    border: 1px solid var(--border-card);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.9rem;
-  }
 
-  .sub-circle {
-    width: 20px;
-    height: 20px;
-    background: var(--primary);
-    color: #ffffff;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.75rem;
-    font-weight: 800;
-    flex-shrink: 0;
-  }
-
-  /* Limits Table */
   .limits-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 8px;
-    margin-top: 6px;
+
+    border-spacing: 5px;
+
   }
+
 
   .lim-cell {
-    background: #fdf2f2;
-    border: 1px solid var(--border-card);
-    border-radius: 8px;
-    padding: 8px 12px;
+
     width: 50%;
-    vertical-align: middle;
+
+    padding:
+      7px 6px;
+
   }
+
 
   .lim-content {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 12px;
+
+    gap: 6px;
+
   }
 
-  .lim-num {
-    background: var(--primary);
-    color: #ffffff;
-    border-radius: 50%;
-    width: 22px;
-    height: 22px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.78rem;
-    font-weight: 800;
-    flex-shrink: 0;
-  }
 
   .lim-expr {
-    direction: ltr;
-    unicode-bidi: isolate;
-    font-family: 'Amiri', 'Times New Roman', serif;
-    font-weight: bold;
-    font-size: 1.05rem;
-    color: #0f172a;
-    display: inline-block;
+
+    font-size: 0.86rem;
+
   }
 
-  /* Answers */
-  #answer-section {
-    display: none;
-    margin-top: 18px;
-    background: #ffffff;
-    border: 2px solid var(--primary);
-    border-radius: 12px;
-    padding: 16px;
-    box-shadow: 0 4px 14px rgba(153, 27, 27, 0.08);
+
+  .lim-num {
+
+    width: 22px;
+
+    min-width: 22px;
+
+    height: 22px;
+
+    font-size: 0.68rem;
+
   }
 
-  .ans-title {
-    font-size: 1.15rem;
-    font-weight: 900;
-    color: var(--primary);
-    margin-bottom: 10px;
-    border-bottom: 2px solid var(--border-soft);
-    padding-bottom: 6px;
+}
+
+
+/* =========================================================
+   PRINT
+========================================================= */
+
+@media print {
+
+  @page {
+
+    size: A4;
+
+    margin:
+      8mm 9mm;
+
   }
 
-  .ans-box {
-    background: #fdf2f2;
-    border: 1px solid var(--border-card);
-    padding: 10px 14px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    font-size: 0.9rem;
-    line-height: 1.7;
+
+  body {
+
+    background:
+      #ffffff !important;
+
+    color:
+      #000000 !important;
+
+    padding:
+      0 !important;
+
   }
 
-  /* Print */
-  @media print {
-    @page {
-      size: A4;
-      margin: 8mm 10mm;
-    }
 
-    body {
-      background: #ffffff !important;
-      color: #000000 !important;
-      padding: 0 !important;
-    }
+  .top-glow {
 
-    .toolbar,
-    #answer-section,
-    .no-print {
-      display: none !important;
-    }
+    height: 3px;
 
-    .header-card {
-      background: none !important;
-      color: #000000 !important;
-      border-bottom: 2px solid #991b1b !important;
-      border-radius: 0 !important;
-      padding: 4px 0 8px 0 !important;
-      margin-bottom: 8px !important;
-      box-shadow: none !important;
-    }
+    margin-bottom: 5px;
 
-    .header-content h1 {
-      color: #000000 !important;
-      font-size: 1.25rem !important;
-    }
+    box-shadow: none;
 
-    .header-content p {
-      color: #333333 !important;
-    }
-
-    .logo-box {
-      background: transparent !important;
-      color: #991b1b !important;
-      border: 1.5px solid #991b1b !important;
-      font-size: 1.1rem !important;
-    }
-
-    .info-strip {
-      border: 1px solid #000000 !important;
-      border-radius: 4px !important;
-      padding: 6px 10px !important;
-      margin-bottom: 8px !important;
-    }
-
-    .q-card {
-      border: 1px solid #d1d5db !important;
-      border-right: 3.5px solid #991b1b !important;
-      box-shadow: none !important;
-      padding: 8px 12px !important;
-      margin-bottom: 6px !important;
-      page-break-inside: avoid;
-    }
   }
+
+
+  .toolbar,
+
+  #answer-section,
+
+  .no-print {
+
+    display:
+      none !important;
+
+  }
+
+
+  .header-card {
+
+    background:
+      #ffffff !important;
+
+    color:
+      #000000 !important;
+
+    border:
+      none !important;
+
+    border-bottom:
+      2px solid
+      #4c1d95 !important;
+
+    border-radius:
+      0 !important;
+
+    padding:
+      5px 0 8px 0 !important;
+
+    margin-bottom:
+      7px !important;
+
+    box-shadow:
+      none !important;
+
+  }
+
+
+  .header-card::before,
+
+  .header-card::after {
+
+    display:
+      none !important;
+
+  }
+
+
+  .header-content h1 {
+
+    color:
+      #000000 !important;
+
+    font-size:
+      1.25rem !important;
+
+  }
+
+
+  .header-content p {
+
+    color:
+      #475569 !important;
+
+  }
+
+
+  .logo-box {
+
+    background:
+      transparent !important;
+
+    color:
+      #4c1d95 !important;
+
+    border:
+      1px solid
+      #4c1d95 !important;
+
+    box-shadow:
+      none !important;
+
+  }
+
+
+  .info-strip {
+
+    border:
+      1px solid
+      #000000 !important;
+
+    border-radius:
+      4px !important;
+
+    padding:
+      5px 8px !important;
+
+    margin-bottom:
+      7px !important;
+
+    box-shadow:
+      none !important;
+
+  }
+
+
+  .q-card {
+
+    background:
+      #ffffff !important;
+
+    border:
+      1px solid
+      #cbd5e1 !important;
+
+    border-right:
+      3px solid
+      #4c1d95 !important;
+
+    box-shadow:
+      none !important;
+
+    border-radius:
+      5px !important;
+
+    padding:
+      7px 10px !important;
+
+    margin-bottom:
+      5px !important;
+
+    page-break-inside:
+      avoid;
+
+  }
+
+
+  .q-card:hover {
+
+    transform:
+      none !important;
+
+    box-shadow:
+      none !important;
+
+  }
+
+
+  .q-pill {
+
+    color:
+      #000000 !important;
+
+    background:
+      #ffffff !important;
+
+    border:
+      1px solid
+      #94a3b8 !important;
+
+    box-shadow:
+      none !important;
+
+  }
+
+
+  .sub-item,
+
+  .lim-cell {
+
+    background:
+      #ffffff !important;
+
+    box-shadow:
+      none !important;
+
+  }
+
+
+  .sub-circle,
+
+  .lim-num {
+
+    background:
+      #4c1d95 !important;
+
+    box-shadow:
+      none !important;
+
+  }
+
+
+  .q-body {
+
+    color:
+      #000000 !important;
+
+  }
+
+
+  .math-block {
+
+    overflow:
+      visible !important;
+
+  }
+
+
+  .footer {
+
+    display:
+      none !important;
+
+  }
+
+}
+
 </style>
+
 </head>
+
 
 <body>
 
+
 <div class="container">
 
-  <!-- Header -->
+
+  <!-- =====================================================
+       TOP GLOW
+  ====================================================== -->
+
+  <div class="top-glow"></div>
+
+
+
+  <!-- =====================================================
+       HEADER
+  ====================================================== -->
+
   <header class="header-card">
+
     <div class="header-content">
-      <h1>اختبار تحريري شامل في الرياضيات</h1>
-      <p>التابع الأسي والمعادلات التفاضلية - القسم العلمي</p>
+
+      <h1>
+        اختبار تحريري شامل في الرياضيات
+      </h1>
+
+      <p>
+        التابع الأسي والمعادلات التفاضلية - القسم العلمي
+      </p>
+
     </div>
-    <div class="logo-box">ammar</div>
+
+
+    <div class="logo-box">
+      ammar
+    </div>
+
   </header>
 
-  <!-- Toolbar -->
+
+
+  <!-- =====================================================
+       TOOLBAR
+  ====================================================== -->
+
   <div class="toolbar">
+
     <span class="toolbar-text">
-      اختبار تحريري شامل مضغوط (جاهز للحل والطباعة المباشرة)
+      اختبار تحريري شامل مضغوط - جاهز للحل والطباعة المباشرة
     </span>
 
+
     <div class="btn-group">
-      <button class="btn btn-ans" onclick="toggleAnswers()">
+
+      <button
+        class="btn btn-ans"
+        onclick="toggleAnswers()">
+
         👁️ إظهار / إخفاء الأجوبة النموذجية
+
       </button>
 
-      <button class="btn btn-print" onclick="window.print()">
-        🖨️ طباعة الأسئلة فقط (PDF)
+
+      <button
+        class="btn btn-print"
+        onclick="window.print()">
+
+        🖨️ طباعة الأسئلة فقط PDF
+
       </button>
+
     </div>
+
   </div>
 
-  <!-- Student Info -->
+
+
+  <!-- =====================================================
+       STUDENT INFO
+  ====================================================== -->
+
   <div class="info-strip">
-    <div class="info-field">
-      <span>اسم الطالب:</span>
-      <div class="dot-line"></div>
-    </div>
 
     <div class="info-field">
-      <span>الشعبة / القاعة:</span>
+
+      <span>
+        اسم الطالب:
+      </span>
+
       <div class="dot-line"></div>
+
     </div>
 
+
     <div class="info-field">
-      <span>الدرجة:</span>
+
+      <span>
+        الشعبة / القاعة:
+      </span>
+
       <div class="dot-line"></div>
+
     </div>
+
+
+    <div class="info-field">
+
+      <span>
+        الدرجة:
+      </span>
+
+      <div class="dot-line"></div>
+
+    </div>
+
   </div>
 
-  <!-- Q1 -->
+
+
+  <!-- =====================================================
+       Q1
+  ====================================================== -->
+
   <div class="q-card">
+
     <div class="q-header">
-      <span class="q-pill">السؤال الأول</span>
+
+      <span class="q-pill">
+        السؤال الأول
+      </span>
+
     </div>
+
 
     <div class="q-body">
+
       أثبت صحة المساواة الآتية:
 
       <div class="math-block">
+
         \[
         \frac{e^{-x}-e^{-2x}}
         {e^x+e^{-x}}
@@ -500,17 +1783,32 @@ window.MathJax = {
         \frac{e^x-1}
         {e^{2x}+1}
         \]
+
       </div>
+
     </div>
+
   </div>
 
-  <!-- Q2 -->
+
+
+  <!-- =====================================================
+       Q2
+  ====================================================== -->
+
   <div class="q-card">
+
     <div class="q-header">
-      <span class="q-pill">السؤال الثاني</span>
+
+      <span class="q-pill">
+        السؤال الثاني
+      </span>
+
     </div>
 
+
     <div class="q-body">
+
       ليكن التابع
       <span class="math-inline">\(f\)</span>
       معرفاً على
@@ -529,18 +1827,33 @@ window.MathJax = {
       <span class="math-inline">\(x=-1\)</span>
       مماساً أفقياً
       <span class="math-inline">\(T\)</span>
-      موازياً لمحور الفواصل معادلته
+      موازياً لمحور الفواصل معادلته:
+
       <span class="math-inline">\(y=-e\)</span>.
+
     </div>
+
   </div>
 
-  <!-- Q3 -->
+
+
+  <!-- =====================================================
+       Q3
+  ====================================================== -->
+
   <div class="q-card">
+
     <div class="q-header">
-      <span class="q-pill">السؤال الثالث</span>
+
+      <span class="q-pill">
+        السؤال الثالث
+      </span>
+
     </div>
 
+
     <div class="q-body">
+
       ليكن التابع
       <span class="math-inline">\(f\)</span>
       معرفاً على
@@ -548,125 +1861,228 @@ window.MathJax = {
       وفق:
 
       <div class="math-block">
+
         \[
-        f(x)=\frac{e^x}{e^x+1}
+        f(x)=
+        \frac{e^x}{e^x+1}
         \]
+
       </div>
+
 
       والمطلوب:
 
       <ol>
+
         <li>
+
           أوجد معادلة المماس
           <span class="math-inline">\(T\)</span>
           للخط البياني
           <span class="math-inline">\(C_f\)</span>
           في نقطة تقاطعه مع محور التراتيب.
+
         </li>
 
+
         <li>
+
           ادرس الوضع النسبي بين الخط البياني
           <span class="math-inline">\(C_f\)</span>
           والمماس
           <span class="math-inline">\(T\)</span>.
+
         </li>
+
       </ol>
+
     </div>
+
   </div>
 
-  <!-- Q4 -->
+
+
+  <!-- =====================================================
+       Q4
+  ====================================================== -->
+
   <div class="q-card">
+
     <div class="q-header">
-      <span class="q-pill">السؤال الرابع</span>
+
+      <span class="q-pill">
+        السؤال الرابع
+      </span>
+
     </div>
+
 
     <div class="q-body">
 
       <strong>1)</strong>
+
       حل في
       <span class="math-inline">\(\mathbb{R}\)</span>
       كلاً مما يأتي:
 
+
       <div class="sub-grid">
 
+
         <div class="sub-item">
-          <span class="sub-circle">أ</span>
+
+          <span class="sub-circle">
+            أ
+          </span>
+
           <span>
+
             المعادلة:
+
             <span class="math-inline">
               \(2e^{2x}-7e^x+3=0\)
             </span>
+
           </span>
+
         </div>
 
+
+
         <div class="sub-item">
-          <span class="sub-circle">ب</span>
+
+          <span class="sub-circle">
+            ب
+          </span>
+
           <span>
+
             المتراجحة:
+
             <span class="math-inline">
               \(2e^{2x}-7e^x+3\le0\)
             </span>
+
           </span>
+
         </div>
 
+
+
         <div class="sub-item">
-          <span class="sub-circle">ج</span>
-          <span>
-            المعادلة:
-            <span class="math-inline">
-              \(\frac{e^x-1}{e^x-4}=-2\)
-            </span>
+
+          <span class="sub-circle">
+            ج
           </span>
+
+          <span>
+
+            المعادلة:
+
+            <span class="math-inline">
+              \(\displaystyle
+              \frac{e^x-1}{e^x-4}=-2
+              \)
+            </span>
+
+          </span>
+
         </div>
+
 
       </div>
 
+
       <strong>2)</strong>
+
       حل في
       <span class="math-inline">\(\mathbb{R}\)</span>
       المعادلات والمتراجحات الآتية:
 
+
       <div class="sub-grid">
 
+
         <div class="sub-item">
-          <span class="sub-circle">1</span>
+
+          <span class="sub-circle">
+            1
+          </span>
+
           <span class="math-inline">
             \(2^{3x+1}=32\)
           </span>
+
         </div>
 
+
+
         <div class="sub-item">
-          <span class="sub-circle">2</span>
+
+          <span class="sub-circle">
+            2
+          </span>
+
           <span class="math-inline">
             \(49^x-6\times7^x+5=0\)
           </span>
+
         </div>
 
+
+
         <div class="sub-item">
-          <span class="sub-circle">3</span>
+
+          <span class="sub-circle">
+            3
+          </span>
+
           <span class="math-inline">
             \(\left(\frac13\right)^x>2\)
           </span>
+
         </div>
 
+
+
         <div class="sub-item">
-          <span class="sub-circle">4</span>
+
+          <span class="sub-circle">
+            4
+          </span>
+
           <span class="math-inline">
             \(5^{x+1}=2^x\)
           </span>
+
         </div>
 
+
       </div>
+
     </div>
+
   </div>
 
-  <!-- Q5 -->
+
+
+  <!-- =====================================================
+       Q5
+  ====================================================== -->
+
   <div class="q-card">
+
     <div class="q-header">
-      <span class="q-pill">السؤال الخامس</span>
+
+      <span class="q-pill">
+        السؤال الخامس
+      </span>
+
     </div>
 
+
     <div class="q-body">
+
       ليكن التابع
       <span class="math-inline">\(f\)</span>
       معرفاً على
@@ -674,40 +2090,71 @@ window.MathJax = {
       وفق:
 
       <div class="math-block">
+
         \[
-        f(x)=x+3+\frac{x-1}{4e^x}
+        f(x)
+        =
+        x+3+
+        \frac{x-1}{4e^x}
         \]
+
       </div>
+
 
       وليكن
       <span class="math-inline">\(C_f\)</span>
       خطه البياني، والمطلوب:
 
+
       <ol>
+
         <li>
+
           أثبت أن المستقيم
-          <span class="math-inline">\(\Delta:y=x+3\)</span>
+
+          <span class="math-inline">
+            \(\Delta:y=x+3\)
+          </span>
+
           مقارب مائل للخط
           <span class="math-inline">\(C_f\)</span>
           في جوار
-          <span class="math-inline">\( +\infty \)</span>.
+          <span class="math-inline">\(+\infty\)</span>.
+
         </li>
 
+
         <li>
+
           ادرس الوضع النسبي بين الخط البياني
           <span class="math-inline">\(C_f\)</span>
           والمستقيم المقارب
           <span class="math-inline">\(\Delta\)</span>.
+
         </li>
+
       </ol>
+
     </div>
+
   </div>
 
-  <!-- Q6 -->
+
+
+  <!-- =====================================================
+       Q6
+  ====================================================== -->
+
   <div class="q-card">
+
     <div class="q-header">
-      <span class="q-pill">السؤال السادس</span>
+
+      <span class="q-pill">
+        السؤال السادس
+      </span>
+
     </div>
+
 
     <div class="q-body">
 
@@ -719,40 +2166,62 @@ window.MathJax = {
 
       <span class="math-inline">
         \(f(x)=1+e^{-x}\)
-      </span>،
+      </span>
 
-      وليكن
+      ، وليكن
       <span class="math-inline">\(C_f\)</span>
       خطه البياني.
 
+
       <ol>
+
         <li>
+
           ادرس الوضع النسبي بين الخط
           <span class="math-inline">\(C_f\)</span>
           والمقارب الأفقي له.
+
         </li>
 
+
         <li>
+
           أوجد معادلة المماس
           <span class="math-inline">\(T\)</span>
           للخط
           <span class="math-inline">\(C_f\)</span>
           في النقطة التي فاصلتها
           <span class="math-inline">\(x=0\)</span>،
+
           ثم ادرس الوضع النسبي بين الخط
           <span class="math-inline">\(C_f\)</span>
           والمماس
           <span class="math-inline">\(T\)</span>.
+
         </li>
+
       </ol>
+
     </div>
+
   </div>
 
-  <!-- Q7 -->
+
+
+  <!-- =====================================================
+       Q7
+  ====================================================== -->
+
   <div class="q-card">
+
     <div class="q-header">
-      <span class="q-pill">السؤال السابع</span>
+
+      <span class="q-pill">
+        السؤال السابع
+      </span>
+
     </div>
+
 
     <div class="q-body">
 
@@ -763,62 +2232,116 @@ window.MathJax = {
       وفق:
 
       <div class="math-block">
+
         \[
-        f(x)=x+\ln(4+e^{-x})
+        f(x)
+        =
+        x+\ln(4+e^{-x})
         \]
+
       </div>
+
 
       والمطلوب:
 
+
       <ol>
 
-        <li>
-          احسب:
-          <span class="math-inline">
-            \(\displaystyle\lim_{x\to-\infty}f(x)\)
-          </span>
-          وفسّر النتيجة هندسياً.
-        </li>
 
         <li>
+
+          احسب:
+
+          <span class="math-inline">
+
+            \[
+            \displaystyle
+            \lim_{x\to-\infty}f(x)
+            \]
+
+          </span>
+
+          وفسّر النتيجة هندسياً.
+
+        </li>
+
+
+
+        <li>
+
           أثبت أنه أياً كان
-          <span class="math-inline">\(x\in\mathbb{R}\)</span>
+
+          <span class="math-inline">
+            \(x\in\mathbb{R}\)
+          </span>
+
           فإن:
 
           <span class="math-inline">
-            \(f(x)=\ln(4e^x+1)\)
+
+            \[
+            f(x)=\ln(4e^x+1)
+            \]
+
           </span>
 
           وفسر النتيجة هندسياً.
+
         </li>
 
+
+
         <li>
+
           عيّن معادلة المقارب المائل
           <span class="math-inline">\(\Delta\)</span>
+
           وادرس الوضع النسبي بين الخط البياني
           <span class="math-inline">\(C_f\)</span>
+
           والمقارب
           <span class="math-inline">\(\Delta\)</span>.
+
         </li>
+
+
 
         <li>
+
           ادرس تغيرات التابع
           <span class="math-inline">\(f\)</span>
+
           ونظم جدولاً بها وارسم كلاً من الخط
           <span class="math-inline">\(C_f\)</span>
+
           والمقارب
           <span class="math-inline">\(\Delta\)</span>.
+
         </li>
 
+
       </ol>
+
     </div>
+
   </div>
 
-  <!-- Q8 -->
+
+
+  <!-- =====================================================
+       Q8
+  ====================================================== -->
+
   <div class="q-card">
+
     <div class="q-header">
-      <span class="q-pill">السؤال الثامن</span>
+
+      <span class="q-pill">
+        السؤال الثامن
+      </span>
+
     </div>
+
 
     <div class="q-body">
 
@@ -829,56 +2352,105 @@ window.MathJax = {
       وفق:
 
       <div class="math-block">
+
         \[
-        f(x)=\frac12(e^x-e^{-x})
+        f(x)
+        =
+        \frac12
+        \left(
+        e^x-e^{-x}
+        \right)
         \]
+
       </div>
+
 
       والمطلوب:
 
+
       <ol>
 
+
         <li>
+
           أثبت أن التابع
           <span class="math-inline">\(f\)</span>
           فردي، وادرس تغيرات التابع
           <span class="math-inline">\(f\)</span>
           ونظم جدولاً بها.
+
         </li>
 
+
+
         <li>
+
           أثبت أن للمعادلة
-          <span class="math-inline">\(f(x)=m\)</span>
+
+          <span class="math-inline">
+            \(f(x)=m\)
+          </span>
+
           حلاً وحيداً مهما تكن
-          <span class="math-inline">\(m\in\mathbb{R}\)</span>
+
+          <span class="math-inline">
+            \(m\in\mathbb{R}\)
+          </span>
+
           يعطى بالعلاقة:
 
           <span class="math-inline">
+
             \[
-            x=\ln\left(m+\sqrt{m^2+1}\right)
+            x=
+            \ln
+            \left(
+            m+\sqrt{m^2+1}
+            \right)
             \]
+
           </span>
+
         </li>
 
+
+
         <li>
+
           اكتب معادلة المماس
           <span class="math-inline">\(T\)</span>
           للخط البياني عند المبدأ
           <span class="math-inline">\(O\)</span>،
+
           ثم ارسم كلاً من المماس
           <span class="math-inline">\(T\)</span>
           والخط البياني.
+
         </li>
 
+
       </ol>
+
     </div>
+
   </div>
 
-  <!-- Q9 -->
+
+
+  <!-- =====================================================
+       Q9
+  ====================================================== -->
+
   <div class="q-card">
+
     <div class="q-header">
-      <span class="q-pill">السؤال التاسع</span>
+
+      <span class="q-pill">
+        السؤال التاسع
+      </span>
+
     </div>
+
 
     <div class="q-body">
 
@@ -887,61 +2459,101 @@ window.MathJax = {
       حدودياً من الدرجة الثانية بحيث يكون حلاً للمعادلة التفاضلية:
 
       <div class="math-block">
+
         \[
         -y+2y'=x^2+3
         \]
+
       </div>
+
 
       ثم ادرس الوضع النسبي بين خطه البياني ومحور الفواصل.
 
     </div>
+
   </div>
 
-  <!-- Q10 -->
+
+
+  <!-- =====================================================
+       Q10
+  ====================================================== -->
+
   <div class="q-card">
+
     <div class="q-header">
-      <span class="q-pill">السؤال العاشر</span>
+
+      <span class="q-pill">
+        السؤال العاشر
+      </span>
+
     </div>
+
 
     <div class="q-body">
 
       حل المعادلة التفاضلية الآتية:
 
       <div class="math-block">
+
         \[
         y'-2y=-6
         \]
+
       </div>
 
+
       علماً بأن المخطط البياني للحل يمر بالنقطة
+
       <span class="math-inline">
         \(A(\ln2,-5)\)
       </span>.
 
     </div>
+
   </div>
 
-  <!-- Q11 -->
+
+
+  <!-- =====================================================
+       Q11
+  ====================================================== -->
+
   <div class="q-card">
+
     <div class="q-header">
-      <span class="q-pill">السؤال الحادي عشر (مسألة دورة 2024)</span>
+
+      <span class="q-pill">
+        السؤال الحادي عشر - مسألة دورة 2024
+      </span>
+
     </div>
+
 
     <div class="q-body">
 
       لتكن المعادلة التفاضلية:
 
       <span class="math-inline">
-        \((E):y'+3y=\frac92e^{-2x}\)
+        \[
+        (E):
+        y'+3y=
+        \frac92e^{-2x}
+        \]
       </span>
 
       ، والمعادلة التفاضلية:
 
       <span class="math-inline">
-        \((E'):y'+3y=0\)
+        \[
+        (E'):
+        y'+3y=0
+        \]
       </span>.
 
+
       <br>
+
 
       نفرض لدينا التابع
       <span class="math-inline">\(g\)</span>
@@ -957,23 +2569,34 @@ window.MathJax = {
       <span class="math-inline">\(\lambda\)</span>
       عدد حقيقي.
 
+
       <ol>
 
+
         <li>
+
           عيّن قيمة الثابت الحقيقي
           <span class="math-inline">\(\lambda\)</span>
           حتى يكون التابع
           <span class="math-inline">\(g\)</span>
           حلاً للمعادلة التفاضلية
           <span class="math-inline">\((E)\)</span>.
+
         </li>
 
+
+
         <li>
+
           حل المعادلة التفاضلية
           <span class="math-inline">\((E')\)</span>.
+
         </li>
 
+
+
         <li>
+
           أثبت أن تابعاً
           <span class="math-inline">\(f\)</span>
           يكون حلاً للمعادلة
@@ -982,19 +2605,35 @@ window.MathJax = {
           <span class="math-inline">\(f-g\)</span>
           حلاً للمعادلة
           <span class="math-inline">\((E')\)</span>،
+
           ثم استنتج مجموعة حلول المعادلة
           <span class="math-inline">\((E)\)</span>.
+
         </li>
 
+
       </ol>
+
     </div>
+
   </div>
 
-  <!-- Q12 -->
+
+
+  <!-- =====================================================
+       Q12
+  ====================================================== -->
+
   <div class="q-card">
+
     <div class="q-header">
-      <span class="q-pill">السؤال الثاني عشر</span>
+
+      <span class="q-pill">
+        السؤال الثاني عشر
+      </span>
+
     </div>
+
 
     <div class="q-body">
 
@@ -1005,327 +2644,783 @@ window.MathJax = {
       وفق:
 
       <div class="math-block">
+
         \[
-        f(x)=\frac{(x+1)^2}{e^x}
+        f(x)
+        =
+        \frac{(x+1)^2}{e^x}
         \]
+
       </div>
+
 
       والمطلوب:
 
+
       <ol>
 
+
         <li>
+
           احسب نهايات التابع
           <span class="math-inline">\(f\)</span>
           عند
-          <span class="math-inline">\( +\infty \)</span>
+          <span class="math-inline">\(+\infty\)</span>
           و
-          <span class="math-inline">\( -\infty \)</span>.
+          <span class="math-inline">\(-\infty\)</span>.
+
         </li>
 
+
+
         <li>
+
           أثبت أنه أياً كانت
-          <span class="math-inline">\(x\in\mathbb{R}\)</span>
+          <span class="math-inline">
+            \(x\in\mathbb{R}\)
+          </span>
+
           فإن المشتق:
 
           <span class="math-inline">
+
             \[
-            f'(x)=\frac{1-x^2}{e^x}
+            f'(x)
+            =
+            \frac{1-x^2}{e^x}
             \]
+
           </span>
+
         </li>
 
+
+
         <li>
+
           ادرس تغيرات التابع
           <span class="math-inline">\(f\)</span>
           ونظم جدولاً بها ودلّ على القيم الكبرى والصغرى محلياً،
+
           ثم ارسم الخط البياني.
+
         </li>
 
+
       </ol>
+
     </div>
+
   </div>
 
-  <!-- Q13 -->
+
+
+  <!-- =====================================================
+       Q13 - LIMITS
+  ====================================================== -->
+
   <div class="q-card">
 
     <div class="q-header">
-      <span class="q-pill">السؤال الثالث عشر</span>
+
+      <span class="q-pill">
+        السؤال الثالث عشر
+      </span>
+
     </div>
+
 
     <div class="q-body">
 
       احسب كلاً من النهايات الآتية مبيناً خطوات الحل بالتفصيل:
 
+
       <table class="limits-table">
+
 
         <tr>
 
+
           <td class="lim-cell">
+
             <div class="lim-content">
-              <span class="lim-num">1</span>
+
+              <span class="lim-num">
+                1
+              </span>
 
               <span class="lim-expr">
+
                 \[
                 \displaystyle
                 \lim_{x\to-\infty}
                 (x+2)^2e^x
                 \]
+
               </span>
+
             </div>
+
           </td>
 
+
+
           <td class="lim-cell">
+
             <div class="lim-content">
-              <span class="lim-num">2</span>
+
+              <span class="lim-num">
+                2
+              </span>
 
               <span class="lim-expr">
+
                 \[
                 \displaystyle
                 \lim_{x\to+\infty}
-                \left(e^{3x}-2e^x+1\right)
+                \left(
+                e^{3x}-2e^x+1
+                \right)
                 \]
+
               </span>
+
             </div>
+
           </td>
+
 
         </tr>
 
+
+
         <tr>
 
+
           <td class="lim-cell">
+
             <div class="lim-content">
-              <span class="lim-num">3</span>
+
+              <span class="lim-num">
+                3
+              </span>
 
               <span class="lim-expr">
+
                 \[
                 \displaystyle
                 \lim_{x\to0}
                 \frac{e^{7x}-1}{3x}
                 \]
+
               </span>
+
             </div>
+
           </td>
 
+
+
           <td class="lim-cell">
+
             <div class="lim-content">
-              <span class="lim-num">4</span>
+
+              <span class="lim-num">
+                4
+              </span>
 
               <span class="lim-expr">
+
                 \[
                 \displaystyle
                 \lim_{x\to+\infty}
                 \frac{e^x}{(x+1)^2}
                 \]
+
               </span>
+
             </div>
+
           </td>
+
 
         </tr>
 
+
+
         <tr>
 
+
           <td class="lim-cell">
+
             <div class="lim-content">
-              <span class="lim-num">5</span>
+
+              <span class="lim-num">
+                5
+              </span>
 
               <span class="lim-expr">
+
                 \[
                 \displaystyle
                 \lim_{x\to-\infty}
-                3x\left(e^{5/x}-1\right)
+                3x
+                \left(
+                e^{5/x}-1
+                \right)
                 \]
+
               </span>
+
             </div>
+
           </td>
 
+
+
           <td class="lim-cell">
+
             <div class="lim-content">
-              <span class="lim-num">6</span>
+
+              <span class="lim-num">
+                6
+              </span>
 
               <span class="lim-expr">
+
                 \[
                 \displaystyle
                 \lim_{x\to+\infty}
-                \left(1+\frac5x\right)^{3x}
+                \left(
+                1+\frac5x
+                \right)^{3x}
                 \]
+
               </span>
+
             </div>
+
           </td>
+
 
         </tr>
 
+
+
         <tr>
 
+
           <td class="lim-cell">
+
             <div class="lim-content">
-              <span class="lim-num">7</span>
+
+              <span class="lim-num">
+                7
+              </span>
 
               <span class="lim-expr">
+
                 \[
                 \displaystyle
                 \lim_{x\to4}
                 (5-x)^{\frac3{4-x}}
                 \]
+
               </span>
+
             </div>
+
           </td>
 
+
+
           <td class="lim-cell">
+
             <div class="lim-content">
-              <span class="lim-num">8</span>
+
+              <span class="lim-num">
+                8
+              </span>
 
               <span class="lim-expr">
+
                 \[
                 \displaystyle
                 \lim_{x\to+\infty}
-                \left(\frac{x+4}{x+2}\right)^{2x}
+                \left(
+                \frac{x+4}{x+2}
+                \right)^{2x}
                 \]
+
               </span>
+
             </div>
+
           </td>
 
+
         </tr>
+
+
 
         <tr>
 
+
           <td class="lim-cell">
+
             <div class="lim-content">
-              <span class="lim-num">9</span>
+
+              <span class="lim-num">
+                9
+              </span>
 
               <span class="lim-expr">
+
                 \[
                 \displaystyle
                 \lim_{x\to0}
-                \frac{e^{2x}-1}{\ln(1+3x)}
+                \frac{e^{2x}-1}
+                {\ln(1+3x)}
                 \]
+
               </span>
+
             </div>
+
           </td>
 
+
+
           <td class="lim-cell">
+
             <div class="lim-content">
-              <span class="lim-num">10</span>
+
+              <span class="lim-num">
+                10
+              </span>
 
               <span class="lim-expr">
+
                 \[
                 \displaystyle
                 \lim_{x\to-\infty}
-                \left(e^{-x}+x-2\right)
+                \left(
+                e^{-x}+x-2
+                \right)
                 \]
+
               </span>
+
             </div>
+
           </td>
 
+
         </tr>
+
 
       </table>
 
     </div>
+
   </div>
 
-  <!-- Answers -->
+
+
+  <!-- =====================================================
+       Q14 - NEW PROBLEM FROM IMAGE
+  ====================================================== -->
+
+  <div class="q-card">
+
+    <div class="q-header">
+
+      <span class="q-pill">
+        المسألة الرابعة عشرة
+      </span>
+
+    </div>
+
+
+    <div class="q-body">
+
+      لتكن الدالتان
+      <span class="math-inline">\(f\)</span>
+      و
+      <span class="math-inline">\(g\)</span>
+      معرفتين على
+      <span class="math-inline">\(\mathbb{R}\)</span>
+      وفق:
+
+
+      <div class="math-block">
+
+        \[
+        f(x)
+        =
+        x+1+
+        \frac{x}{e^x}
+        \qquad
+        \text{و}
+        \qquad
+        g(x)
+        =
+        1-x+e^x
+        \]
+
+      </div>
+
+
+      والمطلوب:
+
+
+      <ol>
+
+
+        <li>
+
+          ادرس إشارة التابع
+          <span class="math-inline">\(g\)</span>
+          واستنتج أن:
+
+          <span class="math-inline">
+            \(g(x)>0\)
+          </span>
+
+          أياً كان
+          <span class="math-inline">
+            \(x\in\mathbb{R}\)
+          </span>.
+
+        </li>
+
+
+
+        <li>
+
+          أثبت أنه أياً كان
+          <span class="math-inline">
+            \(x\in\mathbb{R}\)
+          </span>
+          فإن:
+
+          <span class="math-inline">
+
+            \[
+            f'(x)
+            =
+            e^{-x}g(x)
+            \]
+
+          </span>
+
+          واستنتج أن
+          <span class="math-inline">\(f\)</span>
+          متزايد تماماً.
+
+        </li>
+
+
+
+        <li>
+
+          ادرس تغيرات
+          <span class="math-inline">\(f\)</span>
+          ونظّم جدولاً بها.
+
+        </li>
+
+
+
+        <li>
+
+          أثبت أن المستقيم
+
+          <span class="math-inline">
+            \(\Delta:y=x+1\)
+          </span>
+
+          مقارب مائل للخط البياني
+          <span class="math-inline">\(C_f\)</span>
+          بجوار
+          <span class="math-inline">\(+\infty\)</span>،
+
+          وادرس الوضع النسبي بين
+          <span class="math-inline">\(C_f\)</span>
+          و
+          <span class="math-inline">\(\Delta\)</span>.
+
+        </li>
+
+
+
+        <li>
+
+          أثبت أن المستقيم
+          <span class="math-inline">\(d\)</span>
+          الذي معادلته:
+
+          <span class="math-inline">
+            \(y=2x+1\)
+          </span>
+
+          مماس للخط البياني
+          <span class="math-inline">\(C_f\)</span>
+          في النقطة التي فاصلتها
+          <span class="math-inline">\(0\)</span>،
+
+          وادرس الوضع النسبي بين
+          <span class="math-inline">\(C_f\)</span>
+          و
+          <span class="math-inline">\(d\)</span>.
+
+        </li>
+
+
+
+        <li>
+
+          ارسم
+          <span class="math-inline">\(C_f\)</span>
+          و
+          <span class="math-inline">\(d\)</span>
+          و
+          <span class="math-inline">\(\Delta\)</span>
+          في معلم متعامد.
+
+        </li>
+
+
+      </ol>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- =====================================================
+       ANSWERS SECTION
+  ====================================================== -->
+
   <div id="answer-section">
 
+
     <div class="ans-title">
+
       📋 الأجوبة والحلول النموذجية المختصرة
+
     </div>
+
+
 
     <div class="ans-box">
 
-      <strong>حل السؤال الثالث عشر (النهايات التحريرية):</strong>
+      <strong>
+        حل السؤال الثالث عشر - النهايات التحريرية:
+      </strong>
 
-      <br>
+      <br><br>
 
-      1)
-      \(\;0\;\)
-      (مبرهنة التزايد المقارن عند
-      \(-\infty\))
 
-      &nbsp;|&nbsp;
+      <strong>1)</strong>
 
-      2)
-      \(\;+∞\;\)
-      (سحب العامل المسيطر
-      \(e^{3x}\))
+      \[
+      0
+      \]
 
-      <br>
+      مبرهنة التزايد المقارن عند
+      <span class="math-inline">\(-\infty\)</span>.
 
-      3)
-      \(\;\frac73\;\)
-      (نهاية مشتقة شهيرة عند الصفر)
+      &nbsp; | &nbsp;
 
-      &nbsp;|&nbsp;
 
-      4)
-      \(\;+∞\;\)
-      (تزايد مقارن عند
-      \(+\infty\))
+      <strong>2)</strong>
 
-      <br>
+      \[
+      +\infty
+      \]
 
-      5)
-      \(15\)
-      (تغيير المتحول
-      \(t=\frac5x\))
+      سحب العامل المسيطر
+      <span class="math-inline">\(e^{3x}\)</span>.
 
-      &nbsp;|&nbsp;
+      <br><br>
 
-      6)
-      \(e^{15}\)
-      (النهاية النيبيرية الشهيرة)
 
-      <br>
+      <strong>3)</strong>
 
-      7)
-      \(e^3\)
-      (نهاية نيبيرية عند
-      \(x\to4\))
+      \[
+      \frac73
+      \]
 
-      &nbsp;|&nbsp;
+      نهاية مشتقة شهيرة عند الصفر.
 
-      8)
-      \(e^4\)
+      &nbsp; | &nbsp;
 
-      &nbsp;|&nbsp;
 
-      9)
-      \(\frac23\)
-      (نهاية مركبة)
+      <strong>4)</strong>
 
-      <br>
+      \[
+      +\infty
+      \]
 
-      10)
-      \(+\infty\)
-      (\(e^{-x}\) أسرع نمواً من \(x\) عند
-      \(-\infty\)).
+      تزايد مقارن عند
+      <span class="math-inline">\( +\infty \)</span>.
+
+      <br><br>
+
+
+      <strong>5)</strong>
+
+      \[
+      15
+      \]
+
+      تغيير المتحول:
+
+      \[
+      t=\frac5x
+      \]
+
+      &nbsp; | &nbsp;
+
+
+      <strong>6)</strong>
+
+      \[
+      e^{15}
+      \]
+
+      النهاية النيبيرية الشهيرة.
+
+      <br><br>
+
+
+      <strong>7)</strong>
+
+      \[
+      e^3
+      \]
+
+      نهاية نيبيرية عند
+      <span class="math-inline">\(x\to4\)</span>.
+
+      &nbsp; | &nbsp;
+
+
+      <strong>8)</strong>
+
+      \[
+      e^4
+      \]
+
+      &nbsp; | &nbsp;
+
+
+      <strong>9)</strong>
+
+      \[
+      \frac23
+      \]
+
+      نهاية مركبة.
+
+      <br><br>
+
+
+      <strong>10)</strong>
+
+      \[
+      +\infty
+      \]
+
+      لأن
+      <span class="math-inline">\(e^{-x}\)</span>
+      أسرع نمواً من
+      <span class="math-inline">\(x\)</span>
+      عند
+      <span class="math-inline">\(-\infty\)</span>.
 
     </div>
 
+
   </div>
+
+
+
+  <!-- =====================================================
+       FOOTER
+  ====================================================== -->
+
+  <div class="footer">
+
+    اختبار الرياضيات
+    <span>•</span>
+    التابع الأسي والمعادلات التفاضلية
+    <span>•</span>
+    ammar
+
+  </div>
+
 
 </div>
 
-<script>
-function toggleAnswers() {
-  var ans = document.getElementById('answer-section');
 
-  if (ans.style.display === 'block') {
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+
+function toggleAnswers() {
+
+  var ans =
+    document.getElementById(
+      'answer-section'
+    );
+
+
+  if (
+    ans.style.display === 'block'
+  ) {
+
     ans.style.display = 'none';
-  } else {
+
+  }
+
+  else {
+
     ans.style.display = 'block';
 
+
     ans.scrollIntoView({
-      behavior: 'smooth'
+
+      behavior: 'smooth',
+
+      block: 'start'
+
     });
 
-    // إعادة تصيير الرياضيات بعد إظهار الأجوبة
-    if (window.MathJax) {
+
+    if (
+      window.MathJax &&
+      MathJax.typesetPromise
+    ) {
+
       MathJax.typesetPromise([ans]);
+
     }
+
   }
+
 }
+
+
 </script>
 
+
 </body>
+
 </html>
