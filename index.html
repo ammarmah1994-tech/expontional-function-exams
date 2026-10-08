@@ -6,13 +6,12 @@
 <title>اختبار الرياضيات: التابع الأسي والتفاضلية - ammar</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Amiri:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&family=Amiri:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
 <style>
   :root {
     --primary: #991b1b;
     --primary-dark: #6b1111;
     --primary-light: #dc2626;
-    --accent: #2563eb;
     --bg-page: #f8fafc;
     --card-bg: #ffffff;
     --border-card: #fecaca;
@@ -20,7 +19,6 @@
     --text-main: #0f172a;
     --text-muted: #475569;
     --badge-bg: #fef2f2;
-    --shadow-sm: 0 2px 8px rgba(153, 27, 27, 0.05);
   }
 
   * {
@@ -32,199 +30,181 @@
   body {
     background-color: var(--bg-page);
     color: var(--text-main);
-    font-family: 'Cairo', system-ui, -apple-system, sans-serif;
-    line-height: 1.9;
-    padding: 24px 14px;
+    font-family: 'Cairo', system-ui, sans-serif;
+    line-height: 1.6;
+    padding: 12px 10px;
     -webkit-font-smoothing: antialiased;
   }
 
   .container {
-    max-width: 950px;
+    max-width: 920px;
     margin: 0 auto;
   }
 
-  /* Header Section */
+  /* Compact Header */
   .header-card {
     background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 55%, var(--primary-light) 100%);
     color: #ffffff;
-    padding: 24px 30px;
-    border-radius: 18px;
+    padding: 14px 20px;
+    border-radius: 12px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 12px 28px -6px rgba(153, 27, 27, 0.4);
-    margin-bottom: 22px;
+    box-shadow: 0 6px 16px -4px rgba(153, 27, 27, 0.35);
+    margin-bottom: 10px;
     border: 1px solid rgba(255, 255, 255, 0.2);
   }
 
   .header-content h1 {
-    font-size: 1.65rem;
+    font-size: 1.35rem;
     font-weight: 900;
-    margin-bottom: 4px;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    margin-bottom: 2px;
   }
 
   .header-content p {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     color: #fecaca;
     font-weight: 600;
   }
 
   .logo-box {
     background: rgba(255, 255, 255, 0.2);
-    border: 2px solid rgba(255, 255, 255, 0.45);
-    backdrop-filter: blur(10px);
-    padding: 8px 24px;
-    border-radius: 40px;
-    font-size: 1.4rem;
+    border: 1.5px solid rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(8px);
+    padding: 5px 18px;
+    border-radius: 30px;
+    font-size: 1.2rem;
     font-weight: 900;
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
     color: #ffffff;
   }
 
-  /* Toolbar */
+  /* Compact Toolbar */
   .toolbar {
     background: var(--card-bg);
     border: 1px solid var(--border-soft);
-    border-right: 5px solid var(--primary);
-    padding: 12px 20px;
-    border-radius: 14px;
+    border-right: 4px solid var(--primary);
+    padding: 8px 14px;
+    border-radius: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 22px;
+    margin-bottom: 10px;
     flex-wrap: wrap;
-    gap: 12px;
-    box-shadow: var(--shadow-sm);
+    gap: 8px;
   }
 
   .toolbar-text {
     font-weight: 800;
     color: var(--primary);
-    font-size: 0.95rem;
+    font-size: 0.88rem;
   }
 
   .btn-group {
     display: flex;
-    gap: 10px;
+    gap: 8px;
   }
 
   .btn {
     border: none;
-    padding: 9px 20px;
-    border-radius: 10px;
-    font-size: 0.92rem;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 0.84rem;
     font-weight: 800;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     transition: all 0.2s ease;
   }
 
   .btn-print {
     background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
     color: #ffffff;
-    box-shadow: 0 4px 14px rgba(185, 28, 28, 0.25);
   }
 
   .btn-ans {
     background: #0f172a;
     color: #ffffff;
-    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
   }
 
   .btn:hover {
-    transform: translateY(-2px);
+    transform: translateY(-1px);
   }
 
-  /* Info Strip */
+  /* Compact Info Strip */
   .info-strip {
     background: var(--card-bg);
     border: 1px solid var(--border-soft);
-    border-radius: 14px;
-    padding: 16px 24px;
-    margin-bottom: 26px;
+    border-radius: 10px;
+    padding: 10px 16px;
+    margin-bottom: 12px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    box-shadow: var(--shadow-sm);
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
   }
 
   .info-field {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     font-weight: 700;
     color: var(--text-muted);
-    font-size: 0.95rem;
+    font-size: 0.88rem;
   }
 
   .dot-line {
     flex: 1;
     border-bottom: 2px dotted var(--border-card);
-    height: 18px;
+    height: 14px;
   }
 
-  /* Section Titles */
-  .section-title {
-    font-size: 1.25rem;
-    font-weight: 900;
-    color: var(--primary);
-    margin: 30px 0 16px 0;
-    padding-right: 14px;
-    border-right: 5px solid var(--primary);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  /* Question Cards */
+  /* Compact Question Cards */
   .q-card {
     background: var(--card-bg);
     border: 1px solid #f1f5f9;
-    border-radius: 14px;
-    padding: 22px 26px;
-    margin-bottom: 18px;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.03);
-    border-right: 4.5px solid var(--primary);
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-bottom: 9px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+    border-right: 4px solid var(--primary);
     page-break-inside: avoid;
   }
 
   .q-header {
     display: flex;
     align-items: center;
-    margin-bottom: 12px;
-    padding-bottom: 8px;
+    margin-bottom: 6px;
+    padding-bottom: 4px;
     border-bottom: 1px solid #f8fafc;
   }
 
   .q-pill {
     background: var(--badge-bg);
     color: var(--primary);
-    border: 1.5px solid var(--border-card);
-    padding: 3px 14px;
-    border-radius: 20px;
-    font-size: 0.92rem;
+    border: 1px solid var(--border-card);
+    padding: 2px 10px;
+    border-radius: 14px;
+    font-size: 0.84rem;
     font-weight: 800;
   }
 
   .q-body {
-    font-size: 1.05rem;
+    font-size: 0.96rem;
     color: var(--text-main);
-    line-height: 2.1;
+    line-height: 1.75;
   }
 
   .q-body ol {
-    margin-right: 28px;
-    margin-top: 10px;
+    margin-right: 22px;
+    margin-top: 4px;
   }
 
   .q-body li {
-    margin-bottom: 8px;
+    margin-bottom: 4px;
   }
 
-  /* Pure Math Engine (Strictly isolated LTR) */
+  /* Mathematics Engine */
   .math-inline {
     direction: ltr !important;
     unicode-bidi: isolate !important;
@@ -233,8 +213,8 @@
     vertical-align: middle;
     font-family: 'Amiri', 'Times New Roman', serif;
     font-weight: bold;
-    font-size: 1.15rem;
-    margin: 0 4px;
+    font-size: 1.08rem;
+    margin: 0 3px;
     white-space: nowrap;
     color: #0f172a;
   }
@@ -245,9 +225,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 8px;
-    margin: 14px 0;
-    font-size: 1.22rem;
+    gap: 6px;
+    margin: 6px 0;
+    font-size: 1.12rem;
     font-family: 'Amiri', 'Times New Roman', serif;
     font-weight: bold;
     flex-wrap: wrap;
@@ -261,22 +241,22 @@
     flex-direction: column;
     vertical-align: middle;
     text-align: center;
-    margin: 0 4px;
+    margin: 0 3px;
     line-height: 1;
-    font-size: 0.98em;
+    font-size: 0.95em;
   }
 
   .num {
     display: block;
-    border-bottom: 2px solid var(--primary);
-    padding: 1px 4px 3px 4px;
+    border-bottom: 1.8px solid var(--primary);
+    padding: 1px 3px 2px 3px;
     text-align: center;
     color: #0f172a;
   }
 
   .den {
     display: block;
-    padding: 3px 4px 1px 4px;
+    padding: 2px 3px 1px 3px;
     text-align: center;
     color: #0f172a;
   }
@@ -289,154 +269,118 @@
     align-items: center;
     vertical-align: middle;
     line-height: 1;
-    margin: 0 4px;
+    margin: 0 3px;
   }
 
   .lim-op {
-    font-size: 1.05rem;
+    font-size: 0.98rem;
     font-weight: bold;
     font-family: 'Times New Roman', serif;
     color: #0f172a;
   }
 
   .lim-sub {
-    font-size: 0.72rem;
+    font-size: 0.68rem;
     font-weight: bold;
     margin-top: 1px;
     color: #475569;
     white-space: nowrap;
   }
 
+  /* Grid Layouts for Sub-items */
   .sub-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 12px;
-    margin-top: 14px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 6px;
     direction: rtl;
   }
 
   .sub-item {
     background: var(--badge-bg);
-    padding: 10px 14px;
-    border-radius: 10px;
+    padding: 6px 10px;
+    border-radius: 8px;
     border: 1px solid var(--border-card);
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
+    font-size: 0.9rem;
   }
 
   .sub-circle {
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     background: var(--primary);
     color: #ffffff;
     border-radius: 50%;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     font-weight: 800;
     flex-shrink: 0;
   }
 
-  /* MCQ Styles */
-  .mcq-card {
-    background: var(--card-bg);
-    border: 1px solid #e2e8f0;
-    border-right: 4.5px solid #2563eb;
-    border-radius: 12px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.02);
-    page-break-inside: avoid;
-  }
-
-  .mcq-q {
-    font-weight: 800;
-    font-size: 1.04rem;
-    margin-bottom: 12px;
-    color: #0f172a;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-
-  .mcq-options {
+  /* Limits Grid for Essay Final Question */
+  .limits-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 8px;
+    margin-top: 8px;
+    direction: rtl;
   }
 
-  .mcq-opt {
-    background: #f8fafc;
-    border: 1.5px solid #cbd5e1;
-    padding: 9px 14px;
-    border-radius: 9px;
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: all 0.2s ease;
+  .lim-box {
+    background: #fdf2f2;
+    border: 1px solid var(--border-card);
+    border-radius: 8px;
+    padding: 6px 12px;
     display: flex;
     align-items: center;
-    gap: 8px;
-    direction: rtl;
-    font-weight: 600;
+    justify-content: space-between;
   }
 
-  .mcq-opt:hover {
-    background: #eff6ff;
-    border-color: #2563eb;
-    color: #1e40af;
-  }
-
-  .opt-letter {
-    font-weight: 900;
-    color: #2563eb;
-    font-size: 0.95rem;
+  .lim-idx {
+    font-weight: 800;
+    color: var(--primary);
+    font-size: 0.88rem;
   }
 
   /* Answer Section */
   #answer-section {
     display: none;
-    margin-top: 32px;
+    margin-top: 18px;
     background: #ffffff;
     border: 2px solid var(--primary);
-    border-radius: 16px;
-    padding: 26px;
-    box-shadow: 0 10px 30px rgba(153, 27, 27, 0.08);
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 4px 14px rgba(153, 27, 27, 0.08);
   }
 
   .ans-title {
-    font-size: 1.35rem;
+    font-size: 1.15rem;
     font-weight: 900;
     color: var(--primary);
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    margin-bottom: 10px;
     border-bottom: 2px solid var(--border-soft);
-    padding-bottom: 10px;
+    padding-bottom: 6px;
   }
 
   .ans-box {
     background: #fdf2f2;
     border: 1px solid var(--border-card);
-    padding: 16px 20px;
-    border-radius: 12px;
-    margin-bottom: 16px;
-    font-size: 1rem;
-    line-height: 1.9;
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    line-height: 1.7;
   }
 
-  .ans-box strong {
-    color: var(--primary);
-  }
-
-  /* Print Settings (Prints Questions Only) */
+  /* Print Settings */
   @media print {
     @page {
       size: A4;
-      margin: 12mm 14mm;
+      margin: 8mm 10mm;
     }
 
     body {
@@ -452,15 +396,16 @@
     .header-card {
       background: none !important;
       color: #000000 !important;
-      border-bottom: 2.5px solid #991b1b !important;
+      border-bottom: 2px solid #991b1b !important;
       border-radius: 0 !important;
-      padding: 6px 0 14px 0 !important;
-      margin-bottom: 14px !important;
+      padding: 4px 0 8px 0 !important;
+      margin-bottom: 8px !important;
       box-shadow: none !important;
     }
 
     .header-content h1 {
       color: #000000 !important;
+      font-size: 1.25rem !important;
     }
 
     .header-content p {
@@ -470,30 +415,28 @@
     .logo-box {
       background: transparent !important;
       color: #991b1b !important;
-      border: 2px solid #991b1b !important;
+      border: 1.5px solid #991b1b !important;
+      font-size: 1.1rem !important;
     }
 
     .info-strip {
-      border: 1.5px solid #000000 !important;
-      box-shadow: none !important;
+      border: 1px solid #000000 !important;
+      border-radius: 4px !important;
+      padding: 6px 10px !important;
+      margin-bottom: 8px !important;
     }
 
     .q-card {
       border: 1px solid #d1d5db !important;
-      border-right: 4.5px solid #991b1b !important;
+      border-right: 3.5px solid #991b1b !important;
       box-shadow: none !important;
-      page-break-inside: avoid;
-    }
-
-    .mcq-card {
-      border: 1px solid #cbd5e1 !important;
-      border-right: 4px solid #2563eb !important;
-      box-shadow: none !important;
+      padding: 8px 12px !important;
+      margin-bottom: 6px !important;
       page-break-inside: avoid;
     }
 
     .num {
-      border-bottom: 2px solid #000000 !important;
+      border-bottom: 1.8px solid #000000 !important;
     }
   }
 </style>
@@ -505,15 +448,15 @@
   <!-- Header -->
   <header class="header-card">
     <div class="header-content">
-      <h1>اختبار شامل في الرياضيات: التابع الأسي والمعادلات التفاضلية</h1>
-      <p>القسم التحريري وبنك الأتمتة الشامل (15 سؤالاً) - القسم العلمي</p>
+      <h1>اختبار تحريري شامل في الرياضيات</h1>
+      <p>التابع الأسي والمعادلات التفاضلية - القسم العلمي</p>
     </div>
     <div class="logo-box">ammar</div>
   </header>
 
   <!-- Toolbar -->
   <div class="toolbar">
-    <span class="toolbar-text">اختبار شامل مجهز للطباعة التحريرية وحل الأتمتة المباشر</span>
+    <span class="toolbar-text">اختبار تحريري شامل مضغوط (جاهز للحل والطباعة المباشرة)</span>
     <div class="btn-group">
       <button class="btn btn-ans" onclick="toggleAnswers()">
         👁️ إظهار / إخفاء الأجوبة النموذجية
@@ -539,9 +482,6 @@
       <div class="dot-line"></div>
     </div>
   </div>
-
-  <!-- SECTION 1: ESSAY QUESTIONS -->
-  <div class="section-title">📌 القسم الأول: المسائل والتمارين التحريرية الشاملة</div>
 
   <!-- Q1 -->
   <div class="q-card">
@@ -615,7 +555,6 @@
           </span>
         </div>
       </div>
-      <br>
       <strong>2)</strong> حل في <span class="math-inline">R</span> المعادلات والمتراجحات الآتية:
       <div class="sub-grid">
         <div class="sub-item">
@@ -694,8 +633,7 @@
         </li>
         <li>أثبت أنه أياً كان <span class="math-inline">x ∈ R</span> فإن <span class="math-inline">f(x) = ln(4 e<sup>x</sup> + 1)</span> وفسر النتيجة هندسياً.</li>
         <li>عيّن معادلة المقارب المائل <span class="math-inline">Δ</span> وادرس الوضع النسبي بين الخط <span class="math-inline">C<sub>f</sub></span> والمقارب <span class="math-inline">Δ</span>.</li>
-        <li>ادرس تغيرات التابع <span class="math-inline">f</span> ونظم جدولاً بها.</li>
-        <li>ارسم كلاً من الخط <span class="math-inline">C<sub>f</sub></span> والمقارب <span class="math-inline">Δ</span> في معلم متجانس.</li>
+        <li>ادرس تغيرات التابع <span class="math-inline">f</span> ونظم جدولاً بها وارسم كلاً من الخط <span class="math-inline">C<sub>f</sub></span> والمقارب <span class="math-inline">Δ</span>.</li>
       </ol>
     </div>
   </div>
@@ -714,12 +652,9 @@
       </div>
       والمطلوب:
       <ol>
-        <li>أثبت أن التابع <span class="math-inline">f</span> فردي.</li>
-        <li>ادرس تغيرات التابع <span class="math-inline">f</span> ونظم جدولاً بها.</li>
-        <li>أثبت أن للمعادلة <span class="math-inline">f(x) = m</span> حلاً وحيداً مهما تكن <span class="math-inline">m ∈ R</span>، ثم أثبت أن هذا الحل يعطى بالعلاقة:
-          <div class="math-block">
-            <span>x = ln [ m + &radic;(m<sup>2</sup> + 1) ]</span>
-          </div>
+        <li>أثبت أن التابع <span class="math-inline">f</span> فردي، وادرس تغيرات التابع <span class="math-inline">f</span> ونظم جدولاً بها.</li>
+        <li>أثبت أن للمعادلة <span class="math-inline">f(x) = m</span> حلاً وحيداً مهما تكن <span class="math-inline">m ∈ R</span> يعطى بالعلاقة:
+          <span class="math-inline">x = ln [ m + &radic;(m<sup>2</sup> + 1) ]</span>.
         </li>
         <li>اكتب معادلة المماس <span class="math-inline">T</span> للخط البياني عند المبدأ <span class="math-inline">O</span>، ثم ارسم كلاً من المماس <span class="math-inline">T</span> والخط البياني.</li>
       </ol>
@@ -757,27 +692,18 @@
   <!-- Q11 -->
   <div class="q-card">
     <div class="q-header">
-      <span class="q-pill">السؤال الحادي عشر</span>
+      <span class="q-pill">السؤال الحادي عشر (مسألة دورة 2024)</span>
     </div>
     <div class="q-body">
       لتكن المعادلة التفاضلية:
-      <div class="math-block">
-        <span>(E) : y' + 3y = </span>
-        <div class="frac"><span class="num">9</span><span class="den">2</span></div>
-        <span>e<sup>-2x</sup></span>
-      </div>
-      والمعادلة التفاضلية:
-      <div class="math-block">
-        <span>(E') : y' + 3y = 0</span>
-      </div>
-      نفرض لدينا التابع <span class="math-inline">g</span> معرفاً على <span class="math-inline">R</span> وفق:
-      <span class="math-inline">g(x) = λ e<sup>-2x</sup></span> حيث <span class="math-inline">λ</span> عدد حقيقي.
-      <br>المطلوب:
+      <span class="math-inline">(E) : y' + 3y = <div class="frac"><span class="num">9</span><span class="den">2</span></div> e<sup>-2x</sup></span>
+      ، والمعادلة التفاضلية: 
+      <span class="math-inline">(E') : y' + 3y = 0</span>.
+      <br>نفرض لدينا التابع <span class="math-inline">g</span> معرفاً على <span class="math-inline">R</span> وفق: <span class="math-inline">g(x) = λ e<sup>-2x</sup></span> حيث <span class="math-inline">λ</span> عدد حقيقي.
       <ol>
         <li>عيّن قيمة الثابت الحقيقي <span class="math-inline">λ</span> حتى يكون التابع <span class="math-inline">g</span> حلاً للمعادلة التفاضلية <span class="math-inline">(E)</span>.</li>
         <li>حل المعادلة التفاضلية <span class="math-inline">(E')</span>.</li>
-        <li>أثبت أن تابعاً <span class="math-inline">f</span> يكون حلاً للمعادلة <span class="math-inline">(E)</span> إذا وفقط إذا كان <span class="math-inline">f - g</span> حلاً للمعادلة <span class="math-inline">(E')</span>.</li>
-        <li>استنتج مجموعة حلول المعادلة التفاضلية <span class="math-inline">(E)</span>.</li>
+        <li>أثبت أن تابعاً <span class="math-inline">f</span> يكون حلاً للمعادلة <span class="math-inline">(E)</span> إذا وفقط إذا كان <span class="math-inline">f - g</span> حلاً للمعادلة <span class="math-inline">(E')</span>، ثم استنتج مجموعة حلول المعادلة <span class="math-inline">(E)</span>.</li>
       </ol>
     </div>
   </div>
@@ -796,14 +722,10 @@
       والمطلوب:
       <ol>
         <li>احسب نهايات التابع <span class="math-inline">f</span> عند <span class="math-inline">+∞</span> و <span class="math-inline">-∞</span>.</li>
-        <li>أثبت أنه أياً كانت <span class="math-inline">x ∈ R</span> فإن المشتق يعطى بالعلاقة:
-          <div class="math-block">
-            <span>f'(x) = </span>
-            <div class="frac"><span class="num">1 - x<sup>2</sup></span><span class="den">e<sup>x</sup></span></div>
-          </div>
+        <li>أثبت أنه أياً كانت <span class="math-inline">x ∈ R</span> فإن المشتق:
+          <span class="math-inline">f'(x) = <div class="frac"><span class="num">1 - x<sup>2</sup></span><span class="den">e<sup>x</sup></span></div></span>.
         </li>
-        <li>ادرس تغيرات التابع <span class="math-inline">f</span> ونظم جدولاً بها ودلّ على القيم الكبرى والصغرى.</li>
-        <li>ارسم كلاً من الخط البياني والمقاربات في معلم متجانس.</li>
+        <li>ادرس تغيرات التابع <span class="math-inline">f</span> ونظم جدولاً بها ودلّ على القيم الكبرى والصغرى محلياً، ثم ارسم الخط البياني.</li>
       </ol>
     </div>
   </div>
@@ -811,360 +733,82 @@
   <!-- Q13 -->
   <div class="q-card">
     <div class="q-header">
-      <span class="q-pill">السؤال الثالث عشر</span>
+      <span class="q-pill">السؤال الثالث عشر (حساب النهايات والمسائل التحليلية التحريرية)</span>
     </div>
     <div class="q-body">
-      ليكن التابع <span class="math-inline">f</span> معرفاً على المجال <span class="math-inline">I = ]0, +∞[</span> وفق:
-      <div class="math-block">
-        <span>f(x) = </span>
-        <div class="frac"><span class="num">e<sup>x</sup> + 3</span><span class="den">e<sup>x</sup> - 1</span></div>
+      <strong>أولاً:</strong> احسب تحريرياً كلاً من النهايات الآتية مبيناً خطوات الحل بالتفصيل:
+      <div class="limits-grid">
+        <div class="lim-box">
+          <span class="lim-idx">1)</span>
+          <span class="math-inline"><span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; -∞</span></span> (x + 2)<sup>2</sup> e<sup>x</sup></span>
+        </div>
+        <div class="lim-box">
+          <span class="lim-idx">2)</span>
+          <span class="math-inline"><span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; +∞</span></span> (e<sup>3x</sup> - 2e<sup>x</sup> + 1)</span>
+        </div>
+        <div class="lim-box">
+          <span class="lim-idx">3)</span>
+          <span class="math-inline"><span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; 0</span></span> <div class="frac"><span class="num">e<sup>7x</sup> - 1</span><span class="den">3x</span></div></span>
+        </div>
+        <div class="lim-box">
+          <span class="lim-idx">4)</span>
+          <span class="math-inline"><span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; +∞</span></span> <div class="frac"><span class="num">e<sup>x</sup></span><span class="den">(x + 1)<sup>2</sup></span></div></span>
+        </div>
+        <div class="lim-box">
+          <span class="lim-idx">5)</span>
+          <span class="math-inline"><span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; -∞</span></span> 3x (e<sup>5/x</sup> - 1)</span>
+        </div>
+        <div class="lim-box">
+          <span class="lim-idx">6)</span>
+          <span class="math-inline"><span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; +∞</span></span> (1 + <div class="frac"><span class="num">5</span><span class="den">x</span></div>)<sup>3x</sup></span>
+        </div>
+        <div class="lim-box">
+          <span class="lim-idx">7)</span>
+          <span class="math-inline"><span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; 4</span></span> (5 - x)<sup>3/(4 - x)</sup></span>
+        </div>
+        <div class="lim-box">
+          <span class="lim-idx">8)</span>
+          <span class="math-inline"><span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; +∞</span></span> (<div class="frac"><span class="num">x + 4</span><span class="den">x + 2</span></div>)<sup>2x</sup></span>
+        </div>
+        <div class="lim-box">
+          <span class="lim-idx">9)</span>
+          <span class="math-inline"><span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; 0</span></span> <div class="frac"><span class="num">e<sup>2x</sup> - 1</span><span class="den">ln(1 + 3x)</span></div></span>
+        </div>
+        <div class="lim-box">
+          <span class="lim-idx">10)</span>
+          <span class="math-inline"><span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; -∞</span></span> (e<sup>-x</sup> + x - 2)</span>
+        </div>
       </div>
-      والمطلوب:
+      <br>
+      <strong>ثانياً:</strong> أجب تحريرياً عن المسائل الآتية:
       <ol>
-        <li>احسب 
-          <span class="math-inline"><span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; +∞</span></span> f(x)</span> 
-          واستنتج 
-          <span class="math-inline"><span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; +∞</span></span> f(f(x))</span>.
-        </li>
-        <li>عيّن عدداً حقيقياً <span class="math-inline">A</span> يُحقق الشرط: إذا كان <span class="math-inline">x &gt; A</span> كان <span class="math-inline">f(x) ∈ ]0.8 , 1.2[</span>.</li>
-        <li>حل المعادلة: <span class="math-inline">f(x) = 5</span> في المجال <span class="math-inline">I</span>.</li>
+        <li>احسب مشتق التابع: <span class="math-inline">f(x) = (x + 1)<sup>2</sup> e<sup>-x</sup></span> واكتبه بأبسط صيغة ممكنة.</li>
+        <li>أوجد الحل العام للمعادلة التفاضلية: <span class="math-inline">y' + 3y = 0</span>.</li>
+        <li>عيّن حل المعادلة التفاضلية <span class="math-inline">y' - 2y = -6</span> الذي يحقق الشرط الابتدائي <span class="math-inline">y(ln 2) = -5</span>.</li>
+        <li>أثبت أن قيمة الثابت <span class="math-inline">λ</span> لكي يكون <span class="math-inline">g(x) = λ e<sup>-2x</sup></span> حلاً للمعادلة <span class="math-inline">y' + 3y = <div class="frac"><span class="num">9</span><span class="den">2</span></div> e<sup>-2x</sup></span> هي <span class="math-inline">λ = <div class="frac"><span class="num">9</span><span class="den">2</span></div></span>.</li>
       </ol>
-    </div>
-  </div>
-
-  <!-- Q14 -->
-  <div class="q-card">
-    <div class="q-header">
-      <span class="q-pill">السؤال الرابع عشر</span>
-    </div>
-    <div class="q-body">
-      ليكن التابع <span class="math-inline">f</span> معرفاً على <span class="math-inline">R</span> وفق:
-      <div class="math-block">
-        <span>f(x) = 3x - 1 - </span>
-        <div class="frac"><span class="num">x</span><span class="den">e<sup>x</sup></span></div>
-      </div>
-      أثبت أن المستقيم <span class="math-inline">Δ : y = 3x - 1</span> مقارب مائل للخط البياني <span class="math-inline">C<sub>f</sub></span> في جوار <span class="math-inline">+∞</span>، ثم ادرس الوضع النسبي بين <span class="math-inline">C<sub>f</sub></span> والمستقيم المقارب <span class="math-inline">Δ</span>.
-    </div>
-  </div>
-
-  <!-- Q15 -->
-  <div class="q-card">
-    <div class="q-header">
-      <span class="q-pill">السؤال الخامس عشر</span>
-    </div>
-    <div class="q-body">
-      ليكن التابع <span class="math-inline">f</span> معرفاً على <span class="math-inline">R</span> وفق:
-      <span class="math-inline">f(x) = 1 + e<sup>x</sup></span>.
-      <br>أوجد معادلة المماس <span class="math-inline">T</span> للخط البياني <span class="math-inline">C<sub>f</sub></span> في النقطة التي فاصلتها <span class="math-inline">x = 2</span>، ثم ادرس الوضع النسبي بين الخط البياني <span class="math-inline">C<sub>f</sub></span> والمماس <span class="math-inline">T</span>.
-    </div>
-  </div>
-
-  <!-- Q16 -->
-  <div class="q-card">
-    <div class="q-header">
-      <span class="q-pill">السؤال السادس عشر</span>
-    </div>
-    <div class="q-body">
-      ليكن التابع <span class="math-inline">f</span> معرفاً على <span class="math-inline">R</span> وفق:
-      <span class="math-inline">f(x) = (ax + b) e<sup>x</sup></span>.
-      <br>عيّن الثابتين <span class="math-inline">a , b</span> إذا علمت أن <span class="math-inline">-e<sup>2</sup></span> قيمة حدية محلية للتابع <span class="math-inline">f</span> يبلغها عند <span class="math-inline">x = 2</span>.
-    </div>
-  </div>
-
-  <!-- SECTION 2: 15 MULTIPLE CHOICE QUESTIONS (MCQ) -->
-  <div class="section-title">🎯 القسم الثاني: بنك أسئلة الأتمتة (15 سؤال اختيار من متعدد)</div>
-
-  <!-- MCQ 1 -->
-  <div class="mcq-card">
-    <div class="mcq-q">
-      <span>1) قيمة النهاية:</span>
-      <span class="math-inline"><span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; -∞</span></span> (x + 2)<sup>2</sup> e<sup>x</sup></span>
-      <span>تساوي:</span>
-    </div>
-    <div class="mcq-options">
-      <div class="mcq-opt"><span class="opt-letter">A)</span> 0</div>
-      <div class="mcq-opt"><span class="opt-letter">B)</span> +∞</div>
-      <div class="mcq-opt"><span class="opt-letter">C)</span> -∞</div>
-      <div class="mcq-opt"><span class="opt-letter">D)</span> 4</div>
-    </div>
-  </div>
-
-  <!-- MCQ 2 -->
-  <div class="mcq-card">
-    <div class="mcq-q">
-      <span>2) قيمة النهاية:</span>
-      <span class="math-inline"><span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; +∞</span></span> (e<sup>3x</sup> - 2e<sup>x</sup> + 1)</span>
-      <span>تساوي:</span>
-    </div>
-    <div class="mcq-options">
-      <div class="mcq-opt"><span class="opt-letter">A)</span> 0</div>
-      <div class="mcq-opt"><span class="opt-letter">B)</span> +∞</div>
-      <div class="mcq-opt"><span class="opt-letter">C)</span> -∞</div>
-      <div class="mcq-opt"><span class="opt-letter">D)</span> 1</div>
-    </div>
-  </div>
-
-  <!-- MCQ 3 -->
-  <div class="mcq-card">
-    <div class="mcq-q">
-      <span>3) قيمة النهاية:</span>
-      <span class="math-inline">
-        <span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; 0</span></span>
-        <div class="frac"><span class="num">e<sup>7x</sup> - 1</span><span class="den">3x</span></div>
-      </span>
-      <span>تساوي:</span>
-    </div>
-    <div class="mcq-options">
-      <div class="mcq-opt"><span class="opt-letter">A)</span> <span class="math-inline">7/3</span></div>
-      <div class="mcq-opt"><span class="opt-letter">B)</span> <span class="math-inline">3/7</span></div>
-      <div class="mcq-opt"><span class="opt-letter">C)</span> 0</div>
-      <div class="mcq-opt"><span class="opt-letter">D)</span> 1</div>
-    </div>
-  </div>
-
-  <!-- MCQ 4 -->
-  <div class="mcq-card">
-    <div class="mcq-q">
-      <span>4) قيمة النهاية:</span>
-      <span class="math-inline">
-        <span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; +∞</span></span>
-        <div class="frac"><span class="num">e<sup>x</sup></span><span class="den">(x + 1)<sup>2</sup></span></div>
-      </span>
-      <span>تساوي:</span>
-    </div>
-    <div class="mcq-options">
-      <div class="mcq-opt"><span class="opt-letter">A)</span> +∞</div>
-      <div class="mcq-opt"><span class="opt-letter">B)</span> 0</div>
-      <div class="mcq-opt"><span class="opt-letter">C)</span> 1</div>
-      <div class="mcq-opt"><span class="opt-letter">D)</span> 2</div>
-    </div>
-  </div>
-
-  <!-- MCQ 5 -->
-  <div class="mcq-card">
-    <div class="mcq-q">
-      <span>5) قيمة النهاية:</span>
-      <span class="math-inline">
-        <span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; -∞</span></span>
-        3x (e<sup>5/x</sup> - 1)
-      </span>
-      <span>تساوي:</span>
-    </div>
-    <div class="mcq-options">
-      <div class="mcq-opt"><span class="opt-letter">A)</span> 15</div>
-      <div class="mcq-opt"><span class="opt-letter">B)</span> 5/3</div>
-      <div class="mcq-opt"><span class="opt-letter">C)</span> 0</div>
-      <div class="mcq-opt"><span class="opt-letter">D)</span> -∞</div>
-    </div>
-  </div>
-
-  <!-- MCQ 6 -->
-  <div class="mcq-card">
-    <div class="mcq-q">
-      <span>6) قيمة النهاية الشهيرة:</span>
-      <span class="math-inline">
-        <span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; +∞</span></span>
-        (1 + <div class="frac"><span class="num">5</span><span class="den">x</span></div>)<sup>3x</sup>
-      </span>
-      <span>تساوي:</span>
-    </div>
-    <div class="mcq-options">
-      <div class="mcq-opt"><span class="opt-letter">A)</span> e<sup>15</sup></div>
-      <div class="mcq-opt"><span class="opt-letter">B)</span> e<sup>5</sup></div>
-      <div class="mcq-opt"><span class="opt-letter">C)</span> e<sup>3</sup></div>
-      <div class="mcq-opt"><span class="opt-letter">D)</span> 1</div>
-    </div>
-  </div>
-
-  <!-- MCQ 7 -->
-  <div class="mcq-card">
-    <div class="mcq-q">
-      <span>7) قيمة النهاية:</span>
-      <span class="math-inline">
-        <span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; 4</span></span>
-        (5 - x)<sup>3/(4 - x)</sup>
-      </span>
-      <span>تساوي:</span>
-    </div>
-    <div class="mcq-options">
-      <div class="mcq-opt"><span class="opt-letter">A)</span> e<sup>3</sup></div>
-      <div class="mcq-opt"><span class="opt-letter">B)</span> e<sup>-3</sup></div>
-      <div class="mcq-opt"><span class="opt-letter">C)</span> 1</div>
-      <div class="mcq-opt"><span class="opt-letter">D)</span> 0</div>
-    </div>
-  </div>
-
-  <!-- MCQ 8 -->
-  <div class="mcq-card">
-    <div class="mcq-q">
-      <span>8) قيمة النهاية:</span>
-      <span class="math-inline">
-        <span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; +∞</span></span>
-        (<div class="frac"><span class="num">x + 4</span><span class="den">x + 2</span></div>)<sup>2x</sup>
-      </span>
-      <span>تساوي:</span>
-    </div>
-    <div class="mcq-options">
-      <div class="mcq-opt"><span class="opt-letter">A)</span> e<sup>4</sup></div>
-      <div class="mcq-opt"><span class="opt-letter">B)</span> e<sup>2</sup></div>
-      <div class="mcq-opt"><span class="opt-letter">C)</span> e<sup>8</sup></div>
-      <div class="mcq-opt"><span class="opt-letter">D)</span> 1</div>
-    </div>
-  </div>
-
-  <!-- MCQ 9 -->
-  <div class="mcq-card">
-    <div class="mcq-q">
-      <span>9) قيمة النهاية:</span>
-      <span class="math-inline">
-        <span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; 0</span></span>
-        <div class="frac"><span class="num">e<sup>2x</sup> - 1</span><span class="den">ln(1 + 3x)</span></div>
-      </span>
-      <span>تساوي:</span>
-    </div>
-    <div class="mcq-options">
-      <div class="mcq-opt"><span class="opt-letter">A)</span> <span class="math-inline">2/3</span></div>
-      <div class="mcq-opt"><span class="opt-letter">B)</span> <span class="math-inline">3/2</span></div>
-      <div class="mcq-opt"><span class="opt-letter">C)</span> 0</div>
-      <div class="mcq-opt"><span class="opt-letter">D)</span> 1</div>
-    </div>
-  </div>
-
-  <!-- MCQ 10 -->
-  <div class="mcq-card">
-    <div class="mcq-q">
-      <span>10) قيمة النهاية:</span>
-      <span class="math-inline">
-        <span class="lim-wrap"><span class="lim-op">lim</span><span class="lim-sub">x &rarr; -∞</span></span>
-        (e<sup>-x</sup> + x - 2)
-      </span>
-      <span>تساوي:</span>
-    </div>
-    <div class="mcq-options">
-      <div class="mcq-opt"><span class="opt-letter">A)</span> +∞</div>
-      <div class="mcq-opt"><span class="opt-letter">B)</span> -∞</div>
-      <div class="mcq-opt"><span class="opt-letter">C)</span> 0</div>
-      <div class="mcq-opt"><span class="opt-letter">D)</span> -2</div>
-    </div>
-  </div>
-
-  <!-- MCQ 11 -->
-  <div class="mcq-card">
-    <div class="mcq-q">
-      <span>11) حل المعادلة الأسية</span>
-      <span class="math-inline">2<sup>3x+1</sup> = 32</span>
-      <span>في <span class="math-inline">R</span> هو:</span>
-    </div>
-    <div class="mcq-options">
-      <div class="mcq-opt"><span class="opt-letter">A)</span> x = 4/3</div>
-      <div class="mcq-opt"><span class="opt-letter">B)</span> x = 1</div>
-      <div class="mcq-opt"><span class="opt-letter">C)</span> x = 2</div>
-      <div class="mcq-opt"><span class="opt-letter">D)</span> x = 5/3</div>
-    </div>
-  </div>
-
-  <!-- MCQ 12 -->
-  <div class="mcq-card">
-    <div class="mcq-q">
-      <span>12) التابع المشتق للتابع</span>
-      <span class="math-inline">f(x) = (x + 1)<sup>2</sup> e<sup>-x</sup></span>
-      <span>هو:</span>
-    </div>
-    <div class="mcq-options">
-      <div class="mcq-opt"><span class="opt-letter">A)</span> (1 - x<sup>2</sup>) e<sup>-x</sup></div>
-      <div class="mcq-opt"><span class="opt-letter">B)</span> (x<sup>2</sup> - 1) e<sup>-x</sup></div>
-      <div class="mcq-opt"><span class="opt-letter">C)</span> 2(x + 1) e<sup>-x</sup></div>
-      <div class="mcq-opt"><span class="opt-letter">D)</span> -(x + 1)<sup>2</sup> e<sup>-x</sup></div>
-    </div>
-  </div>
-
-  <!-- MCQ 13 -->
-  <div class="mcq-card">
-    <div class="mcq-q">
-      <span>13) حل المعادلة التفاضلية</span>
-      <span class="math-inline">y' + 3y = 0</span>
-      <span>في <span class="math-inline">R</span> هو:</span>
-    </div>
-    <div class="mcq-options">
-      <div class="mcq-opt"><span class="opt-letter">A)</span> y = C e<sup>-3x</sup></div>
-      <div class="mcq-opt"><span class="opt-letter">B)</span> y = C e<sup>3x</sup></div>
-      <div class="mcq-opt"><span class="opt-letter">C)</span> y = -3 C e<sup>x</sup></div>
-      <div class="mcq-opt"><span class="opt-letter">D)</span> y = C e<sup>x/3</sup></div>
-    </div>
-  </div>
-
-  <!-- MCQ 14 -->
-  <div class="mcq-card">
-    <div class="mcq-q">
-      <span>14) حل المعادلة التفاضلية</span>
-      <span class="math-inline">y' - 2y = -6</span>
-      <span>المار بالنقطة <span class="math-inline">(ln 2 , -5)</span> هو:</span>
-    </div>
-    <div class="mcq-options">
-      <div class="mcq-opt"><span class="opt-letter">A)</span> y = -2 e<sup>2x</sup> + 3</div>
-      <div class="mcq-opt"><span class="opt-letter">B)</span> y = 2 e<sup>2x</sup> - 3</div>
-      <div class="mcq-opt"><span class="opt-letter">C)</span> y = -e<sup>2x</sup> + 3</div>
-      <div class="mcq-opt"><span class="opt-letter">D)</span> y = -8 e<sup>2x</sup> + 3</div>
-    </div>
-  </div>
-
-  <!-- MCQ 15 -->
-  <div class="mcq-card">
-    <div class="mcq-q">
-      <span>15) قيمة الثابت <span class="math-inline">λ</span> ليكون</span>
-      <span class="math-inline">g(x) = λ e<sup>-2x</sup></span>
-      <span>حلاً للمعادلة <span class="math-inline">y' + 3y = (9/2) e<sup>-2x</sup></span> هي:</span>
-    </div>
-    <div class="mcq-options">
-      <div class="mcq-opt"><span class="opt-letter">A)</span> 9/2</div>
-      <div class="mcq-opt"><span class="opt-letter">B)</span> 3/2</div>
-      <div class="mcq-opt"><span class="opt-letter">C)</span> -9/2</div>
-      <div class="mcq-opt"><span class="opt-letter">D)</span> 9</div>
     </div>
   </div>
 
   <!-- SECTION 3: TOGGLEABLE ANSWERS SECTION -->
   <div id="answer-section">
     <div class="ans-title">
-      <span>📋 الحلول والأجوبة النموذجية الكاملة</span>
+      <span>📋 الأجوبة والحلول النموذجية المختصرة</span>
     </div>
 
     <div class="ans-box">
-      <strong>مفاتيح حل أسئلة الأتمتة (15 سؤالاً):</strong><br>
-      1) A (0) &nbsp;|&nbsp; 2) B (+∞) &nbsp;|&nbsp; 3) A (7/3) &nbsp;|&nbsp; 4) A (+∞) &nbsp;|&nbsp; 5) A (15) <br>
-      6) A (e<sup>15</sup>) &nbsp;|&nbsp; 7) A (e<sup>3</sup>) &nbsp;|&nbsp; 8) A (e<sup>4</sup>) &nbsp;|&nbsp; 9) A (2/3) &nbsp;|&nbsp; 10) A (+∞) <br>
-      11) A (x = 4/3) &nbsp;|&nbsp; 12) A ((1-x²)e<sup>-x</sup>) &nbsp;|&nbsp; 13) A (y = C e<sup>-3x</sup>) &nbsp;|&nbsp; 14) A (y = -2e<sup>2x</sup> + 3) &nbsp;|&nbsp; 15) A (λ = 9/2)
+      <strong>حل السؤال الثالث عشر (النهايات التحريرية):</strong><br>
+      1) 0 (مبرهنة التزايد المقارن) &nbsp;|&nbsp; 2) +∞ (سحب العامل المسيطر e<sup>3x</sup>) &nbsp;|&nbsp; 3) 7/3 (نهاية مشتقة شهيرة)<br>
+      4) +∞ (تزايد مقارن عند +∞) &nbsp;|&nbsp; 5) 15 (تغيير متحول t = 5/x) &nbsp;|&nbsp; 6) e<sup>15</sup> (نهاية العدد النيبري الشهيرة)<br>
+      7) e<sup>3</sup> (نهاية نيبرية عند x→4) &nbsp;|&nbsp; 8) e<sup>4</sup> &nbsp;|&nbsp; 9) 2/3 (نهاية مركبة بقسمة البسط والمقام على x) &nbsp;|&nbsp; 10) +∞ (e<sup>-x</sup> أسرع نمواً من x).
     </div>
 
     <div class="ans-box">
-      <strong>إجابة المسألة 13 (التابع الكسري الأسي):</strong><br>
-      1) lim<sub>x→+∞</sub> f(x) = 1 (بقسمة البسط والمقام على e<sup>x</sup>). ومنه: lim<sub>x→+∞</sub> f(f(x)) = f(1) = (e + 3)/(e - 1).<br>
-      2) الشرط f(x) ∈ ]0.8, 1.2[ يعني |f(x) - 1| &lt; 0.2. لدينا f(x) - 1 = 4/(e<sup>x</sup> - 1). إذن 4/(e<sup>x</sup> - 1) &lt; 0.2 ⇒ e<sup>x</sup> - 1 &gt; 20 ⇒ e<sup>x</sup> &gt; 21 ⇒ x &gt; ln 21. إذن A = ln 21.<br>
-      3) حل المعادلة f(x) = 5: e<sup>x</sup> + 3 = 5(e<sup>x</sup> - 1) ⇒ 4e<sup>x</sup> = 8 ⇒ e<sup>x</sup> = 2 ⇒ x = ln 2 ∈ ]0, +∞[.
-    </div>
-
-    <div class="ans-box">
-      <strong>إجابة المسألة 14 (المقارب المائل والوضع النسبي):</strong><br>
-      لدينا f(x) - (3x - 1) = -x/e<sup>x</sup>. عند +∞: lim (-x/e<sup>x</sup>) = 0، إذن Δ مقارب مائل عند +∞.<br>
-      الوضع النسبي: إشارة الفرق من إشارة (-x).<br>
-      • على ]-∞, 0[: الفرق موجب فـ C<sub>f</sub> يقع فوق Δ.<br>
-      • عند x = 0: يتقاطعان في النقطة (0 , -1).<br>
-      • على ]0, +∞[: الفرق سالب فـ C<sub>f</sub> يقع تحت Δ.
-    </div>
-
-    <div class="ans-box">
-      <strong>إجابة المسألة 15 (المماس والوضع النسبي):</strong><br>
-      f(2) = 1 + e<sup>2</sup>. المشتق f'(x) = e<sup>x</sup> ⇒ الميل m = f'(2) = e<sup>2</sup>.<br>
-      معادلة المماس T: y - (1 + e<sup>2</sup>) = e<sup>2</sup>(x - 2) ⇒ y = e<sup>2</sup>x - e<sup>2</sup> + 1.<br>
-      الوضع النسبي: التابع محدب تماماً لأن f''(x) = e<sup>x</sup> &gt; 0 دوماً على R، وبالتالي يقع الخط البياني C<sub>f</sub> فوق مماسه T ويشترك معه بنقطة التماس (2 , 1+e<sup>2</sup>).
-    </div>
-
-    <div class="ans-box">
-      <strong>إجابة المسألة 16 (تعيين الثوابت):</strong><br>
-      الشرطان: f(2) = -e<sup>2</sup> و f'(2) = 0.<br>
-      1) f(2) = (2a + b)e<sup>2</sup> = -e<sup>2</sup> ⇒ 2a + b = -1.<br>
-      2) f'(x) = a e<sup>x</sup> + (ax + b)e<sup>x</sup> = (ax + a + b)e<sup>x</sup> ⇒ f'(2) = (3a + b)e<sup>2</sup> = 0 ⇒ 3a + b = 0.<br>
-      بطرح المعادلة الأولى من الثانية: a = 1، وبالتعويض: b = -3.
+      <strong>حلول المسائل التحريرية (ثانياً من السؤال 13):</strong><br>
+      1) f'(x) = 2(x+1)e<sup>-x</sup> - (x+1)² e<sup>-x</sup> = (1 - x²) e<sup>-x</sup>.<br>
+      2) y = C e<sup>-3x</sup> حيث C ∈ R.<br>
+      3) الحل العام y = C e<sup>2x</sup> + 3، وبالتعويض: -5 = C(4) + 3 ⇒ 4C = -8 ⇒ C = -2، إذن الحل الخاص: y = -2e<sup>2x</sup> + 3.<br>
+      4) g'(x) = -2λ e<sup>-2x</sup>. بالتعويض: -2λ e<sup>-2x</sup> + 3λ e<sup>-2x</sup> = λ e<sup>-2x</sup> = (9/2) e<sup>-2x</sup> ⇒ λ = 9/2.
     </div>
   </div>
 
